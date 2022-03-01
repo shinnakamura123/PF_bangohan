@@ -1,24 +1,31 @@
-# README
+#概要
+「晩御飯何にしようか」と毎日悩んでいる方たちの味方になる、献立作成アプリです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##テーマを選んだ背景
+家で母親がよく献立を考えるのに悩んでいました。たしかに毎日違った献立を立てるのは面倒臭いですよね。
+また何を作ったのか覚えてなくて、気づいたら同じような献立のローテションになっていたりします。
+主婦だけでなく一人暮らしの方も同じ悩みを抱えている人が多いと思います。
+そこで献立を「楽しく、効率的に」できたらいいなという思いからこのサービスを制作しました。
 
-Things you may want to cover:
+##ターゲット
+主婦、一人暮らしや同棲されている方
 
-* Ruby version
+##主な利用シーン
+スーパーに行く前に買い物リストを書くような感覚で使用してほしい。
+また週に一回過去の献立を見直して献立を考える時の参考にしてほしい。
 
-* System dependencies
+#設計書
+※テーマ選定が決定した後、実装前にURLを記述します。
 
-* Configuration
+#チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1c6EjawC_hd_khBhs12Z9WkUaKOE1vr9EE400wPnc2H8/edit?usp=sharing
 
-* Database creation
+#開発環境
+・OS:Linux2
+・言語:HTML/CSS,javascript,Ruby,SQL
+・フレームワーク:Ruby on Rails
+・JSライブラリ:jQuery
+・IDE:cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#使用素材
+使用した場合は随時追記します。
