@@ -21,6 +21,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def unsubscribe
+  end
+
+  def withdrawal
+    @user = current_user
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
+
   def destroy
     @user = current_user
     @user.destroy

@@ -15,8 +15,8 @@
         </table>
         <div class="col-sm-12 offset-md-3">
           <%= f.submit "編集内容を保存", class: "btn btn-primary" %>
-          <!--物理削除-->
-          <%= link_to "退会する", user_path(@user), method: :delete, class: "btn btn-danger col-1 ml-4" data: {confirm: "削除しますか？"}%>
+          <!--論理削除-->
+          <%= link_to "退会する", unsubscribe_users_path(@user), class: "btn btn-danger" %>
         </div>
       <% end %>
     </div>
