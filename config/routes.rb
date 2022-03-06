@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+  }
 
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
   get '/search' => 'searches#search'
 
-  resources :users, only:[:index,:show, :edit, :update, :destroy]do
+  resources :users, only:[:index,:show, :edit, :update]do
     collection do
-      post 'confirm' => 'users#confirm' #退会確認画面
-      get 'complete' => 'users#complete' #退会完了画面
+      get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+      # 論理削除用のルーティング
+      patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+      get 'favorites'
     end
     resources :calenders, except:[:new, :update]
     resource :relationships, only: [:create, :destroy]do

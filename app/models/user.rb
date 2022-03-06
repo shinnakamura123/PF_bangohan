@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :recipes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_items, through: :favorites, source: :recipe
   has_many :comments, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many :calenders, dependent: :destroy
@@ -19,5 +20,5 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
 
   validates :email, uniqueness: true
-  validates :name, uniqueness: true
+  validates :name, uniqueness: true, presence: true
 end

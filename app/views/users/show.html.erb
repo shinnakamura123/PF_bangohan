@@ -1,2 +1,32 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class='container p-5'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h3 class="font-weight-bold"><%= @user.name %> さんの会員詳細</h3>
+      <% if @user == current_user %>
+        <%= link_to "編集する", edit_user_path(@user), class: "btn btn-sm btn-success" %>
+      <% end %>
+      <table class= "table">
+        <tr><td class ="font-weight-bold">アカウント名</td><td><%= @user.name %></td></tr>
+        <tr><td class ="font-weight-bold">自己紹介文</td><td><%= @user.introduction %></td></tr>
+        <tr>
+          <td class ="font-weight-bold">フォロー数</td>
+          <td>
+            <%= link_to followings_user_relationships_path(@user) do %>
+              <%= @user.followings.count %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class ="font-weight-bold">フォロワー数</td>
+          <td>
+            <%= link_to followers_user_relationships_path(@user) do %>
+              <%= @user.followers.count %>
+            <% end %>
+          </td>
+        </tr>
+
+      </table>
+      <%= link_to "レシピ一覧", recipes_path(@user), class: "btn btn-sm btn-success" %> | <%= link_to "いいねしたレシピ一覧", favorites_users_path, class: "btn btn-sm btn-primary" %>
+    </div>
+  </div>
+</div>
