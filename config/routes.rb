@@ -9,8 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, only:[:index,:show, :edit, :update, :destroy]do
     collection do
-      post 'confirm' => 'users#confirm' #退会確認画面
-      get 'complete' => 'users#complete' #退会完了画面
+     get 'favorites'
     end
     resources :calenders, except:[:new, :update]
     resource :relationships, only: [:create, :destroy]do
