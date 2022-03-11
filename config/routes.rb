@@ -12,10 +12,11 @@ Rails.application.routes.draw do
 
   resources :users, only:[:index,:show, :edit, :update]do
     collection do
-      get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+      get '/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
       # 論理削除用のルーティング
-      patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
-      get 'favorites'
+      patch '/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+      get '/:id/recipes' => 'users#recipes', as: 'recipes' # ユーザごとのレシピ一覧表示
+      get '/:id/favorites' => 'users#favorites', as: 'favorites'
     end
     resources :calenders, except:[:new, :update]
     resource :relationships, only: [:create, :destroy]do
@@ -27,21 +28,13 @@ Rails.application.routes.draw do
   end
 
   resources :recipes do
-    collection do
-      post 'confirm' => 'recipes#confirm' #レシピ登録確認画面
-    end
-
     resource :favorites, only:[:create, :destroy]
     resources :comments, only:[:create, :destroy]
   end
 
-  resources :recipe_foods, only:[:index, :create, :update, :destroy]do
-    collection do
-      delete 'destroy_all' => 'recipe_foods#destroy_all' #レシピに使用する材料を全て無くす
-    end
-  end
+  resources :recipe_foods, only:[:create, :destroy]
 
-  resources :foods, only:[:index, :create, :edit, :update]
+  resources :foods, only:[:index, :create, :destroy]
 
   resources :lists, only:[:index]
 

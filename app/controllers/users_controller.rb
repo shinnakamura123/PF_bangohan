@@ -37,6 +37,11 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def recipes
+    @user = User.find(params[:id])
+    @recipes = @user.recipes.page(params[:page]).per(6)
+  end
+
   private
 
   def user_params

@@ -1,0 +1,69 @@
+<div class = "row">
+    <div class = "col-md-6 offset-md-1">
+        <table width>
+            <tr>
+                <th style ="font-size: 14px"><p><%= f.label :recipe_name, "レシピ名" %></p></th>
+                <td><p><%= f.text_field :recipe_name %></p></td>
+            </tr>
+            <tr>
+                <th><p><%= f.label :image, "画像" %></p></th>
+                <td><p><%= f.file_field :image, accept: "image/*" %></p></td>
+            </tr>
+            <tr>
+                <th><p><%= f.label :man_count, "何人分" %></p></th>
+                <td><p><%= f.select :man_count, *[1..10] %></p></td>
+            </tr>
+            <tr>
+                <th><p><%= f.label :recipe, "作り方" %></p></th>
+                <td><p><%= f.text_area :recipe, placeholder: "1.〜〜。2.〜〜。3.〜〜。〜", size: "50x5" %></p></td>
+            </tr>
+            <tr>
+                <th style ="font-size: 14px"><p><%= f.label :point, "レシピの生い立ち" %></p></th>
+                <td><p><%= f.text_area :point, placeholder: "例）◯◯番組で紹介されていたので作ってみました！", size: "50x5" %></p></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <%= f.radio_button(:status, "false") %>
+                    <%= f.label(:status, "公開", value: "false")  %>
+                    <%= f.radio_button(:status, "true") %>
+                    <%= f.label(:status, "非公開", value: "true") %>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class = "col-md-5">
+        <div class="table-responsive">
+            <table class ="table text-center table-sm">
+                <thead class = "thead-light",style ="fo">
+                    <%= link_to "材料名を追加する", foods_path, class: "btn btn-info" %>
+                    <tr>
+                        <th>材料・調味料</th>
+                        <th>分量</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id='table-body'>
+                    <%= f.fields_for :recipe_foods do |recipe_food| %>
+                        <%= render 'recipe_food_fields', f: recipe_food %>
+                    <% end %>
+                </tbody>
+                </table>
+            <div class="text-center">
+              <div class='links'>
+                            <%= link_to_add_association "追加ボタン", f, :recipe_foods, #cocoonのカラム追加機能
+                                class: 'btn btn-success',
+                                data: {
+                                  association_insertion_node: 'tbody#table-body', #挿入先を指定
+                                  association_insertion_method: 'after'    #挿入を前にする
+                                }
+                            %>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <%= f.submit "レシピを作成する", class: "btn btn-success" %>
+</div>
+

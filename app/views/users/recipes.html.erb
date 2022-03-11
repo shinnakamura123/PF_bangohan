@@ -2,7 +2,7 @@
   <div class ="row">
     <div class ="col-md-11 offset-md-1">
       <div class="row ml-3">
-        <h3 class="font-weight-bold">レシピ一覧</h3>
+        <h3 class="font-weight-bold"><%= @user.name %>さんのレシピ一覧</h3>
         <p class="p-2">(全<%= @recipes.total_count %>件）<p>
       </div>
       <div class="row">
@@ -19,7 +19,7 @@
         <% end %>
       </div>
     </div>
-    <div class="offset-md-5 mt-5">
+    <div class="offset-md-4 mt-5">
       <%= paginate @recipes, theme: 'twitter-bootstrap-4' %>
     </div>
   </div>
