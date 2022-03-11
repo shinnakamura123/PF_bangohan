@@ -3,7 +3,6 @@ class CreateRecipes < ActiveRecord::Migration[6.1]
     create_table :recipes do |t|
       t.integer :user_id, null: false
       t.string :recipe_name, null: false
-      t.text :image_id, null: false
       t.integer :man_count, null: false
       t.text :recipe, null: false
       t.text :point, null: false

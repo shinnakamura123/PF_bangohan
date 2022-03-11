@@ -1,2 +1,56 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class = "container p-5">
+    <h3 class = "font-weight-bold text-warning"><%= @recipe.recipe_name %> <%= link_to '編集する', edit_recipe_path(@recipe), class: "btn btn-success"%>  <%= link_to '削除する', recipe_path(@recipe), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"}%></h3>
+    <div class= "row">
+        <div class = "col-md-5">
+            <div class ="text-center">
+                <%= image_tag @recipe.get_image(400, 400) ,class: "shadow p-3 mb-5 bg-body round" %></tr>
+            </div>
+            <table class = "table table-sm">
+                <thead class="thead-light">
+                  <th>材料名</th>
+                  <th>分量</th>
+                  <th></th>
+                </thead>
+                <tbody>
+                    <% @recipe.recipe_foods.each do |recipe_food| %>
+                        <tr>
+                            <td><%= recipe_food.food.food_name %></td>
+                            <td><%= recipe_food.quantity %></td>
+                            <td><%= recipe_food.food.unit %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        <div class ="col-md-6 offset-md-1">
+            <div class ="row md-5">
+                <div class ="col-md-3 font-weight-bold">
+                    <p>作り方</p>
+                </div>
+                <div class ="col-md-8 offset-md-1, bg-light">
+                    <p><%= @recipe.recipe %></p>
+                </div>
+            </div>
+            <div class="row p-2"></div>
+            <div class ="row">
+                <div class ="col-md-3 font-weight-bold">
+                    <p>レシピの</br>生い立ち</p>
+                </div>
+                <div class ="col-md-8 offset-md-1, bg-light">
+                    <p><%= @recipe.point %></p>
+                </div>
+            </div>
+            <div class="row p-2"></div>
+            <div class ="row">
+                <div class ="col-md-3 font-weight-bold">
+                    <p>制作者</p>
+                </div>
+                <div class ="col-md-8 offset-md-1, bg-light">
+                    <%= link_to user_path(@recipe.user) do %>
+                        <p><%= @recipe.user.name %></p>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
