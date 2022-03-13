@@ -18,25 +18,25 @@ Rails.application.routes.draw do
       get '/:id/recipes' => 'users#recipes', as: 'recipes' # ユーザごとのレシピ一覧表示
       get '/:id/favorites' => 'users#favorites', as: 'favorites'
     end
-    resources :calenders, except:[:new, :update]
     resource :relationships, only: [:create, :destroy]do
       collection do
       	get 'followings' => 'relationships#followings', as: 'followings' #フォロー一覧表示
       	get 'followers' => 'relationships#followers', as: 'followers' #フォロワー一覧表示
       end
     end
+    resources :menus, only:[:index, :new, :show, :create, :destroy]
   end
 
   resources :recipes do
     resource :favorites, only:[:create, :destroy]
     resources :comments, only:[:create, :destroy]
+    resources :lists, only:[:index, :create, :destroy]
   end
 
   resources :recipe_foods, only:[:create, :destroy]
 
   resources :foods, only:[:index, :create, :destroy]
 
-  resources :lists, only:[:index]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

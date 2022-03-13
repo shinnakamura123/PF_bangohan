@@ -61,3 +61,5 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem 'cocoon'
 gem 'bootstrap4-kaminari-views'
+gem 'simple_calendar', '~> 2.0'
+gem "rails-i18n"

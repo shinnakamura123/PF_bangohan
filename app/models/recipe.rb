@@ -1,8 +1,10 @@
 class Recipe < ApplicationRecord
+
   belongs_to :user, optional: true
   has_many :recipe_foods, dependent: :destroy
   has_many :foods, through: :recipe_foods, dependent: :destroy
   has_many :lists, dependent: :destroy
+  has_many :menus, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -16,6 +18,10 @@ class Recipe < ApplicationRecord
   validates :point, presence: true
 
   enum status: { false: 0, true: 1 }
+
+  def listed_by?(user)
+    lists.where(user_id: user).exists?
+  end
 
   def get_image(width, height)
     unless image.attached?

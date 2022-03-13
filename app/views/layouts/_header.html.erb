@@ -16,7 +16,7 @@
                 <%= link_to 'マイページ', user_path(current_user), class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%= link_to '今日の献立', user_calenders_path(current_user), class: 'nav-link text-dark' %>
+                <%= link_to '献立予定', user_menus_path(current_user.id), class: 'nav-link text-dark' %>
               </li>
               <li class="nav-item">
                 <%= link_to '会員一覧', users_path, class: 'nav-link text-dark' %>

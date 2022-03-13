@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  list_id: 1
-  calender_id: 1
+  user: one
+  recipe: one
+  strat_time: 2022-03-12 09:07:21
 
 two:
-  list_id: 1
-  calender_id: 1
+  user: two
+  recipe: two
+  strat_time: 2022-03-12 09:07:21

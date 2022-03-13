@@ -4,12 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :lists, dependent: :destroy
   has_many :recipes, dependent: :destroy
+  # マイリストに追加しているレシピ一覧を表示する
+  has_many :list_recipes, through: :lists, source: :recipe
+  has_many :menus, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_items, through: :favorites, source: :recipe
   has_many :comments, dependent: :destroy
-  has_many :lists, dependent: :destroy
-  has_many :calenders, dependent: :destroy
    # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # 被フォロー関係を通じて参照→自分をフォローしている人

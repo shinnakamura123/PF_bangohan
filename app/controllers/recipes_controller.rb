@@ -9,17 +9,19 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.user_id = current_user.id
+    @user = current_user
+    @recipe = @user.recipes.new(recipe_params)
     if @recipe.save
+      @user.lists.create(recipe_id: @recipe.id)
       redirect_to recipe_path(@recipe)
     else
-      render
+      render 'new'
     end
   end
 
   def show
     @recipe = Recipe.find(params[:id])
+
   end
 
   def edit

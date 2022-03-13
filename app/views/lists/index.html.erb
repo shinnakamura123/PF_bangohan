@@ -1,2 +1,27 @@
-<h1>Lists#index</h1>
-<p>Find me in app/views/lists/index.html.erb</p>
+<div class ="container p-5">
+  <div class ="row">
+    <div class ="col-md-11 offset-md-1">
+      <div class="row ml-3">
+        <h3 class="font-weight-bold">マイリスト一覧</h3>
+        <p class="p-2">(全<%= @lists.total_count %>件）<p>
+      </div>
+      <div class="row">
+        <% @lists.each do |list| %>
+          <div class="card border-light m-2">
+            <%= link_to recipe_path(list.recipe) do %>
+              <%= image_tag list.recipe.get_image(300, 300) ,class: "shadow mb-5 bg-body round" %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title">レシピ名：<%= list.recipe.recipe_name %></h5>
+              <p class="card-text"><%= list.recipe.point %></p>
+            </div>
+            <%= link_to 'マイリストから外す', recipe_list_path(list.recipe.id, list), method: :delete, class: 'btn btn-danger' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="offset-md-5 mt-5">
+      <%= paginate @lists, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>
