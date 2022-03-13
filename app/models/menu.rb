@@ -1,4 +1,4 @@
 class Menu < ApplicationRecord
-  belongs_to :list
-  belongs_to :calender
+  belongs_to :user
+  belongs_to :recipe
 end
