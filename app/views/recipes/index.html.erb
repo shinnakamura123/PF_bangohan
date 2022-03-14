@@ -6,7 +6,6 @@
         <p class="p-2">(全<%= @recipes.total_count %>件）<p>
       </div>
       <div><%= link_to 'マイリスト一覧', recipe_lists_path(current_user), class: 'btn btn-success' %></div>
-      <div><%#= link_to '献立を立てる', user_calenders_path(current_user.id), class: 'btn btn-success' %></div>
       <div class="row">
         <% @recipes.each do |recipe| %>
           <div class="card border-light m-2">
@@ -16,6 +15,7 @@
             <div class="card-body">
               <h5 class="card-title">レシピ名：<%= recipe.recipe_name %></h5>
               <p class="card-text"><%= recipe.point %></p>
+              <p class="card-text">制作者：<%= recipe.user.name %></p>
             </div>
           </div>
         <% end %>

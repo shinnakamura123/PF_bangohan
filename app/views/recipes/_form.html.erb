@@ -3,7 +3,7 @@
         <table width>
             <tr>
                 <th style ="font-size: 14px"><p><%= f.label :recipe_name, "レシピ名" %></p></th>
-                <td><p><%= f.text_field :recipe_name %></p></td>
+                <td><p><%= f.text_field :recipe_name, value: params[:recipe_name] %></p></td>
             </tr>
             <tr>
                 <th><p><%= f.label :image, "画像" %></p></th>
@@ -18,7 +18,7 @@
                 <td><p><%= f.text_area :recipe, placeholder: "1.〜〜。2.〜〜。3.〜〜。〜", size: "50x5" %></p></td>
             </tr>
             <tr>
-                <th style ="font-size: 14px"><p><%= f.label :point, "レシピの生い立ち" %></p></th>
+                <th style ="font-size: 14px"><p><%= f.label :point, "コメント" %></p></th>
                 <td><p><%= f.text_area :point, placeholder: "例）◯◯番組で紹介されていたので作ってみました！", size: "50x5" %></p></td>
             </tr>
             <tr>
@@ -55,7 +55,7 @@
                                 class: 'btn btn-success',
                                 data: {
                                   association_insertion_node: 'tbody#table-body', #挿入先を指定
-                                  association_insertion_method: 'after'    #挿入を前にする
+                                  association_insertion_method: 'before'    #挿入を前にする
                                 }
                             %>
               </div>

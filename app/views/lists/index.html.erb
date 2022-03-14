@@ -14,6 +14,7 @@
             <div class="card-body">
               <h5 class="card-title">レシピ名：<%= list.recipe.recipe_name %></h5>
               <p class="card-text"><%= list.recipe.point %></p>
+              <p class="card-text">制作者：<%= list.recipe.user.name %></p>
             </div>
             <%= link_to 'マイリストから外す', recipe_list_path(list.recipe.id, list), method: :delete, class: 'btn btn-danger' %>
           </div>

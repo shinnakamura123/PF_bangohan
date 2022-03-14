@@ -18,16 +18,17 @@
             <th>材料名</th>
             <th>分量</th>
             <th></th>
+            <th></th>
           </thead>
           <tbody>
-            <% @menus.each do |menu| %>
-              <% menu.recipe.recipe_foods.each do |recipe_food| %>
-                <tr>
-                  <td><%= recipe_food.food.food_name %></td>
-                  <td><%= recipe_food.quantity %></td>
-                  <td><%= recipe_food.food.unit %></td>
-                </tr>
-              <% end %>
+            <% @foods.each do |food| %>
+            <%# {1=>{"quantity"=>2, "food_name"=>"玉ねぎ", "unit"=>"個"},2=>{"quantity"=>1, "food_name"=>"じゃがいも", "unit"=>"個}}:hash型 %>
+              <tr>
+                <td><%= food[1]["food_name"] %></td>
+                <td><%= food[1]["quantity"] %></td>
+                <td><%= food[1]["unit"] %></td>
+                <td><input type="checkbox"></td>
+              </tr>
             <% end %>
           </tbody>
         </table>

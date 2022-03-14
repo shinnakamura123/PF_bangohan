@@ -1,5 +1,10 @@
 <div class = "container p-5">
-    <h3 class = "font-weight-bold text-warning"><%= @recipe.recipe_name %> <%= link_to '編集する', edit_recipe_path(@recipe), class: "btn btn-success"%>  <%= link_to '削除する', recipe_path(@recipe), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"}%></h3>
+    <h3 class = "font-weight-bold text-warning">
+        <%= @recipe.recipe_name %>
+        <% if @recipe.user.id == current_user.id %>
+            <%= link_to '編集する', edit_recipe_path(@recipe), class: "btn btn-success"%>  <%= link_to '削除する', recipe_path(@recipe), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"}%>
+        <% end %>
+    </h3>
     <div class= "row">
         <div class = "col-md-5">
             <div class ="text-center">
