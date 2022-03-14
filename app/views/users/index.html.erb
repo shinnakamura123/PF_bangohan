@@ -5,29 +5,7 @@
         <h3 class="font-weight-bold">会員一覧</h3>
         <p class="p-2">(全<%= @users.count %>名）<p>
       </div>
-      <table class = "table">
-        <thead class="thead-light">
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th></th>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= user.id %></td>
-              <td>
-                <%= link_to user_path(user) do %>
-                  <%= user.name %>
-                <% end %>
-              </td>
-              <td>
-                <%= "フォローボタン" %>
-              </td>
-            </tr>
-          <% end %>
-          <td><%= paginate @users %></td>
-        </tbody>
-      </table>
+      <%= render 'index', users: @users %>
     </div>
   </div>
 </div>

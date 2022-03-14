@@ -1,0 +1,15 @@
+<% if @users.exists? %>
+  <div class='container p-5'>
+    <div class='row'>
+      <div class = "mx-auto", style="width: 75%;">
+        <div class ="row">
+          <h3 class="font-weight-bold">フォロワー一覧</h3>
+          <p class="p-2">(全<%= @user.followers.count %>名）<p>
+        </div>
+        <%= render 'users/index', users: @users %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

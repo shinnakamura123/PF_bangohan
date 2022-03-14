@@ -21,6 +21,20 @@ class User < ApplicationRecord
   # 与フォロー関係を通じて参照→自分がフォローしている人
   has_many :followings, through: :relationships, source: :followed
 
+
   validates :email, uniqueness: true
   validates :name, uniqueness: true, presence: true
+
+  def follow(user) #フォローするメソッド
+    relationships.create(followed_id: user.id)
+  end
+
+  def unfollow(user) #フォローを外すメソッド
+    relationships.find_by(followed_id: user.id).destroy
+  end
+
+  def following?(user) #フォローに含まれているか確認するメソッド（ボタン切り替え用）
+    followings.include?(user)
+  end
+
 end
