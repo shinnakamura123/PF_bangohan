@@ -13,8 +13,13 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
     @menu.user_id = current_user.id
-    @menu.save
-    redirect_to request.referer
+    if @menu.save
+      redirect_to request.referer
+    else
+      @menus = Menu.where(user_id: current_user.id)
+      #遷移元のパスを指定
+      render path = Rails.application.routes.recognize_path(request.referer)
+    end
   end
 
   def destroy

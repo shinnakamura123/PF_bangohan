@@ -14,7 +14,7 @@
                 <td><p><%= f.select :man_count, *[1..10] %></p></td>
             </tr>
             <tr>
-                <th><p><%= f.label :background, "レシピの生い立ち" %></p></th>
+                <th style ="font-size: 14px"><p><%= f.label :background, "生い立ち" %></p></th>
                 <td><p><%= f.text_area :background, placeholder: "例）◯◯番組で紹介されていたので作ってみました！", size: "50x5" %></p></td>
             </tr>
             <tr>
@@ -34,10 +34,10 @@
     </div>
     <div class = "col-md-5">
         <div class ="row">
+            <%= link_to "材料名一覧", foods_path, class: "btn btn-info btn-sm" %>
             <div class="table-responsive">
             <table class ="table text-center table-sm">
                 <thead class = "thead-light",style ="fo">
-                    <%= link_to "材料名を追加する", foods_path, class: "btn btn-info" %>
                     <tr>
                         <th>材料・調味料</th>
                         <th>分量</th>

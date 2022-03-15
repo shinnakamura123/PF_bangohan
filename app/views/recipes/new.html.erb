@@ -1,5 +1,6 @@
 <div class = "container p-5">
     <h3 class="font-weight-bold p-3">レシピ新規登録</h3>
+    <%= render 'layouts/errors', obj:  @recipe %>
     <%= form_with model: @recipe, url: recipes_path(@recipe), method: :post, local: true do |f| %>
         <%= render 'form', f: f %>
         <div class="text-center">

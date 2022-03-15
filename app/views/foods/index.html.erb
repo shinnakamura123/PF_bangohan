@@ -5,30 +5,25 @@
         <h3 class="font-weight-bold">材料名一覧</h3>
         <p class="p-2">(全<%= @foods.total_count %>種）<p>
       </div>
-      <%= form_with model: @food, local: true do |f| %>
-        <table class = "table">
-          <thead class="thead-light">
-            <th>材料名</th>
-            <th>単位</th>
-            <th></th>
-          </thead>
-          <tbody>
-            <% @foods.each do |food| %>
-              <tr>
-                <td><%= food.food_name %></td>
-                <td><%= food.unit %></td>
-                <td><%= link_to '削除', food_path(food), method: :delete, class: 'btn btn-danger' %></td>
-              </tr>
-            <% end %>
-              <tr>
-                <td><%= f.text_field :food_name %></td>
-                <td><%= f.text_field :unit %></td>
-                <td><%= f.submit '追加する', class: 'btn btn-primary' %></td>
-              </tr>
-            <td><%= paginate @foods %></td>
-          </tbody>
-        </table>
-      <% end %>
+      <%= render 'layouts/errors', obj:  @food %>
+      <table class = "table table-sm">
+        <thead class="thead-light">
+          <th>材料名</th>
+          <th>単位</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @foods.each do |food| %>
+            <tr>
+              <td><%= food.food_name %></td>
+              <td><%= food.unit %></td>
+              <td><%= link_to '削除', food_path(food), method: :delete, class: 'btn btn-danger' %></td>
+            </tr>
+          <% end %>
+          <td><%= paginate @foods %></td>
+        </tbody>
+      </table>
+      <%= render 'food_form', food: @food %>
       <div class="text-center">
         <%= link_to "レシピ新規登録へ戻る", new_recipe_path, class: "btn btn-info" %>
       </div>
