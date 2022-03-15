@@ -1,0 +1,32 @@
+<div class='container p-5'>
+  <div class='row'>
+    <div class = "mx-auto", style="width: 90%;">
+      <div class ="row">
+        <h3 class="font-weight-bold">コメント一覧</h3>
+        <p class="p-2">(全<%= @comments.count %>件）<p>
+        <%= link_to 'レシピ詳細へ戻る', recipe_path(@recipe) %>
+      </div>
+      <table class = "table">
+        <thead class="thead-light">
+          <th>名前</th>
+          <th></th>
+          <th>コメント</th>
+          <th></th>
+        </thead>
+          <% @comments.each do |comment| %>
+            <tr>
+              <%= link_to user_path(comment.user) do %>
+                <td><%= comment.user.name %></td>
+              <% end %>
+              <td><%= comment.content %></td>
+              <% if comment.user == current_user %>
+                <td><%= link_to '削除', recipe_comment_path(comment.recipe.id, comment.id), method: :delete, local: true, class: 'btn btn-sm btn-danger' %></td>
+              <% end %>
+            </tr>
+          <% end %>
+          <td><%= paginate @comments %></td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

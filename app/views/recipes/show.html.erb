@@ -4,11 +4,19 @@
         <% if @recipe.user.id == current_user.id %>
             <%= link_to '編集する', edit_recipe_path(@recipe), class: "btn btn-success"%>  <%= link_to '削除する', recipe_path(@recipe), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"}%>
         <% end %>
+        <% if @recipe.listed_by?(current_user) %>
+          <td><%= link_to 'マイリストから外す', recipe_list_path(@recipe.id), method: :delete, class: 'btn btn-dark' %></td>
+        <% else %>
+          <td><%= link_to 'マイリストに追加する', recipe_lists_path(@recipe.id), method: :post, class: 'btn btn-info' %></td>
+        <% end %>
     </h3>
     <div class= "row">
         <div class = "col-md-5">
-            <div class ="text-center">
-                <%= image_tag @recipe.get_image(400, 400) ,class: "shadow p-3 mb-5 bg-body round" %></tr>
+            <div>
+                <div id ="favorite_btn">
+                    <%= render 'favorites/favorite_btn', recipe: @recipe %>
+                </div>
+                <%= image_tag @recipe.get_image(400, 400) ,class: "shadow p-3 mb-5 bg-body round" %>
             </div>
             <table class = "table table-sm">
                 <thead class="thead-light">
@@ -33,7 +41,7 @@
                     <p>作り方</p>
                 </div>
                 <div class ="col-md-8 offset-md-1, bg-light">
-                    <p><%= @recipe.recipe %></p>
+                    <p style="width: 100%"><%= @recipe.recipe %></p>
                 </div>
             </div>
             <div class="row p-2"></div>
@@ -57,12 +65,19 @@
                 </div>
             </div>
         </div>
-        <div class="offset-md-5 mt-5">
-            <% if @recipe.listed_by?(current_user) %>
-              <td><%= link_to 'マイリストから外す', recipe_list_path(@recipe.id), method: :delete, class: 'btn btn-danger' %></td>
-            <% else %>
-              <td><%= link_to 'マイリストに追加する', recipe_lists_path(@recipe.id), method: :post, class: 'btn btn-success' %></td>
-            <% end %>
+    </div>
+    <div class ="row"></div>
+    <div class ="row">
+        <div class ="col-md-10">
+            <h3 class="font-weight-bold">コメント</h3>
+            <div id = 'comments'>
+                <table class = "table">
+                    <%= render 'comments/comments', recipe: @recipe, comments: @comments %>
+                </table>
+            </div>
+            <div id = 'comment_form'>
+                <%= render 'comments/comment_form', comment: @comment, recipe: @recipe %>
+            </div>
         </div>
     </div>
 </div>

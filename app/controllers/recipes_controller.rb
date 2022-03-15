@@ -21,7 +21,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-
+    @comment = Comment.new
+    @comments = @recipe.comments.order(created_at: :desc).page(params[:page]).per(3).limit(3)
   end
 
   def edit

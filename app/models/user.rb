@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :list_recipes, through: :lists, source: :recipe
   has_many :menus, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :favorite_items, through: :favorites, source: :recipe
+  has_many :favorite_recipes, through: :favorites, source: :recipe
   has_many :comments, dependent: :destroy
    # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
