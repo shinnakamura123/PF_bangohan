@@ -41,7 +41,21 @@
                     <p>作り方</p>
                 </div>
                 <div class ="col-md-8 offset-md-1, bg-light">
-                    <p style="width: 100%"><%= @recipe.recipe %></p>
+                    <ol>
+                        <% @recipe.steps.each do |step| %>
+                            <li style="width: 100%"><%= step.method %></li></br>
+                            <%= image_tag step.get_image(100, 100) ,class: "shadow p-3 mb-5 bg-body round" %>
+                        <% end %>
+                    </ol>
+                </div>
+            </div>
+            <div class="row p-2"></div>
+            <div class ="row">
+                <div class ="col-md-3 font-weight-bold">
+                    <p>ポイント</p>
+                </div>
+                <div class ="col-md-8 offset-md-1, bg-light">
+                    <p><%= @recipe.point %></p>
                 </div>
             </div>
             <div class="row p-2"></div>
@@ -50,7 +64,7 @@
                     <p>レシピの</br>生い立ち</p>
                 </div>
                 <div class ="col-md-8 offset-md-1, bg-light">
-                    <p><%= @recipe.point %></p>
+                    <p><%= @recipe.background %></p>
                 </div>
             </div>
             <div class="row p-2"></div>

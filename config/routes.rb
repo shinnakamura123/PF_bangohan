@@ -31,11 +31,13 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create, :destroy]
     resources :comments, only:[:index, :create, :destroy]
     resources :lists, only:[:index, :create, :destroy]
+    resources :steps, only:[:create, :destroy]
   end
 
   resources :recipe_foods, only:[:create, :destroy]
-
   resources :foods, only:[:index, :create, :destroy]
+
+
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

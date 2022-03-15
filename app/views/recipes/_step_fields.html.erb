@@ -1,0 +1,11 @@
+<tr class = "nested-fields">
+  <td>
+    <%= f.text_field :method, size: '10'%>
+  </td>
+  <td>
+    <%= f.file_field :image, accept: "image/*" %>
+  </td>
+  <td>
+    <%= link_to_remove_association '削除', f, class: 'btn btn-danger' %>
+  </td>
+</tr>

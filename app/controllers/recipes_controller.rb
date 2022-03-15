@@ -19,6 +19,12 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to recipes_path
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
     @comment = Comment.new
@@ -46,6 +52,10 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:user_id, :recipe_name, :image, :man_count, :recipe, :point, :status, recipe_foods_attributes: [:id, :food_id, :quantity, :_destroy])
+    params.require(:recipe).permit(
+      :user_id, :recipe_name, :image, :man_count, :background, :point, :status,
+      recipe_foods_attributes: [:id, :food_id, :quantity, :_destroy],
+      steps_attributes: [:id, :method, :image, :_destroy]
+      )
   end
 end
