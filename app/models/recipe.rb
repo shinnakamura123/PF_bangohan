@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   belongs_to :user, optional: true
   has_many :recipe_foods, dependent: :destroy
   has_many :foods, through: :recipe_foods, dependent: :destroy
+  has_many :steps, dependent: :destroy
   has_many :lists, dependent: :destroy
   has_many :menus, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -10,11 +11,13 @@ class Recipe < ApplicationRecord
 
   has_one_attached :image
 
+  #中間テーブルへの保存を許可する
+  accepts_nested_attributes_for :steps, allow_destroy: true
   accepts_nested_attributes_for :recipe_foods, allow_destroy: true
 
   validates :recipe_name, presence: true
   validates :man_count, presence: true
-  validates :recipe, presence: true
+  validates :background, presence: true
   validates :point, presence: true
 
   enum status: { false: 0, true: 1 }
