@@ -25,12 +25,12 @@ Rails.application.routes.draw do
       end
     end
     resources :menus, only:[:index, :new, :show, :create, :destroy]
+    resources :lists, only:[:index, :create, :destroy]
   end
 
   resources :recipes do
     resource :favorites, only:[:create, :destroy]
     resources :comments, only:[:index, :create, :destroy]
-    resources :lists, only:[:index, :create, :destroy]
     resources :steps, only:[:create, :destroy]
   end
 

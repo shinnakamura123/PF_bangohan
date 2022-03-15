@@ -5,7 +5,13 @@
         <h3 class="font-weight-bold">レシピ一覧</h3>
         <p class="p-2">(全<%= @recipes.total_count %>件）<p>
       </div>
-      <div><%= link_to 'マイリスト一覧', recipe_lists_path(current_user), class: 'btn btn-success' %></div>
+      <div><%= link_to 'マイリスト一覧', user_lists_path(current_user), class: 'btn btn-success' %></div>
+      <%= form_tag recipes_path, method: :get do %>
+      <%= text_field_tag :search, params[:search],:placeholder => "レシピ名で検索" %>
+          <%= button_tag type: 'submit', class: 'btn btn-warning' do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+      <% end %>
       <div class="row">
         <% @recipes.each do |recipe| %>
           <div class="card border-light m-2">
