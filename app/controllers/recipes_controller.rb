@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes= Recipe.page(params[:page]).per(6).where(status: false)
+    @recipes = Recipe.page(params[:page]).per(6).where(status: false).search(params[:search])
   end
 
   def new

@@ -39,7 +39,12 @@ class UsersController < ApplicationController
 
   def recipes
     @user = User.find(params[:id])
-    @recipes = @user.recipes.page(params[:page]).per(6)
+    #自分の非公開レシピは見れるようにif分岐を記述
+    if @user == current_user
+      @recipes = @user.recipes.page(params[:page]).per(6).search(params[:search])
+    else
+      @recipes = @user.recipes.page(params[:page]).per(6).where(status: false).search(params[:search])
+    end
   end
 
   private
