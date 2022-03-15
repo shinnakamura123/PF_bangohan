@@ -2,6 +2,7 @@ class FoodsController < ApplicationController
 
   def index
     @foods = Food.page(params[:page]).per(10)
+    @food = Food.new
   end
 
   def create
@@ -9,6 +10,7 @@ class FoodsController < ApplicationController
     if @food.save
       redirect_to request.referer
     else
+      @foods = Food.page(params[:page]).per(10)
       render 'index'
     end
   end
@@ -22,6 +24,6 @@ class FoodsController < ApplicationController
   private
 
   def food_params
-    params.permit(:food_name, :unit)
+    params.require(:food).permit(:food_name, :unit)
   end
 end

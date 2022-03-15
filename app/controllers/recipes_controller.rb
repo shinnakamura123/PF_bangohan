@@ -10,9 +10,10 @@ class RecipesController < ApplicationController
 
   def create
     @user = current_user
+    @food = Food.new
     @recipe = @user.recipes.new(recipe_params)
     if @recipe.save
-      @user.lists.create(recipe_id: @recipe.id)
+      @user.lists.new(recipe_id: @recipe.id)
       redirect_to recipe_path(@recipe)
     else
       render 'new'
