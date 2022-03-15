@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
 
   def index
-    @comments = Comment.page(params[:page]).per(10)
     @recipe = Recipe.find(params[:recipe_id])
+    @comments = Comment.page(params[:page]).per(10).where(recipe_id: @recipe.id)
   end
 
   def create

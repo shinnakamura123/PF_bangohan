@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       # 論理削除用のルーティング
       patch '/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
       get '/:id/recipes' => 'users#recipes', as: 'recipes' # ユーザごとのレシピ一覧表示
-      get '/:id/favorites' => 'users#favorites', as: 'favorites'
+      get '/:id/favorites' => 'favorites#favorites', as: 'favorites'
     end
     resource :relationships, only: [:create, :destroy]do
       collection do

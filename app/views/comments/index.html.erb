@@ -3,7 +3,7 @@
     <div class = "mx-auto", style="width: 90%;">
       <div class ="row">
         <h3 class="font-weight-bold">コメント一覧</h3>
-        <p class="p-2">(全<%= @comments.total_count %>件）<p>
+        <p class="p-2">(全<%= @comments.count %>件）<p>
         <%= link_to 'レシピ詳細へ戻る', recipe_path(@recipe) %>
       </div>
       <table class = "table">
@@ -27,7 +27,6 @@
           <td><%= paginate @comments %></td>
         </tbody>
       </table>
-      <td><%= paginate @comments %></td>
     </div>
   </div>
 </div>

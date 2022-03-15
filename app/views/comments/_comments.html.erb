@@ -1,5 +1,5 @@
 <%= link_to recipe_comments_path(recipe.id) do %>
-    <p>全てのコメントを見る（<%= Comment.all.count %>件）</p>
+    <p>全てのコメントを見る（<%= Comment.where(recipe_id: recipe.id).count %>件）</p>
 <% end %>
 <table class = "table">
     <tbody>
