@@ -72,6 +72,17 @@
                     <% end %>
                 </div>
             </div>
+            <div class="row p-2"></div>
+            <div class ="row">
+                <div class ="col-md-3 font-weight-bold">
+                    <p>タグ</p>
+                </div>
+                <div class ="col-md-8 offset-md-1, bg-light">
+                    <% @recipe.tags.each do |tag| %>
+                        <p><%= tag.tag_name %></p>
+                    <% end %>
+                </div>
+            </div>
         </div>
     </div>
     <div class ="row"></div>

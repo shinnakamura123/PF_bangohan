@@ -8,10 +8,19 @@
       <div><%= link_to 'マイリスト一覧', user_lists_path(current_user), class: 'btn btn-success' %></div>
       <%= form_tag recipes_path, method: :get do %>
       <%= text_field_tag :search, params[:search],:placeholder => "レシピ名で検索" %>
-          <%= button_tag type: 'submit', class: 'btn btn-warning' do %>
+          <%= button_tag type: 'submit', class: 'btn btn-warning btn-sm' do %>
             <i class="fas fa-search"></i>
           <% end %>
       <% end %>
+      <%#= form_tag recipes_path, method: :get, class: 'boards__searchForm' do %>
+        <%#= select_tag :search,
+           options_from_collection_for_select(Tag.all, :tag_name, :tag_name, params[:search]),
+           {
+             prompt: 'タグで絞り込み検索',
+             onchange: 'submit(this.form);'
+           }
+        %>
+      <%# end %>
       <div class="row">
         <% @recipes.each do |recipe| %>
           <div class="card border-light m-2">

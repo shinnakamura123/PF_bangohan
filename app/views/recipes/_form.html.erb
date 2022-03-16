@@ -14,12 +14,19 @@
                 <td><p><%= f.select :man_count, *[1..10] %></p></td>
             </tr>
             <tr>
-                <th style ="font-size: 14px"><p><%= f.label :background, "生い立ち" %></p></th>
-                <td><p><%= f.text_area :background, placeholder: "例）◯◯番組で紹介されていたので作ってみました！", size: "50x5" %></p></td>
-            </tr>
-            <tr>
-                <th style ="font-size: 14px"><p><%= f.label :point, "ポイント" %></p></th>
-                <td><p><%= f.text_area :point, placeholder: "例）お肉の下準備が大事です！", size: "50x5" %></p></td>
+                <th style ="font-size: 14px"><p><%= f.label :point, "タグ付け" %></p></th>
+                <td>
+                    <div class="check_box d-flex flex-wrap">
+                        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+                            <div class ="p-1">
+                               <%= tag.label do %>
+                                 <%= tag.check_box %>
+                                 <%= tag.text %>
+                               <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <th></th>
@@ -92,6 +99,14 @@
                         %>
           </div>
         </div>
+        <tr>
+            <th style ="font-size: 14px"><p><%= f.label :background, "生い立ち" %></p></th>
+            <td><p><%= f.text_area :background, placeholder: "例）◯◯番組で紹介されていたので作ってみました！", size: "50x5" %></p></td>
+        </tr>
+        <tr>
+            <th style ="font-size: 14px"><p><%= f.label :point, "ポイント" %></p></th>
+            <td><p><%= f.text_area :point, placeholder: "例）お肉の下準備が大事です！", size: "50x5" %></p></td>
+        </tr>
     </div>
 </div>
 
