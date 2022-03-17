@@ -1,0 +1,111 @@
+<div class = "row">
+    <div class = "col-md-7">
+        <table>
+            <tr>
+                <th><p><%= f.label :recipe_name, "レシピ名" %></p></th>
+                <td><p><%= f.text_field :recipe_name %></p></td>
+            </tr>
+            <tr>
+                <th><p><%= f.label :image, "画像" %></p></th>
+                <td><p><%= f.file_field :image, accept: "image/*" %></p></td>
+            </tr>
+            <tr>
+                <th><p><%= f.label :man_count, "何人分" %></p></th>
+                <td><p><%= f.select :man_count, *[1..10] %></p></td>
+            </tr>
+            <tr>
+                <th><p><%= f.label :background, "生い立ち" %></p></th>
+                <td><p><%= f.text_area :background, placeholder: "例）◯◯番組で紹介されていたので作ってみました！", size: "50x5" %></p></td>
+            </tr>
+            <tr>
+                <th><p><%= f.label :point, "ポイント" %></p></th>
+                <td><p><%= f.text_area :point, placeholder: "例）お肉の下準備が大事です！", size: "50x5" %></p></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <%= f.radio_button(:status, "false") %>
+                    <%= f.label(:status, "公開", value: "false")  %>
+                    <%= f.radio_button(:status, "true") %>
+                    <%= f.label(:status, "非公開", value: "true") %>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class = "col-md-5">
+        <div class ="row">
+            <%= link_to "材料名一覧", foods_path, class: "btn btn-info btn-sm" %>
+            <div class="table-responsive">
+            <table class ="table text-center table-sm">
+                <thead class = "thead-light",style ="fo">
+                    <tr>
+                        <th>材料・調味料</th>
+                        <th>分量</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id='table-body'>
+                    <%= f.fields_for :recipe_foods do |recipe_food| %>
+                        <%= render 'recipe_food_fields', f: recipe_food %>
+                    <% end %>
+                </tbody>
+                </table>
+            <div class="text-center">
+              <div class='links'>
+                            <%= link_to_add_association "追加ボタン", f, :recipe_foods, #cocoonのカラム追加機能
+                                class: 'btn btn-success',
+                                data: {
+                                  association_insertion_node: 'tbody#table-body', #挿入先を指定
+                                  association_insertion_method: 'after'    #挿入を前にする
+                                }
+                            %>
+              </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<div class ="row">
+    <table class ="table text-center table-sm">
+        <thead class = "thead-light",style ="fo">
+            <tr>
+                <th>作り方</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div class= "row">
+    <div class = "d-flex flex-sm-wrap">
+        <div id ="step_form">
+            <%= f.fields_for :steps do |step| %>
+                <%= render 'step_fields', f: step, recipe_id: @recipe.id %>
+            <% end %>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+  <div id='links'>
+    <%= link_to_add_association "追加ボタン", f, :steps, #cocoonのカラム追加機能
+        class: 'btn btn-success',
+        data: {
+          association_insertion_node: '#step_form', #挿入先を指定
+          association_insertion_method: 'before'    #挿入を前にする
+        }
+    %>
+</div>
+</div>
+<div class ="row">
+    <div class ="col">
+        <p style= "font-size: 15px;"><%= f.label :point, "最後に該当するタグを選んでください" , class: "font-weight-bold"%></p>
+        <div class="check_box d-flex flex-wrap btn-sm">
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+                <div class ="p-1">
+                   <%= tag.label do %>
+                     <%= tag.check_box %>
+                     <%= tag.text %>
+                   <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

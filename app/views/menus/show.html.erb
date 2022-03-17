@@ -1,0 +1,37 @@
+<div class = "container p-5">
+  <h3 class = "font-weight-bold text-warning"><%= l @menu.start_time %>の献立</h3>
+  <div class= "row">
+      <div class = "col-md-5">
+        <% @menus.each do |menu| %>
+            <div>
+              <%= link_to recipe_path(menu.recipe.id) do %>
+                <%= menu.recipe.recipe_name %></br>
+                <%= image_tag menu.recipe.get_image(300, 300) ,class: "shadow p-3 mb-5 bg-body round" %>
+              <% end %>
+            </div>
+        <% end %>
+      </div>
+      <div class ="col-md-6 offset-md-1">
+        <h5 class ="font-weight-bold">買い物リスト</h5>
+        <table class = "table table-sm">
+          <thead class="thead-light">
+            <th>材料名</th>
+            <th>分量</th>
+            <th></th>
+            <th></th>
+          </thead>
+          <tbody>
+            <% @foods.each do |food| %>
+            <%# {1=>{"quantity"=>2, "food_name"=>"玉ねぎ", "unit"=>"個"},2=>{"quantity"=>1, "food_name"=>"じゃがいも", "unit"=>"個}}:hash型 %>
+              <tr>
+                <td><%= food[1]["food_name"] %></td>
+                <td><%= food[1]["quantity"] %></td>
+                <td><%= food[1]["unit"] %></td>
+                <td><input type="checkbox"></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

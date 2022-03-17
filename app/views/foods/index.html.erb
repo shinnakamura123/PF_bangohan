@@ -1,0 +1,33 @@
+<div class='container p-5'>
+  <div class='row'>
+    <div class = "mx-auto", style="width: 75%;">
+      <div class ="row">
+        <h3 class="font-weight-bold">材料名一覧</h3>
+        <p class="p-2">(全<%= @foods.total_count %>種）<p>
+      </div>
+      <%= render 'layouts/errors', obj:  @food %>
+      <table class = "table table-sm">
+        <thead class="thead-light">
+          <th>材料名</th>
+          <th>単位</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% @foods.each do |food| %>
+            <tr>
+              <td><%= food.food_name %></td>
+              <td><%= food.unit %></td>
+              <td><%= link_to '削除', food_path(food), method: :delete, class: 'btn btn-danger' %></td>
+            </tr>
+          <% end %>
+          <td><%= paginate @foods %></td>
+        </tbody>
+      </table>
+      <%= render 'food_form', food: @food %>
+      <div class="text-center">
+        <%= link_to "レシピ新規登録へ戻る", new_recipe_path, class: "btn btn-info" %>
+      </div>
+    </div>
+  </div>
+</div>
+

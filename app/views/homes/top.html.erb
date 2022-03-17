@@ -1,0 +1,37 @@
+<div class ="container">
+  <div class= "row">
+    <div class="card text-light">
+      <%= image_tag "22901610_s.jpg",size: "1200x600",class: "mx-auto" %>
+
+      <div class="card-img-overlay mx-auto d-flex align-items-center justify-content-center flex-column">
+        <% if user_signed_in? %>
+          <h1 class="card-title font-weight-bold">晩御飯へようこそ！</h1>
+          <p class="card-text font-weight-bold">このサイトは、献立予定を立てる献立サイトになります。<br>
+            まずはレシピを作成してみましょう!<br>
+            作ったレシピは献立予定に使用したり、他の会員様と共有することができます。。
+          </p>
+          <p class="card-text font-weight-bold">
+            <%= link_to new_recipe_path, class: "btn btn-dark" do %>
+              レシピを作成する<i class="fas fa-signature"></i>
+            <% end %>
+            <%= link_to recipes_path, class: "btn btn-dark" do %>
+              レシピ一覧<i class="fas fa-utensils"></i>
+            <% end %>
+          </p>
+        <% else %>
+          <h1 class="card-title font-weight-bold">晩御飯へようこそ！</h1>
+          <p class="card-text font-weight-bold">このサイトは、献立予定を立てる献立サイトになります。<br>
+            会員でない方もレシピの閲覧はできますが、<br>
+            レシピ登録や献立機能を使用するには会員登録が必要になります。
+          </p>
+          <p class="card-text font-weight-bold">
+            <%= link_to '新規登録', new_user_registration_path, class: "btn btn-dark" %>
+            <%= link_to 'ログイン', new_user_session_path, class: "btn btn-dark" %>
+            <%= link_to recipes_path, class: "btn btn-dark" do %>
+              レシピ一覧<i class="fas fa-utensils"></i>
+            <% end %>
+          </p>
+        <% end %>
+    </div>
+  </div>
+</div>

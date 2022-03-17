@@ -1,0 +1,34 @@
+<div class ="container p-5">
+  <div class ="row">
+    <div class ="col-md-11 offset-md-1">
+      <div class="row ml-3">
+        <h3 class="font-weight-bold">マイリスト一覧</h3>
+        <p class="p-2">(全<%= @lists.total_count %>件）<p>
+      </div>
+      <%= form_tag user_lists_path(current_user.id), method: :get do %>
+      <%= text_field_tag :search, params[:search],:placeholder => "レシピ名で検索" %>
+          <%= button_tag type: 'submit', class: 'btn btn-warning' do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+      <% end %>
+      <div class="row">
+        <% @lists.each do |list| %>
+          <div class="card border-light m-2">
+            <%= link_to recipe_path(list.recipe) do %>
+              <%= image_tag list.recipe.get_image(300, 300) ,class: "shadow mb-5 bg-body round" %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title">レシピ名：<%= list.recipe.recipe_name %></h5>
+              <p class="card-text"><%= list.recipe.point %></p>
+              <p class="card-text">制作者：<%= list.recipe.user.name %></p>
+            </div>
+            <%= link_to 'マイリストから外す', user_list_path(list.recipe.id, list), method: :delete, class: 'btn btn-danger btn-sm' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="offset-md-5 mt-5">
+      <%= paginate @lists, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<%= form_with model: food, local: true do |f| %>
+  <table class = "table table-borderless table-sm">
+    <td><%= f.text_field :food_name, placeholder: "材料名を記入" %></td>
+    <td><%= f.text_field :unit, placeholder: "単位を記入" %></td>
+    <td><%= f.submit '追加する', class: 'btn btn-primary' %></td>
+  </table>
+<% end %>

@@ -1,0 +1,18 @@
+<div class ="container p-5">
+  <div class ="row">
+    <div class ="col-md-11 offset-md-1">
+      <div class="row ml-3">
+        <h3 class="font-weight-bold">材料一覧</h3>
+      </div>
+      <div class="row">
+        <% @recipe_foods.each do |recipe_food| %>
+          <td><%= recipe_food.food.food_name %></td>
+          <td><%= recipe_food.quantity %><%= recipe_food.food.unit %></td>
+        <% end %>
+      </div>
+    </div>
+    <div class="offset-md-4 mt-5">
+      <%= paginate @recipe_foods %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<%= form_with model: menu, url: user_menus_path(current_user.id), local: true do |f| %>
+  <table class="table">
+    <tbody>
+      <tr>
+          <td><%= f.collection_select :recipe_id, current_user.list_recipes, :id, :recipe_name, {prompt: "レシピ名を選んでください"} %></td>
+      </tr>
+      <tr>
+          <td><%= f.date_field :start_time %></td>
+      </tr>
+      <tr>
+          <td><%= f.submit "登録する", class: "btn btn-primary" %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
