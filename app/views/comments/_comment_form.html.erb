@@ -1,4 +1,6 @@
-<%= form_with model: comment, url: recipe_comments_path(recipe.id), method: :post, local: false do |f| %>
-  <%= f.text_area :content, rows:'3',placeholder: "コメントをここに", class: "w-50" %>
-  <%= f.submit "送信する", class: "btn btn-info" %>
+<% if user_signed_in? %>
+  <%= form_with model: comment, url: recipe_comments_path(recipe.id), method: :post, local: false do |f| %>
+    <%= f.text_area :content, rows:'3',placeholder: "コメントをここに", class: "w-50" %>
+    <%= f.submit "送信する", class: "btn btn-info" %>
+  <% end %>
 <% end %>

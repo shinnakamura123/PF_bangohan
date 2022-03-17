@@ -1,34 +1,35 @@
-<h2>Sign up</h2>
+<div class="container">
+  <h4 class="mb-5 mt-5 font-weight-bold"> 新規会員登録 </h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="row form-group">
+        <%= f.label :アカウント名, class: "col-4" %>
+        <%= f.text_field :name, autocomplete: "name" %>
+      </div>
+      <div class="row form-group">
+        <%= f.label :メールアドレス, class: "col-4" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+      <div class="row form-group">
+        <%= f.label :パスワード（６文字以上）, class: "col-4" %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
 
-<%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="row form-group">
+        <%= f.label :パスワード（確認用）, class: "col-4" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+      <div class="row">
+        <div class="col-4"></div>
+        <%= f.submit "新規登録",class: "btn btn-success col-2" %>
+      </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autocomplete: "name" %>
+  <div class="row mt-5">
+    <p class="mb-3 font-weight-bold">
+      既に登録済みの方は
+      <%= link_to 'こちら', new_user_session_path %>
+    </p>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
