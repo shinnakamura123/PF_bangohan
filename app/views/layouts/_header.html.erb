@@ -1,7 +1,7 @@
 <header class="shadow-sm bg-dark">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-        <a class="navbar-brand p-3" href="/"><%= image_tag 'bangohan.png',size: "150x100" %></a>
+        <a class="navbar-brand p-3" href="/"><%= image_tag asset_path('bangohan.png'),size: "150x100" %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
               </li>
               <li class="nav-item text-white">
                 <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
-                  <span class="text-white">ログアウト<i class="fas fa-sign-out"></i></span>
+                  <span class="text-white">ログアウト<i class="fas fa-sign-out-alt"></i></span>
                 <% end %>
               </li>
             <% else %>
@@ -42,7 +42,7 @@
               </li>
               <li class="nav-item">
                 <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
-                　<span class="text-white">ログイン<i class="fas fa-sign-in"></i></span>
+                　<span class="text-white">ログイン<i class="fas fa-sign-in-alt"></i></span>
                 <% end %>
               </li>
             <% end %>
