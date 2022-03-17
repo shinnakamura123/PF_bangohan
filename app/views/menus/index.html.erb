@@ -6,11 +6,13 @@
   		  <%= date.day %>
 
   		  <% menus.each do |menu| %>
-    		  <%= link_to user_menu_path(current_user.id, menu.id) do %>
-    		    <p><%= menu.recipe.recipe_name %></br>
-    		      <%= image_tag menu.recipe.get_image(50, 50) %>
-    		    </p>
-    		  <% end %>
+  		  	<div class ="row">
+  		  		<%= link_to user_menu_path(current_user.id, menu.id) do %>
+	    		    <p><%= menu.recipe.recipe_name %></br>
+	    		      <%= image_tag menu.recipe.get_image(50, 50) %>
+	    		    </p>
+	    		  <% end %>
+	    		</div>
   		  <% end %>
   		<% end %>
     </div>

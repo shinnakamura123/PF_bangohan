@@ -11,6 +11,15 @@
             <i class="fas fa-search"></i>
           <% end %>
       <% end %>
+      <%= form_tag recipes_users_path(@user), method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :tag_id,
+           options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
+           {
+             prompt: 'タグで絞り込み検索',
+             onchange: 'submit(this.form);'
+           }
+        %>
+      <% end %>
       <div class="row">
         <% @recipes.each do |recipe| %>
           <div class="card border-light m-2">

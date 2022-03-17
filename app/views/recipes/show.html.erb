@@ -1,13 +1,15 @@
 <div class = "container p-5">
     <h3 class = "font-weight-bold text-warning">
         <%= @recipe.recipe_name %>
-        <% if @recipe.user.id == current_user.id %>
-            <%= link_to '編集する', edit_recipe_path(@recipe), class: "btn btn-success"%>  <%= link_to '削除する', recipe_path(@recipe), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"}%>
-        <% end %>
-        <% if @recipe.listed_by?(current_user) %>
-          <td><%= link_to 'マイリストから外す', user_list_path(current_user.id, recipe_id: @recipe.id), method: :delete, class: 'btn btn-dark' %></td>
-        <% else %>
-          <td><%= link_to 'マイリストに追加する', user_lists_path(current_user.id, recipe_id: @recipe.id), method: :post, class: 'btn btn-info' %></td>
+        <% if user_signed_in? %>
+            <% if @recipe.user.id == current_user.id %>
+                <%= link_to '編集する', edit_recipe_path(@recipe), class: "btn btn-success"%>  <%= link_to '削除する', recipe_path(@recipe), method: :delete, class: "btn btn-danger", data: {confirm: "削除しますか？"}%>
+            <% end %>
+            <% if @recipe.listed_by?(current_user) %>
+              <td><%= link_to 'マイリストから外す', user_list_path(current_user.id, recipe_id: @recipe.id), method: :delete, class: 'btn btn-dark btn-sm' %></td>
+            <% else %>
+              <td><%= link_to 'マイリストに追加する', user_lists_path(current_user.id, recipe_id: @recipe.id), method: :post, class: 'btn btn-info btn-sm' %></td>
+            <% end %>
         <% end %>
     </h3>
     <div class= "row">
@@ -17,7 +19,27 @@
                     <%= render 'favorites/favorite_btn', recipe: @recipe %>
                 </div>
                 <%= image_tag @recipe.get_image(400, 400) ,class: "shadow p-3 mb-5 bg-body round" %>
+                <div class ="d-flex flex-wrap">
+                    <% @recipe.tags.each do |tag| %>
+                        <%= link_to recipes_path(tag_id: tag.id) do %>
+                            <p><%= tag.tag_name %></p>
+                        <% end %>
+                    <% end %>
+                </div>
             </div>
+            <div class="row p-2"></div>
+            <div class ="row">
+                <div class ="col-md-3 font-weight-bold">
+                    <p>制作者</p>
+                </div>
+                <div class ="col-md-8 offset-md-1, bg-light">
+                    <%= link_to user_path(@recipe.user) do %>
+                        <p><%= @recipe.user.name %></p>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class ="col-md-6 offset-md-1">
             <table class = "table table-sm">
                 <thead class="thead-light">
                   <th>材料名</th>
@@ -35,59 +57,55 @@
                 </tbody>
             </table>
         </div>
-        <div class ="col-md-6 offset-md-1">
-            <div class ="row md-5">
-                <div class ="col-md-3 font-weight-bold">
-                    <p>作り方</p>
+    </div>
+    <div class ="row p-3"></div>
+    <div class ="row">
+        <table class ="table text-center table-sm">
+            <thead class = "thead-light",style ="fo">
+                <tr>
+                    <th>作り方</th>
+                </tr>
+            </thead>
+        </table>
+        <div class = "d-flex flex-wrap">
+            <% @recipe.steps.each do |step| %>
+                <div class="card h-500 w-40 p-1">
+                    <%= image_tag step.get_image(200, 200) %>
+                    <div class="card-body">
+                        <p class="card-text"><%= step.method %></p>
+                    </div>
                 </div>
-                <div class ="col-md-8 offset-md-1, bg-light">
-                    <ol>
-                        <% @recipe.steps.each do |step| %>
-                            <li style="width: 100%">
-                                <%= step.method %></br>
-                                <%= image_tag step.get_image(100, 100) ,class: "shadow p-3 mb-5 bg-body round" %>
-                            </li>
-                        <% end %>
-                    </ol>
-
-                </div>
+            <% end %>
+        </div>
+    </div>
+    <div class ="row p-3">
+        <div class = "col-md-6">
+            <table class ="table text-center table-sm">
+                <thead class = "thead-light",style ="fo">
+                    <tr>
+                        <th>レシピの生い立ち</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class ="col-md-12">
+                <p><%= @recipe.background %></p>
             </div>
-            <div class="row p-2"></div>
-            <div class ="row">
-                <div class ="col-md-3 font-weight-bold">
-                    <p>レシピの</br>生い立ち</p>
-                </div>
-                <div class ="col-md-8 offset-md-1, bg-light">
-                    <p><%= @recipe.background %></p>
-                </div>
-            </div>
-            <div class="row p-2"></div>
-            <div class ="row">
-                <div class ="col-md-3 font-weight-bold">
-                    <p>制作者</p>
-                </div>
-                <div class ="col-md-8 offset-md-1, bg-light">
-                    <%= link_to user_path(@recipe.user) do %>
-                        <p><%= @recipe.user.name %></p>
-                    <% end %>
-                </div>
-            </div>
-            <div class="row p-2"></div>
-            <div class ="row">
-                <div class ="col-md-3 font-weight-bold">
-                    <p>タグ</p>
-                </div>
-                <div class ="col-md-8 offset-md-1, bg-light">
-                    <% @recipe.tags.each do |tag| %>
-                        <p><%= tag.tag_name %></p>
-                    <% end %>
-                </div>
+        </div>
+        <div class = "col-md-6">
+            <table class ="table text-center table-sm">
+                <thead class = "thead-light",style ="fo">
+                    <tr>
+                        <th>ポイント</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class ="col-md-12">
+                <p><%= @recipe.point %></p>
             </div>
         </div>
     </div>
-    <div class ="row"></div>
-    <div class ="row">
-        <div class ="col-md-10">
+    <div class ="row p-5">
+        <div class ="col-md-10 offset-md-1">
             <h3 class="font-weight-bold">コメント</h3>
             <div id = 'comments'>
                 <table class = "table">

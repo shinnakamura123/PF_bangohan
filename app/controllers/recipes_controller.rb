@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
   def index
-      @recipes = Recipe.page(params[:page]).per(6).where(status: false).search(params[:search])
+    @recipes = Recipe.page(params[:page]).per(6).where(status: false).search(params[:search], params[:tag_id])
   end
 
   def new
@@ -13,7 +13,8 @@ class RecipesController < ApplicationController
     @food = Food.new
     @recipe = @user.recipes.new(recipe_params)
     if @recipe.save
-      @user.lists.new(recipe_id: @recipe.id)
+      @list= @user.lists.new(recipe_id: @recipe.id)
+      @list.save
       redirect_to recipe_path(@recipe)
     else
       render 'new'

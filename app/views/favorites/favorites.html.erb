@@ -5,12 +5,23 @@
         <h3 class="font-weight-bold">いいねしたレシピ一覧</h3>
         <p class="p-2">(全<%= @favorites.total_count %>件）<p>
       </div>
-      <div><%= link_to 'マイリスト一覧', user_lists_path(current_user), class: 'btn btn-success' %></div>
+      <% if user_signed_in? %>
+        <div><%= link_to 'マイリスト一覧', user_lists_path(current_user), class: 'btn btn-success' %></div>
+      <% end %>
       <%= form_tag favorites_users_path(@user), method: :get do %>
       <%= text_field_tag :search, params[:search],:placeholder => "レシピ名で検索" %>
           <%= button_tag type: 'submit', class: 'btn btn-warning' do %>
             <i class="fas fa-search"></i>
           <% end %>
+      <% end %>
+      <%= form_tag favorites_users_path(@user), method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :tag_id,
+           options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
+           {
+             prompt: 'タグで絞り込み検索',
+             onchange: 'submit(this.form);'
+           }
+        %>
       <% end %>
       <div class="row">
         <% @favorites.each do |recipe| %>
@@ -23,9 +34,9 @@
               <p class="card-text"><%= recipe.point %></p>
               <p class="card-text">制作者：<%= recipe.user.name %></p>
               <% if recipe.listed_by?(current_user) %>
-                <p class="card-text"><%= link_to 'マイリストから外す', user_list_path(current_user, recipe_id: recipe.id), method: :delete, class: 'btn btn-danger' %></p>
+                <p class="card-text"><%= link_to 'マイリストから外す', user_list_path(current_user.id, recipe_id: recipe.id), method: :delete, class: 'btn btn-danger btn-sm' %></p>
               <% else %>
-                <p class="card-text"><%= link_to 'マイリストに追加する', user_lists_path(current_user.id, recipe_id: recipe.id), method: :post, class: 'btn btn-info' %></p>
+                <p class="card-text"><%= link_to 'マイリストに追加する', user_lists_path(current_user.id, recipe_id: recipe.id), method: :post, class: 'btn btn-info btn-sm' %></p>
               <% end %>
             </div>
           </div>

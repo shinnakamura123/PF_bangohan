@@ -31,7 +31,7 @@ class MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
     #その日の献立を取得
-    @menus = Menu.where(start_time: @menu.start_time.in_time_zone.all_day)
+    @menus = Menu.where(user_id: current_user.id, start_time: @menu.start_time.in_time_zone.all_day)
     # 同じ材料の時に加算されるように以下を記述
     # 空の変数宣言（後で使う用）
     @foods = {}

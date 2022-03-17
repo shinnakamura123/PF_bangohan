@@ -40,11 +40,13 @@ class Recipe < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  def self.search(search)
+  def self.search(search, tag_id)
     if search
-      Recipe.where(['recipe_name LIKE ?', "%#{search}%"])
+      where(['recipe_name LIKE ?', "%#{search}%"])
+    elsif tag_id.present?
+      joins(:tags).where(tags: { id: tag_id })
     else
-      Recipe.all  #検索結果が当てはまらない場合は全て表示
+      all  #検索結果が当てはまらない場合は全て表示
     end
   end
 
