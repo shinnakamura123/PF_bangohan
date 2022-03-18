@@ -1,23 +1,29 @@
 <div class="nested-fields">
   <div class = "card h-300 w-30">
-    <div id ="preview_card">
-      <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
+    <div id ="preview_card" class="preview_card">
+      <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;", class='preview'>
     </div>
-    <p class="card-text"><%= f.file_field :image, accept: "image/*", id: 'image' %></p>
-    <p class="card-text"><%= f.text_area :method, size: "30x5" %></p>
+    <p class="card-text"><%= f.file_field :image, accept: "image/*", id: 'image', class:'img_file' %></p>
+    <p class="card-text"><%= f.text_area :method, size: "30x5" , placeholder: "手順の番号を頭につけてください。例) 1.〜"%></p>
     <p class="card-text"><%= link_to_remove_association '削除', f, class: 'btn btn-danger' %></p>
   </div>
 </div>
 
+<%#以下jqueryの記述 %>
 <script>
-  var element = document.getElementById('image')
-  console.log(element)
-  element.addEventListener('change', function(e) {
-    console.log(e)
+//file_fieldのクラスが変わった時function内の記述を実行
+$('.img_file').change(function(){
+    //fileReaderにFileReader(読み込み)を格納する
     var fileReader = new FileReader();
-    fileReader.readAsDataURL(e.target.files[0]);
+    //img_fileにchenge(thisで取得)したクラスの親のさらに親の中からプレビューを表示するクラスを見つけて格納
+    var img_file = $(this).parent().parent().find('.preview_card').find('.preview');
+    //fileReaderにthisで取得した最初の画像ファイルを読み込ませる
+    fileReader.readAsDataURL(this.files[0]);
+    //fileReaderが読み込まれたらfunction内の記述を実行
     fileReader.onload = (function() {
-      document.getElementById('preview').src = fileReader.result
+    //指定しておいたimg_fileの場所にfileReaderで読み込まれた画像をsrcとして(attrで変更)取得
+    img_file.attr('src',fileReader.result);
+
     });
-  })
+  });
 </script>
