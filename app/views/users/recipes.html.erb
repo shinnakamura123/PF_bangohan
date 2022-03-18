@@ -22,15 +22,27 @@
       <% end %>
       <div class="row">
         <% @recipes.each do |recipe| %>
-          <div class="card border-light m-2">
+        <div class ="col-md-4">
+          <div class="card border-light m-1 h-300", style= "width: 300px">
             <%= link_to recipe_path(recipe) do %>
               <%= image_tag recipe.get_image(300, 300) ,class: "shadow mb-5 bg-body round" %>
             <% end %>
             <div class="card-body">
-              <h5 class="card-title">レシピ名：<%= recipe.recipe_name %></h5>
-              <p class="card-text"><%= recipe.point %></p>
+              <h4 class="card-title font-weight-bold text-warning"><%= recipe.recipe_name %></h4>
+              <div class = "d-flex flex-wrap">
+                <% recipe.tags.each do |tag| %>
+                    <%= link_to recipes_path(tag_id: tag.id) do %>
+                        <p><%= tag.tag_name %></p>
+                    <% end %>
+                <% end %>
+              </div>
+              <p class="card-text">
+                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= recipe.favorites.count %> いいね
+              </p>
             </div>
           </div>
+        </div>
         <% end %>
       </div>
     </div>

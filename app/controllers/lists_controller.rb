@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
   def index
-    @lists = List.page(params[:page]).per(6).where(user_id: current_user.id).search(params[:search])
+    @lists = List.page(params[:page]).per(6).where(user_id: current_user.id).search(params[:search], params[:tag_id])
   end
 
   def create
