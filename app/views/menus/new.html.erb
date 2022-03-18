@@ -1,27 +1,13 @@
 <div class="container p-5">
 	<h2 class="section-top"><span aria-hidden="true"></span> 一週間の献立</h2>
 	<div class ="row">
-	  <div class="col-md-12 col-sm-12 col-xs-12">
-  		<%= week_calendar events: @menus do |date, menus| %>
-  		  <%= date.day %>
-
-  		  <% menus.each do |menu| %>
-  		    <div>
-  		      <p>
-  		        <%= link_to user_menu_path(current_user.id, menu.id) do %>
-  		          <%= menu.recipe.recipe_name %></br>
-  		          <%= image_tag menu.recipe.get_image(100, 100) %>
-  		        <% end %>
-  		        <%= link_to '削除', user_menu_path(current_user.id, menu.id), method: :delete, class: 'btn btn-danger btn-sm' %>
-  		      </p>
-  		    </div>
-  		  <% end %>
-  		<% end %>
+	  <div class="col-md-12 col-sm-12 col-xs-12", id ="week_index">
+  		<%= render 'week_index', menus: @menus %>
     </div>
 	</div>
 	<%= render 'layouts/errors', obj: @menu %>
 	<div class ="row">
-	  <div class ="col-md-3", id= "menu_form">
+	  <div class ="col-md-3">
 	    <%= render 'menu_form', menu: @menu %>
 	  </div>
 	  <div class ="col-md-8 offset-md-1">
