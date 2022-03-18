@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe.user_id = current_user.id
   end
 
   def create
