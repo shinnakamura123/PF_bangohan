@@ -1,0 +1,19 @@
+<thead class="thead-light">
+  <th>名前</th>
+  <th>コメント</th>
+  <th></th>
+</thead>
+<tbody>
+  <% comments.each do |comment| %>
+    <tr>
+      <%= link_to user_path(comment.user) do %>
+        <td><%= comment.user.name %></td>
+      <% end %>
+      <td><%= comment.content %></td>
+      <% if comment.user == current_user %>
+        <td><%= link_to '削除', recipe_comment_path(comment.recipe.id, comment.id), method: :delete, remote: true, class: 'btn btn-sm btn-danger' %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  <td><%= paginate comments %></td>
+</tbody>
