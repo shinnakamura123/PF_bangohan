@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def index
     @recipe = Recipe.find(params[:recipe_id])
-    @comments = Comment.page(params[:page]).per(10).where(recipe_id: @recipe.id)
+    @comments_page = @recipe.comments.page(params[:page]).per(10)
   end
 
   def create
@@ -15,9 +15,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
-    @comments = @recipe.comments.order(created_at: :desc).limit(2)
+    @comments = @recipe.comments.order(created_at: :desc)
+    @comments_page = @recipe.comments.page(params[:page]).per(10)
     @comment = Comment.find_by(id: params[:id], recipe_id: params[:recipe_id]).destroy
-    redirect_to request.referer
   end
 
   private
