@@ -1,0 +1,65 @@
+<script>
+$(function() {
+    $('.tab').click(function(){
+        $('.tab-active').removeClass('tab-active');
+        $(this).addClass('tab-active');
+        $('.box-show').removeClass('box-show');
+        const index = $(this).index();
+        $('.tabbox').eq(index).addClass('box-show');
+    });
+});
+</script>
+<div class ="rank">
+  <ul class="tab-list">
+    <p class="tab box-active">いいね数ランキング</p>
+    <p class="tab">フォロワー数ランキング</p>
+  </ul>
+  <div class="tabbox-contents">
+    <div class="tabbox box-show">
+      <h4 class ="favorite">いいね数ランキング</h4>
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+          <% favorite_ranks.each.with_index(1) do |recipe, i| %>
+            <td>
+              第<%= i %>位:<%= recipe.recipe_name %></br>
+              <%= link_to recipe_path(recipe) do %>
+                <%= image_tag recipe.get_image(300, 300) %></br>
+              <% end %>
+              by:
+              <%= link_to user_path(recipe.user) do %>
+                <%= recipe.user.name %></br>
+              <% end %>
+              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= recipe.favorites.count %> いいね
+            </td>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <div class="tabbox">
+      <h4 class ="favorite">フォロワー数ランキング</h4>
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <% follower_ranks.each.with_index(1) do |user, i| %>
+              <td>
+                第<%= i %>位:
+                <%= link_to user_path(user) do %>
+                <%= user.name %>
+                <% end %>さん</br>
+                フォロワー数:<%= user.followers.count %>人</br>
+                <%= link_to recipes_users_path(user) do %>
+                  <% user.recipes.where(status: false).first(1).each do |recipe| %>
+                    <%= image_tag recipe.get_image(300, 300) %>
+                  <% end %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+      </div>
+    </div>
+  </div>
+</div>
+
+

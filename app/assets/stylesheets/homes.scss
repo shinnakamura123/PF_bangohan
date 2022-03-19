@@ -2,7 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.label{
-	margin: 20px;
-	background-color:#d2b48c;
+
+.tab-list {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+/* ↓タブのデザイン↓ */
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+.tab:first-child {
+  border-left: none;
+}
+/* ↓タブがアクティブになっている時のデザイン↓ */
+.tab-active {
+  color: #fff;
+  background: #343a40;
+  transition: all 0.2s ease-in-out;
+}
+/* ↓タブの中身↓ */
+.tabbox {
+  /* ↓タブの中身を最初は非表示↓ */
+  display: none;
+  /* ↓タブの中身の余白↓ */
+  padding: 15px;
+}
+/* ↓このクラスがついている時だけタブの中身を表示↓ */
+.box-show {
+  display: block;
+}
+
+.col-md-4:hover{
+  text-size: 20px;
 }

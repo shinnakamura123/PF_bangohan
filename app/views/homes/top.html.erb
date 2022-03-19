@@ -39,8 +39,5 @@
       </div>
     </div>
   </div>
-  <div class = "row">
-    <h2 class ="label"><i class="fas fa-crown"></i>ランキング</h2>
-  </div>
-  <h4 class ="favorites">いいね数ランキング</h4>
+  <%= render 'rank', favorite_ranks: @favorite_ranks, follower_ranks: @follower_ranks, user_recipe: @user_recipe %>
 </div>
