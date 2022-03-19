@@ -5,11 +5,7 @@
             <% if @recipe.user.id == current_user.id %>
                 <%= link_to '編集する', edit_recipe_path(@recipe), class: "btn btn-success btn-sm"%>  <%= link_to '削除する', recipe_path(@recipe), method: :delete, class: "btn btn-danger btn-sm", data: {confirm: "削除しますか？"}%>
             <% end %>
-            <% if @recipe.listed_by?(current_user) %>
-              <td><%= link_to 'マイリストから外す', user_list_path(current_user.id, recipe_id: @recipe.id), method: :delete, class: 'btn btn-dark btn-sm' %></td>
-            <% else %>
-              <td><%= link_to 'マイリストに追加する', user_lists_path(current_user.id, recipe_id: @recipe.id), method: :post, class: 'btn btn-info btn-sm' %></td>
-            <% end %>
+            <%= render 'lists/list_btn', recipe: @recipe %>
         <% end %>
     </h3>
     <div class= "row">

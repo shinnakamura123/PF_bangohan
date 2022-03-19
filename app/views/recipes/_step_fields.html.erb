@@ -1,6 +1,9 @@
 <div class="nested-fields">
   <div class = "card h-300 w-30">
     <div id ="preview_card" class="preview_card">
+      <% if f.object.image.attached? == true %>
+        <%= image_tag f.object.get_image(200, 200) %>
+      <% end %>
       <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;", class='preview'>
     </div>
     <p class="card-text"><%= f.file_field :image, accept: "image/*", id: 'image', class: 'img_file' %></p>
@@ -11,8 +14,9 @@
 
 <%#以下jqueryの記述 %>
 <script>
-//file_fieldのクラスが変わった時function内の記述を実行
+//file_fieldのfileが変わった時function内の記述を実行
 $('.img_file').change(function(){
+
     //fileReaderにFileReader(読み込み)を格納する
     var fileReader = new FileReader();
     //img_fileにchenge(thisで取得)したクラスの親のさらに親の中からプレビューを表示するクラスを見つけて格納
@@ -21,6 +25,7 @@ $('.img_file').change(function(){
     fileReader.readAsDataURL(this.files[0]);
     //fileReaderが読み込まれたらfunction内の記述を実行
     fileReader.onload = (function() {
+      console.log(img_file);
     //指定しておいたimg_fileの場所にfileReaderで読み込まれた画像をsrcとして(attrで変更)取得
     img_file.attr('src',fileReader.result);
 

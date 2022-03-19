@@ -7,8 +7,25 @@
             </tr>
             <tr>
                 <th><p><%= f.label :image, "画像" %></p></th>
-                <td><p><%= f.file_field :image, accept: "image/*" %></p></td>
+                <td>
+                    <% if f.object.image.attached? == true %>
+                        <%= image_tag f.object.get_image(200, 200) %>
+                    <% end %>
+                    <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;", class='recipe_preview'>
+                    <p><%= f.file_field :image, accept: "image/*", class: 'recipe_img'%></p>
+                </td>
             </tr>
+            <script>
+                $('.recipe_img').change(function(){
+                    var fileReader = new FileReader();
+                    var img_file = $(".recipe_preview")
+                    fileReader.readAsDataURL(this.files[0]);
+                    fileReader.onload = (function() {
+                    img_file.attr('src',fileReader.result);
+
+                    });
+                  });
+            </script>
             <tr>
                 <th><p><%= f.label :man_count, "何人分" %></p></th>
                 <td><p><%= f.select :man_count, *[1..10] %></p></td>
@@ -76,11 +93,10 @@
 </div>
 <div class= "row">
 <div class = "d-flex flex-sm-wrap">
-    <div id ="step_form">
-        <%= f.fields_for :steps do |step| %>
-            <%= render 'step_fields', f: step, recipe_id: @recipe.id %>
-        <% end %>
-    </div>
+    <%= f.fields_for :steps do |step| %>
+        <%= render 'step_fields', f: step %>
+    <% end %>
+    <div id ="step_form"></div>
 </div>
 </div>
 <div class="text-center">

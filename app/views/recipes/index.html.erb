@@ -23,43 +23,7 @@
            }
         %>
       <% end %>
-      <div class ="row">
-        <% @recipes.each do |recipe| %>
-          <div class ="col-md-4">
-            <div class="card border-light m-1 h-300", style= "width: 300px">
-              <%= link_to recipe_path(recipe) do %>
-                <%= image_tag recipe.get_image(300, 200) ,class: "shadow mb-5 bg-body round" %>
-              <% end %>
-              <div class="card-body">
-                <h4 class="card-title font-weight-bold text-warning"><%= recipe.recipe_name %></h4>
-                <div class = "d-flex flex-wrap">
-                  <% recipe.tags.each do |tag| %>
-                      <%= link_to recipes_path(tag_id: tag.id) do %>
-                          <p><%= tag.tag_name %></p>
-                      <% end %>
-                  <% end %>
-                </div>
-                <p class="card-text">
-                  <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                  <%= recipe.favorites.count %> いいね
-                </p>
-                <p class="card-text">
-                  by
-                  <%= link_to user_path(recipe.user) do %>
-                    <%= recipe.user.name %>
-                  <% end %>
-                </p>
-                <% if recipe.listed_by?(current_user) %>
-                  <p class="card-text"><%= link_to 'マイリストから外す', user_list_path(current_user.id, recipe_id: recipe.id, id: List.where(user_id: current_user.id, recipe_id: recipe.id )), method: :delete, class: 'btn btn-danger btn-sm' %></p>
-                <% else %>
-                  <p class="card-text"><%= link_to 'マイリストに追加する', user_lists_path(current_user.id, recipe_id: recipe.id), method: :post, class: 'btn btn-info btn-sm' %></p>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
+      <%= render 'index', recipes: @recipes %>
     <div class="offset-md-5 mt-5">
       <%= paginate @recipes, theme: 'twitter-bootstrap-4' %>
     </div>

@@ -12,4 +12,5 @@ class List < ApplicationRecord
     end
   end
 
+
 end

@@ -8,7 +8,7 @@ class ListsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @list = List.new(user_id: current_user.id)
     @list.recipe_id = @recipe.id
-    @list.save!
+    @list.save
     redirect_to request.referer
   end
 
