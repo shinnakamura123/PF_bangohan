@@ -52,6 +52,10 @@ ja:
     formats:
       default: "%Y年%m月%d(%a)"
 
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+
   activerecord:
     attributes:
       recipe_food:

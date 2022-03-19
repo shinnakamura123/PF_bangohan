@@ -1,0 +1,35 @@
+<div class="row">
+    <% @lists.each do |list| %>
+      <div class ="col-md-4">
+        <div class="card border-light m-1 h-300", style= "width: 300px">
+          <%= link_to recipe_path(list.recipe) do %>
+            <%= image_tag list.recipe.get_image(300, 300) ,class: "shadow mb-5 bg-body round" %>
+          <% end %>
+          <div class="card-body">
+            <h4 class="card-title font-weight-bold text-warning"><%= list.recipe.recipe_name %></h4>
+              <div class = "d-flex flex-wrap">
+                <% list.recipe.tags.each do |tag| %>
+                    <%= link_to recipes_path(tag_id: tag.id) do %>
+                        <p><%= tag.tag_name %></p>
+                    <% end %>
+                <% end %>
+              </div>
+              <p class="card-text">
+                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= list.recipe.favorites.count %> いいね
+              </p>
+              <p class="card-text">
+                by
+                <%= link_to user_path(list.recipe.user) do %>
+                  <%= list.recipe.user.name %>
+                <% end %>
+              </p>
+              <div id = 'list_btn'>
+                <p class="card-text"><%= render 'list_btn', recipe: list.recipe %></p>
+              </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

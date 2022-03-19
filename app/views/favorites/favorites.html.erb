@@ -14,7 +14,7 @@
             <i class="fas fa-search"></i>
           <% end %>
       <% end %>
-      <%= form_tag favorites_users_path(@user), method: :get, class: 'boards__searchForm' do %>
+      <%= form_tag recipes_path, method: :get, class: 'boards__searchForm' do %>
         <%= select_tag :tag_id,
            options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
            {
@@ -23,26 +23,7 @@
            }
         %>
       <% end %>
-      <div class="row">
-        <% @favorites.each do |recipe| %>
-          <div class="card border-light m-2">
-            <%= link_to recipe_path(recipe) do %>
-              <%= image_tag recipe.get_image(300, 300) ,class: "shadow mb-5 bg-body round" %>
-            <% end %>
-            <div class="card-body">
-              <h5 class="card-title">レシピ名：<%= recipe.recipe_name %></h5>
-              <p class="card-text"><%= recipe.point %></p>
-              <p class="card-text">制作者：<%= recipe.user.name %></p>
-              <% if recipe.listed_by?(current_user) %>
-                <p class="card-text"><%= link_to 'マイリストから外す', user_list_path(current_user.id, recipe_id: recipe.id), method: :delete, class: 'btn btn-danger btn-sm' %></p>
-              <% else %>
-                <p class="card-text"><%= link_to 'マイリストに追加する', user_lists_path(current_user.id, recipe_id: recipe.id), method: :post, class: 'btn btn-info btn-sm' %></p>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'recipes/index', recipes: @favorites %>
     <div class="offset-md-5 mt-5">
       <%= paginate @favorites, theme: 'twitter-bootstrap-4' %>
     </div>

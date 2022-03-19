@@ -13,10 +13,10 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
     @menu.user_id = current_user.id
+    @menus = Menu.where(user_id: current_user.id)
     if @menu.save
-      redirect_to request.referer
+      #redirect_to request.referer
     else
-      @menus = Menu.where(user_id: current_user.id)
       #遷移元のパスを指定
       render path = Rails.application.routes.recognize_path(request.referer)
     end
@@ -25,7 +25,7 @@ class MenusController < ApplicationController
   def destroy
     @menu = Menu.find(params[:id])
     @menu.destroy
-    redirect_to request.referer
+    @menus = Menu.where(user_id: current_user.id)
   end
 
   def show
@@ -43,7 +43,7 @@ class MenusController < ApplicationController
           @foods[recipe_food.food.id] = {}
           # 名称
           @foods[recipe_food.food.id]['food_name'] = recipe_food.food.food_name
-          #後で数量加算するときにエラーにならないようにとりあえず数量0を突っ込む
+          # 分量
           @foods[recipe_food.food.id]['quantity'] = recipe_food.quantity.to_i
           # 単位
           @foods[recipe_food.food.id]['unit'] = recipe_food.food.unit

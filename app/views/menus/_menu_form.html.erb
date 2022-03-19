@@ -1,11 +1,11 @@
-<%= form_with model: menu, url: user_menus_path(current_user.id), local: true do |f| %>
-  <table class="table">
+<%= form_with model: menu, url: user_menus_path(current_user.id), local: false do |f| %>
+  <table class="table", id="menu_form">
     <tbody>
       <tr>
-          <td><%= f.collection_select :recipe_id, current_user.list_recipes, :id, :recipe_name, {prompt: "レシピ名を選んでください"} %></td>
+          <td><%= f.collection_select :recipe_id, current_user.list_recipes, :id, :recipe_name, {prompt: "レシピ名を選んでください"} , class: "select" %></td>
       </tr>
       <tr>
-          <td><%= f.date_field :start_time %></td>
+          <td><%= f.date_field :start_time, class: "time" %></td>
       </tr>
       <tr>
           <td><%= f.submit "登録する", class: "btn btn-primary" %></td>

@@ -1,14 +1,14 @@
 class ListsController < ApplicationController
 
   def index
-    @lists = List.page(params[:page]).per(6).where(user_id: current_user.id).search(params[:search])
+    @lists = List.page(params[:page]).per(6).where(user_id: current_user.id).search(params[:search], params[:tag_id])
   end
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @list = List.new(user_id: current_user.id)
     @list.recipe_id = @recipe.id
-    @list.save!
+    @list.save
     redirect_to request.referer
   end
 
