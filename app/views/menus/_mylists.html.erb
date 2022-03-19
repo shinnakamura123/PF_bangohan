@@ -1,17 +1,15 @@
 <h5>マイリスト一覧</h5>
 <div class="table-responsive">
   <table class="table">
-    <tbody>
-      <tr>
-        <% current_user.lists.each do |list| %>
-          <td>
-            <%= link_to recipe_path(list.recipe) do %>
-              <%= list.recipe.recipe_name %></br>
-              <%= image_tag list.recipe.get_image(150, 150) ,class: "shadow mb-5 bg-body round" %>
-            <% end %>
-          </td>
-        <% end %>
-      </tr>
-    </tbody>
+    <tr>
+      <% current_user.lists.each do |list| %>
+        <td>
+          <%= link_to recipe_path(list.recipe) do %>
+            <%= list.recipe.recipe_name %></br>
+            <%= image_tag list.recipe.get_image(150, 150) ,class: "shadow mb-5 bg-body round" %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
   </table>
 </div>

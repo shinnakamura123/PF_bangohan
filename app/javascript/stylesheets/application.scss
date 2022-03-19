@@ -1,2 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.nav-item:hover {
+  background-color: #262626;
+  border-radius:10px;
+}
+
+//.main-container {
+  //background-image:url('spaghetti-g08eb4e1cd_1920.png');
+//}

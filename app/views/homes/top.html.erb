@@ -25,13 +25,19 @@
             レシピ登録や献立機能を使用するには会員登録が必要になります。
           </p>
           <p class="card-text font-weight-bold">
-            <%= link_to '新規登録', new_user_registration_path, class: "btn btn-dark" %>
-            <%= link_to 'ログイン', new_user_session_path, class: "btn btn-dark" %>
+            <%= link_to new_user_registration_path, class: "btn btn-dark" do %>
+              新規登録<i class="fas fa-user-plus"></i>
+            <% end %>
+            <%= link_to new_user_session_path, class: "btn btn-dark" do %>
+              ログイン<i class="fas fa-sign-in-alt"></i>
+            <% end %>
             <%= link_to recipes_path, class: "btn btn-dark" do %>
               レシピ一覧<i class="fas fa-utensils"></i>
             <% end %>
           </p>
         <% end %>
+      </div>
     </div>
   </div>
+  <%= render 'rank', favorite_ranks: @favorite_ranks, follower_ranks: @follower_ranks, user_recipe: @user_recipe %>
 </div>
