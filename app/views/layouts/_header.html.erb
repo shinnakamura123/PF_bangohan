@@ -1,7 +1,7 @@
-<header class="shadow-sm bg-dark">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <a class="navbar-brand p-3" href="/"><%= image_tag asset_path('bangohan.png'),size: "150x100" %></a>
+<header class="shadow-sm">
+    <nav class="navbar navbar-light">
+      <div class = "container">
+        <a class="navbar-brand p-3 "href="/"><%= image_tag asset_path('bangohan.png'),size: "200x80" %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -11,38 +11,38 @@
             <% if user_signed_in? %>
               <li class="nav-item">
                 <%= link_to home_about_path, class: 'nav-link text-dark' do %>
-                  <span class="text-white">About<i class="fas fa-bread-slice"></i></span>
+                  <span class="text-dark">About <i class="fas fa-bread-slice"></i></span>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
-                  <span class="text-white">マイページ<i class="fas fa-file-alt"></i></span>
+                  <span class="text-dark">my page <i class="fas fa-file-alt"></i></span>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to user_menus_path(current_user.id), class: 'nav-link text-dark' do %>
-                  <span class="text-white">献立予定<i class="fas fa-calendar"></i></span>
+                  <span class="text-dark">menu schedule <i class="fas fa-calendar"></i></span>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to users_path, class: 'nav-link text-dark' do %>
-                  <span class="text-white">会員一覧<i class="fas fa-user"></i></span>
+                  <span class="text-dark">members <i class="fas fa-user"></i></span>
                 <% end %>
               </li>
               <li class="nav-item text-white">
                 <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
-                  <span class="text-white">ログアウト<i class="fas fa-sign-out-alt"></i></span>
+                  <span class="text-dark">log out <i class="fas fa-sign-out-alt"></i></span>
                 <% end %>
               </li>
             <% else %>
               <li class="nav-item">
                 <%= link_to  new_user_registration_path, class: 'nav-link text-dark' do %>
-                  <span class="text-white">新規登録<i class="fas fa-user-plus"></i></span>
+                  <span class="text-dark">sign up <i class="fas fa-user-plus"></i></span>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
-                　<span class="text-white">ログイン<i class="fas fa-sign-in-alt"></i></span>
+                　<span class="text-dark">sign in <i class="fas fa-sign-in-alt"></i></span>
                 <% end %>
               </li>
             <% end %>

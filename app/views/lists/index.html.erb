@@ -1,9 +1,10 @@
-<div class ="container p-5">
+<div class ="one-container p-5">
   <div class ="row">
     <div class ="col-md-11 offset-md-1">
       <div class="row ml-3">
-        <h3 class="font-weight-bold">マイリスト一覧</h3>
+        <h3 class="font-weight-bold">マイリスト</h3>
         <p class="p-2">(全<%= @lists.total_count %>件）<p>
+        <div><%= link_to 'レシピ一覧', recipes_path, class: 'btn btn-success' %></div>
       </div>
       <%= form_tag user_lists_path(current_user.id), method: :get do %>
       <%= text_field_tag :search, params[:search],:placeholder => "レシピ名で検索" %>
@@ -16,6 +17,15 @@
            options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
            {
              prompt: 'タグで絞り込み検索',
+             onchange: 'submit(this.form);'
+           }
+        %>
+      <% end %>
+      <%= form_tag user_lists_path(current_user.id), method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :food_id,
+           options_from_collection_for_select(Food.all, :id, :food_name, params[:food_id]),
+           {
+             prompt: '材料名で絞り込み検索',
              onchange: 'submit(this.form);'
            }
         %>

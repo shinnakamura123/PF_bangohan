@@ -2,10 +2,52 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 .nav-item:hover {
-  background-color: #262626;
-  border-radius:10px;
+  font-size: 20px;
 }
 
-//.main-container {
-  //background-image:url('spaghetti-g08eb4e1cd_1920.png');
-//}
+.nav-item .text-white{
+  font-family: ヒラギノ角ゴシック;
+}
+
+
+body{
+  padding-bottom: 100px;
+}
+
+#footer{
+  margin-top: auto;
+}
+
+.one-container{
+  background-image: url("/images/brooke-lark-wMzx2nBdeng-unsplash.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color:rgba(255,255,255,0.7);
+  background-blend-mode:lighten;
+}
+
+.two-container{
+  background-image: url("/images/jessica-lewis-fJXv46LT7Xk-unsplash.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color:rgba(255,255,255,0.7);
+  background-blend-mode:lighten;
+}
+
+.three-container{
+  background-image: url("/images/nrd-D6Tu_L3chLE-unsplash.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color:rgba(255,255,255,0.7);
+  background-blend-mode:lighten;
+}
+
+#week_index, #month_index{
+  background-color: #fff;
+}

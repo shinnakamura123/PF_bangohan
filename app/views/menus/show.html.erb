@@ -1,17 +1,17 @@
-<div class = "container p-5">
+<div class = "one-container p-5">
   <h3 class = "font-weight-bold text-warning"><%= l @menu.start_time %>の献立</h3>
   <div class= "row">
-      <div class = "col-md-5">
+      <div class = "col">
         <% @menus.each do |menu| %>
             <div>
+              <h4 class = "font-weight-bold"><%= menu.recipe.recipe_name %>(<%= menu.recipe.man_count %>人分)</h4></br>
               <%= link_to recipe_path(menu.recipe.id) do %>
-                <%= menu.recipe.recipe_name %></br>
                 <%= image_tag menu.recipe.get_image(300, 300) ,class: "shadow p-3 mb-5 bg-body round" %>
               <% end %>
             </div>
         <% end %>
       </div>
-      <div class ="col-md-6 offset-md-1">
+      <div class ="col">
         <h5 class ="font-weight-bold">買い物リスト</h5>
         <table class = "table table-sm">
           <thead class="thead-light">

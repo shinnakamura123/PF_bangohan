@@ -2,15 +2,14 @@
   <%= date.day %>
 
   <% menus.each do |menu| %>
-  	<div class ="row">
   		<ul>
   			<%= link_to user_menu_path(current_user.id, menu.id) do %>
 			    <li>
 			    	<%= menu.recipe.recipe_name %>
+			    	<%= image_tag menu.recipe.get_image(100, 100) %>
 			    	<%= link_to '削除', user_menu_path(current_user.id, menu.id), method: :delete, remote: true, class: 'btn btn-danger btn-sm' %>
 			    </li>
 			  <% end %>
   		</ul>
-		</div>
   <% end %>
 <% end %>
