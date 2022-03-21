@@ -1,6 +1,6 @@
 <div class="row">
     <% @lists.each do |list| %>
-      <div class ="col-md-4">
+      <div class ="col-md-6 col-lg-4">
         <div class="card border-light m-1 h-300", style= "width: 300px">
           <%= link_to recipe_path(list.recipe) do %>
             <%= image_tag list.recipe.get_image(300, 300) ,class: "shadow mb-5 bg-body round" %>

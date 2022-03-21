@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes = Recipe.page(params[:page]).per(6).where(status: false).search(params[:search], params[:tag_id])
+    @recipes = Recipe.page(params[:page]).per(6).where(status: false).search(params[:search], params[:tag_id], params[:food_id])
+    @tags = Tag.all
   end
 
   def new

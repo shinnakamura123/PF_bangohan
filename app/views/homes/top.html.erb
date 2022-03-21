@@ -1,43 +1,71 @@
-<div class ="container">
-  <div class= "row">
+<div class= "row h-500">
+  <div class ="col-md-11 col-lg-11 mx-auto">
     <div class="card text-light">
-      <%= image_tag "22901610_s.jpg",size: "1200x600",class: "mx-auto" %>
-
+      <%= video_tag("/videos/Pot-267.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
       <div class="card-img-overlay mx-auto d-flex align-items-center justify-content-center flex-column">
         <% if user_signed_in? %>
-          <h1 class="card-title font-weight-bold">晩御飯へようこそ！</h1>
-          <p class="card-text font-weight-bold">このサイトは、献立予定を立てる献立サイトになります。<br>
-            まずはレシピを作成してみましょう!<br>
-            作ったレシピは献立予定に使用したり、他の会員様と共有することができます。。
+          <h1 class="card-title-top font-weight-bold">Welcome to bangohan!</h1>
+          <p class="p-top">レシピを共有してみませんか？</br>
+              きっと楽しい体験が待っているはずです</br>
           </p>
-          <p class="card-text font-weight-bold">
-            <%= link_to new_recipe_path, class: "btn btn-dark" do %>
-              レシピを作成する<i class="fas fa-signature"></i>
-            <% end %>
-            <%= link_to recipes_path, class: "btn btn-dark" do %>
-              レシピ一覧<i class="fas fa-utensils"></i>
-            <% end %>
-          </p>
+          <div class="scrolldown1"><span>Scroll</span></div>
         <% else %>
-          <h1 class="card-title font-weight-bold">晩御飯へようこそ！</h1>
-          <p class="card-text font-weight-bold">このサイトは、献立予定を立てる献立サイトになります。<br>
-            会員でない方もレシピの閲覧はできますが、<br>
-            レシピ登録や献立機能を使用するには会員登録が必要になります。
-          </p>
-          <p class="card-text font-weight-bold">
-            <%= link_to new_user_registration_path, class: "btn btn-dark" do %>
-              新規登録<i class="fas fa-user-plus"></i>
-            <% end %>
-            <%= link_to new_user_session_path, class: "btn btn-dark" do %>
-              ログイン<i class="fas fa-sign-in-alt"></i>
-            <% end %>
-            <%= link_to recipes_path, class: "btn btn-dark" do %>
-              レシピ一覧<i class="fas fa-utensils"></i>
-            <% end %>
+          <h1><%= link_to "Let's get started", new_user_registration_path, class: "link" %></h1>
+          <p class="p-top">bangohanは献立サイトになります</br>
+              全ての機能を使うには新規登録が必要です
           </p>
         <% end %>
       </div>
     </div>
   </div>
-  <%= render 'rank', favorite_ranks: @favorite_ranks, follower_ranks: @follower_ranks, user_recipe: @user_recipe %>
 </div>
+<% if user_signed_in? %>
+  <div class ="row p-5">
+    <div class = "col-4 mx-auto", id='image-link'>
+      <%= link_to new_recipe_path do %>
+        <%= image_tag "kevin-mccutcheon-APDMfLHZiRA-unsplash.jpg", id: 'img-top' %>
+        <div class="mask">
+      		<div class="caption">
+              レシピを作成する<i class="fas fa-signature"></i>
+      		</div>
+      	</div>
+      <% end %>
+    </div>
+    <div class = "col-4 mx-auto", id='image-link'>
+      <%= link_to user_menus_path(current_user.id) do %>
+        <%= image_tag "behnam-norouzi-hDuNk0ubnAw-unsplash.jpg", id: 'img-top' %>
+        <div class="mask">
+      		<div class="caption">献立の予定を立てる<i class="fas fa-calendar"></i></div>
+      	</div>
+      <% end %>
+    </div>
+    <div class = "col-4 mx-auto", id='image-link'>
+      <%= link_to recipes_path do %>
+        <%= image_tag "annie-spratt-f4gQ-dJ0yo8-unsplash.jpg", id: 'img-top' %>
+        <div class="mask">
+      		<div class="caption">みんなのレシピを見てみる<i class="fas fa-utensils"></i></div>
+      	</div>
+      <% end %>
+    </div>
+  </div>
+  <div class ="row">
+    <div class ="col-md-11 col-lg-11 mx-auto", id= "rank-flame">
+      <div class="card">
+        <%= image_tag "scott-webb-GQD3Av_9A88-unsplash.jpg", id: 'img-top-rank' %>
+        <div class="card-img-overlay mx-auto d-flex flex-column">
+          <h1 class="card-title-rank font-weight-bold">Ranking</h1>
+          <div class =col-md-12>
+            <%= render 'rank', favorite_ranks: @favorite_ranks, follower_ranks: @follower_ranks, user_recipe: @user_recipe %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class ="row p-5"></div>
+<% else %>
+  <div class ="row p-5">
+    <div class =" col-md-10 col-lg-10">
+      <h3 class ="info">どんなサイト？</h3>
+    </div>
+  </div>
+<% end %>

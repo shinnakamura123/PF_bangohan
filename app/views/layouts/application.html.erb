@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application',  media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'homes' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style>
       .cover-text {
@@ -29,20 +28,20 @@
     <%= yield %>
   </body>
 
-  <footer class="bg-dark p-1 fixed-bottom">
-    <div class="col-lg-12 d-flex justify-content-center">
-      <button type="button" class="btn btn-dark">
+  <footer class="bg-white p-1 fixed-bottom col-md-auto", id="footer">
+    <div class="col-md-auto d-flex justify-content-center">
+      <button type="button" class="btn btn-white">
         <i class="fab fa-instagram"></i>
       </button>
-      <button type="button" class="btn btn-dark">
+      <button type="button" class="btn btn-white">
         <i class="fab fa-facebook"></i>
       </button>
-      <button type="button" class="btn btn-dark">
+      <button type="button" class="btn btn-white">
         <i class="fab fa-twitter"></i>
       </button>
     </div>
-    <div class="container text-center">
-      <span class="text-white">bangohan &copy; All Right Reserved.</span>
+    <div class="text-center">
+      <span>bangohan &copy; All Right Reserved.</span>
     </div>
   </footer>
 </html>

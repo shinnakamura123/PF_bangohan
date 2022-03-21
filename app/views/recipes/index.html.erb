@@ -1,6 +1,6 @@
-<div class ="container p-5">
+<div class ="one-container p-5">
   <div class ="row">
-    <div class ="col-md-11 offset-md-1">
+    <div class ="col-md-11 col-sm-11 col-xs-11 offset-md-1">
       <div class="row ml-3">
         <h3 class="font-weight-bold">レシピ一覧</h3>
         <p class="p-2">(全<%= @recipes.total_count %>件）<p>
@@ -23,9 +23,19 @@
            }
         %>
       <% end %>
+      <%= form_tag recipes_path, method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :food_id,
+           options_from_collection_for_select(Food.all, :id, :food_name, params[:food_id]),
+           {
+             prompt: '材料名で絞り込み検索',
+             onchange: 'submit(this.form);'
+           }
+        %>
+      <% end %>
       <%= render 'index', recipes: @recipes %>
     <div class="offset-md-5 mt-5">
       <%= paginate @recipes, theme: 'twitter-bootstrap-4' %>
     </div>
   </div>
+  <div class = "row p-5"></div>
 </div>
