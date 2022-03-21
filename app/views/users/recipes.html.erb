@@ -1,4 +1,4 @@
-<div class ="container p-5">
+<div class ="three-container p-5">
   <div class ="row">
     <div class ="col-md-11 offset-md-1">
       <div class="row ml-3">
@@ -16,6 +16,15 @@
            options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
            {
              prompt: 'タグで絞り込み検索',
+             onchange: 'submit(this.form);'
+           }
+        %>
+      <% end %>
+      <%= form_tag recipes_users_path(@user), method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :food_id,
+           options_from_collection_for_select(Food.all, :id, :food_name, params[:food_id]),
+           {
+             prompt: '材料名で絞り込み検索',
              onchange: 'submit(this.form);'
            }
         %>

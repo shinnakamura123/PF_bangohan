@@ -1,4 +1,4 @@
-<div class = "container p-5">
+<div class = "one-container p-5">
     <h3 class = "font-weight-bold text-warning">
         <%= @recipe.recipe_name %>
         <% if user_signed_in? %>
@@ -9,7 +9,7 @@
         <% end %>
     </h3>
     <div class= "row">
-        <div class = "col-md-5">
+        <div class = "col">
             <div>
                 <div id ="favorite_btn">
                     <%= render 'favorites/favorite_btn', recipe: @recipe %>
@@ -35,7 +35,8 @@
                 </div>
             </div>
         </div>
-        <div class ="col-md-6 offset-md-1">
+        <div class ="col">
+            <h4 class = "font-weight-bold">(<%= @recipe.man_count %>人分)</h4>
             <table class = "table table-sm">
                 <thead class="thead-light">
                   <th>材料名</th>

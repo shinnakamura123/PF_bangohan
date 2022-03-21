@@ -3,6 +3,67 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+
+.info{
+  font-family: "ヒラギノ角ゴシック";
+  opacity: 0.7;
+  background-color:rgba(255,215,0,0.5);
+}
+
+#image-link {
+	width:			500px;
+	overflow:		hidden;
+	margin:			10px 8px 10px 16px;
+	position:		relative;
+}
+
+#image-link-rank {
+	overflow:		hidden;
+}
+
+#image-link .caption {
+	font-size:		130%;
+	text-align: 		center;
+	color:			#fff;
+	font-family: "ヒラギノ角ゴシック";
+}
+
+#image-link .mask {
+	width:			100%;
+	height:			100%;
+	position:		absolute;
+	top:			0;
+	left:			0;
+	opacity:		0;
+	background-color:	rgba(0,0,0,0.3);
+	-webkit-transition:	all 0.6s ease;
+	transition:		all 0.6s ease;
+}
+
+#image-link:hover .mask {
+	opacity:		1;
+	padding-top:		80px;
+}
+
+#img-top{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#img-top-rank{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1.0;
+}
+
+.video-content{
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+
 .tab-list {
   display: flex;
   justify-content: space-around;
@@ -35,4 +96,97 @@
 /* ↓このクラスがついている時だけタブの中身を表示↓ */
 .box-show {
   display: block;
+}
+
+.rank_name{
+  font-size: 20px;
+  font-family: "ヒラギノ角ゴシック";
+
+}
+
+.card-title-top{
+  animation: SlideIn 4.8s;
+}
+
+.card-title-rank{
+  color: #000;
+  font-family: "ヒラギノ角ゴシック";
+}
+
+
+.link{
+  animation: SlideIn 4.8s;
+  color: #fff;
+  font-size: 40px;
+}
+
+.link:hover{
+  text-decoration: none;
+  color: #fff;
+  font-size: 45px;
+}
+
+.p-top{
+  animation: SlideIn 4.8s;
+  font-family: "ヒラギノ角ゴシック";
+}
+
+@keyframes SlideIn {
+  0% {
+    opacity: 0;/*初期状態では透明に*/
+    transform: translateX(64px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.favorite{
+  font-family: "ヒラギノ角ゴシック";
+}
+
+.scrolldown1{
+	position: absolute;
+	left: 50%;
+	bottom: 10px;
+	height: 100px;
+}
+
+.scrolldown1 span{
+	position: absolute;
+	left: -15px;
+	top: -15px;
+	color: #eee;
+	font-size: 0.7rem;
+	letter-spacing: 0.05em;
+}
+
+//動く線をafterで追加する
+.scrolldown1::after{
+	content: "";
+	position: absolute;
+	top: 0;
+	width: 1px;
+	height: 30px;
+	background: #eee;
+	animation: pathmove 2.8s ease-in-out infinite;
+	opacity:0;
+}
+
+@keyframes pathmove{
+	0%{
+		height:0;
+		top:0;
+		opacity: 0;
+	}
+	30%{
+		height:30px;
+		opacity: 1;
+	}
+	100%{
+		height:0;
+		top:50px;
+		opacity: 0;
+	}
 }

@@ -16,9 +16,9 @@ class FavoritesController < ApplicationController
     @user = User.find(params[:id])
     #自分の非公開レシピを見られるように
     if @user == current_user
-      @favorites = @user.favorite_recipes.page(params[:page]).per(6).search(params[:search], params[:tag_id])
+      @favorites = @user.favorite_recipes.page(params[:page]).per(6).search(params[:search], params[:tag_id], params[:food_id])
     else
-      @favorites = @user.favorite_recipes.page(params[:page]).per(6).where(status: false).search(params[:search], params[:tag_id])
+      @favorites = @user.favorite_recipes.page(params[:page]).per(6).where(status: false).search(params[:search], params[:tag_id], params[:food_id])
     end
   end
 end

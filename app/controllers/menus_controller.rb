@@ -15,9 +15,7 @@ class MenusController < ApplicationController
     @menu.user_id = current_user.id
     @menus = Menu.where(user_id: current_user.id)
     if @menu.save
-      #redirect_to request.referer
     else
-      #遷移元のパスを指定
       render path = Rails.application.routes.recognize_path(request.referer)
     end
   end

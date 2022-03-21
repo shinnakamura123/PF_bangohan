@@ -1,5 +1,5 @@
 <div class = "row">
-    <div class = "col-md-7">
+    <div class = "col-lg-7 col-md-12">
         <table>
             <tr>
                 <th><p><%= f.label :recipe_name, "レシピ名" %></p></th>
@@ -49,7 +49,7 @@
             </tr>
         </table>
     </div>
-    <div class = "col-md-5">
+    <div class = "col-lg-5 col-md-12">
         <div class ="row">
             <%= link_to "材料名一覧", foods_path, class: "btn btn-info btn-sm" %>
             <div class="table-responsive">
@@ -92,23 +92,25 @@
     </table>
 </div>
 <div class= "row">
-<div class = "d-flex flex-sm-wrap">
-    <%= f.fields_for :steps do |step| %>
-        <%= render 'step_fields', f: step %>
-    <% end %>
-    <div id ="step_form"></div>
-</div>
+    <div class ="col">
+        <div class = "d-flex flex-wrap">
+            <%= f.fields_for :steps do |step| %>
+                <%= render 'step_fields', f: step %>
+            <% end %>
+            <div id ="step_form"></div>
+        </div>
+    </div>
 </div>
 <div class="text-center">
-  <div id='links'>
-    <%= link_to_add_association "追加ボタン", f, :steps, #cocoonのカラム追加機能
-        class: 'btn btn-success',
-        data: {
-          association_insertion_node: '#step_form', #挿入先を指定
-          association_insertion_method: 'before'    #挿入を前にする
-        }
-    %>
-</div>
+    <div id='links'>
+        <%= link_to_add_association "追加ボタン", f, :steps, #cocoonのカラム追加機能
+            class: 'btn btn-success',
+            data: {
+              association_insertion_node: '#step_form', #挿入先を指定
+              association_insertion_method: 'before'    #挿入を前にする
+            }
+        %>
+    </div>
 </div>
 <div class ="row">
     <div class ="col">

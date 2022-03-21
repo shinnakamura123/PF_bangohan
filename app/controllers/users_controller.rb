@@ -46,9 +46,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #自分の非公開レシピは見れるようにif分岐を記述
     if @user == current_user
-      @recipes = @user.recipes.page(params[:page]).per(6).search(params[:search], params[:tag_id])
+      @recipes = @user.recipes.page(params[:page]).per(6).search(params[:search], params[:tag_id], params[:food_id])
     else
-      @recipes = @user.recipes.page(params[:page]).per(6).where(status: false).search(params[:search] ,params[:tag_id])
+      @recipes = @user.recipes.page(params[:page]).per(6).where(status: false).search(params[:search] ,params[:tag_id], params[:food_id])
     end
   end
 
