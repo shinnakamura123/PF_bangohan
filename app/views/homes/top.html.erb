@@ -33,7 +33,7 @@
     </div>
     <div class = "col-4 mx-auto", id='image-link'>
       <%= link_to user_menus_path(current_user.id) do %>
-        <%= image_tag "behnam-norouzi-hDuNk0ubnAw-unsplash.jpg", id: 'img-top' %>
+        <%= image_tag asset_path("behnam-norouzi-hDuNk0ubnAw-unsplash.jpg"), id: 'img-top' %>
         <div class="mask">
       		<div class="caption">献立の予定を立てる<i class="fas fa-calendar"></i></div>
       	</div>
@@ -41,7 +41,7 @@
     </div>
     <div class = "col-4 mx-auto", id='image-link'>
       <%= link_to recipes_path do %>
-        <%= image_tag "annie-spratt-f4gQ-dJ0yo8-unsplash.jpg", id: 'img-top' %>
+        <%= image_tag asset_path("annie-spratt-f4gQ-dJ0yo8-unsplash.jpg"), id: 'img-top' %>
         <div class="mask">
       		<div class="caption">みんなのレシピを見てみる<i class="fas fa-utensils"></i></div>
       	</div>
