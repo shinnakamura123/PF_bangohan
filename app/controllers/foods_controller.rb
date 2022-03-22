@@ -18,7 +18,7 @@ class FoodsController < ApplicationController
   def destroy
     @food = Food.find(params[:id])
     @food.destroy
-    redirect_to request.referer　notice: 'Successfully deleted food!'
+    redirect_to request.referer, notice: 'Successfully deleted food!'
   end
 
   private
