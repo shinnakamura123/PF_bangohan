@@ -2,6 +2,8 @@
   <thead class="thead-light">
     <th>会員ID</th>
     <th>氏名</th>
+    <th>フォロー数</th>
+    <th>フォロワー数</th>
     <th></th>
   </thead>
   <tbody>
@@ -11,6 +13,16 @@
         <td>
           <%= link_to user_path(user) do %>
             <%= user.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to followings_user_relationships_path(user) do %>
+            <%= user.followings.count %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to followers_user_relationships_path(user) do %>
+            <%= user.followers.count %>
           <% end %>
         </td>
         <td>

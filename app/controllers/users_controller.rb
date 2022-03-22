@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: 'Successful update of member information!'
     else
       render 'edit'
     end
@@ -33,13 +33,13 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: 'Successful withdrawal!'
   end
 
   def destroy
     @user = current_user
     @user.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: 'Successful withdrawal!'
   end
 
   def recipes
