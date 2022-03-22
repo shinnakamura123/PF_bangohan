@@ -1,7 +1,7 @@
 <div class= "row h-500">
   <div class ="col-md-11 col-lg-11 mx-auto">
     <div class="card text-light">
-      <%= video_tag("/videos/Pot-267.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
+      <%= video_tag("/Pot-267.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
       <div class="card-img-overlay mx-auto d-flex align-items-center justify-content-center flex-column">
         <% if user_signed_in? %>
           <h1><%= link_to "Welcome to bangohan!", home_about_path, class: "link" %></h1>
@@ -33,7 +33,7 @@
     </div>
     <div class = "col-4 mx-auto", id='image-link'>
       <%= link_to user_menus_path(current_user.id) do %>
-        <%= image_tag asset_path("behnam-norouzi-hDuNk0ubnAw-unsplash.jpg"), id: 'img-top' %>
+        <%= image_tag "behnam-norouzi-hDuNk0ubnAw-unsplash.jpg", id: 'img-top' %>
         <div class="mask">
       		<div class="caption">献立の予定を立てる<i class="fas fa-calendar"></i></div>
       	</div>
@@ -41,7 +41,7 @@
     </div>
     <div class = "col-4 mx-auto", id='image-link'>
       <%= link_to recipes_path do %>
-        <%= image_tag asset_path("annie-spratt-f4gQ-dJ0yo8-unsplash.jpg"), id: 'img-top' %>
+        <%= image_tag "annie-spratt-f4gQ-dJ0yo8-unsplash.jpg", id: 'img-top' %>
         <div class="mask">
       		<div class="caption">みんなのレシピを見てみる<i class="fas fa-utensils"></i></div>
       	</div>
