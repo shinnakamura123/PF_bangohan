@@ -1,7 +1,7 @@
 <div class= "row h-500">
   <div class ="col-md-11 col-lg-11 mx-auto">
     <div class="card text-light">
-      <%= video_tag("/Pot-267.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
+      <%= video_tag("Pot-267.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
       <div class="card-img-overlay mx-auto d-flex align-items-center justify-content-center flex-column">
         <% if user_signed_in? %>
           <h1><%= link_to "Welcome to bangohan!", home_about_path, class: "link" %></h1>
