@@ -4,7 +4,7 @@
       <%= video_tag("/videos/Pot-267.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
       <div class="card-img-overlay mx-auto d-flex align-items-center justify-content-center flex-column">
         <% if user_signed_in? %>
-          <h1 class="card-title-top font-weight-bold">Welcome to bangohan!</h1>
+          <h1><%= link_to "Welcome to bangohan!", home_about_path, class: "link" %></h1>
           <p class="p-top">レシピを共有してみませんか？</br>
               きっと楽しい体験が待っているはずです</br>
           </p>
@@ -63,9 +63,10 @@
   </div>
   <div class ="row p-5"></div>
 <% else %>
-  <div class ="row p-5">
-    <div class =" col-md-10 col-lg-10">
-      <h3 class ="info">どんなサイト？</h3>
+  <div class ="row p-5"></div>
+  <div class ="row">
+    <div class ="col-8 mx-auto">
+      <%= image_tag "/images/about.png", id: "img-top" %>
     </div>
   </div>
 <% end %>
