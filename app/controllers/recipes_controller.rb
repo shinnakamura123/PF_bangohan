@@ -17,8 +17,9 @@ class RecipesController < ApplicationController
     if @recipe.save
       @list= @user.lists.new(recipe_id: @recipe.id)
       @list.save
-      redirect_to recipe_path(@recipe)
+      redirect_to recipe_path(@recipe), notice: 'Recipe registration was successfull!'
     else
+      flash.now[:alert] = 'Recipe registration failed'
       render 'new'
     end
   end
@@ -47,7 +48,7 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
+      redirect_to recipe_path(@recipe), notice: 'The recipe has been updated successfully!'
     else
       render 'edit'
     end
