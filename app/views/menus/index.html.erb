@@ -1,5 +1,8 @@
-<div class="two-container p-5">
-	<h1 class="card-title-top font-weight-bold">Menu Schedule</h1>
+<div class="one-container p-5">
+	<h1 class="card-title-top font-weight-bold">一ヶ月の献立予定</h1>
+	<div class ="text-center">
+	  <%= link_to '一週間の予定', new_user_menu_path(current_user.id), class: 'btn list_btn' %>
+	</div>
 	<div class ="row">
 	  <div class="col-md-12 col-lg-12", id ="month_index">
   		<%= render 'month_index', menus: @menus %>
@@ -14,8 +17,4 @@
 	    <%= render 'mylists' %>
 	  </div>
 	</div>
-	<div class ="text-center">
-	  <%= link_to '一週間の予定', new_user_menu_path(current_user.id), class: 'btn btn-success' %>
-	</div>
-	<div class ="row p-5"></div>
 </div>

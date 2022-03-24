@@ -1,5 +1,8 @@
-<div class="two-container p-5">
-	<h1 class="card-title-top font-weight-bold">Weekly menu schedule</h1>
+<div class="one-container p-5">
+	<h1 class="card-title-top font-weight-bold">一週間の献立予定</h1>
+	<div class ="text-center">
+	  <%= link_to '一ヶ月の予定', user_menus_path(current_user.id), class: 'btn list_btn' %>
+	</div>
 	<div class ="row">
 	  <div class="col-md-12 col-sm-12 col-xs-12", id ="week_index">
   		<%= render 'week_index', menus: @menus %>
@@ -7,14 +10,11 @@
 	</div>
 	<%= render 'layouts/errors', obj: @menu %>
 	<div class ="row">
-	  <div class ="col-md-3 col-sm-3 col-xs-3">
+	  <div class ="col-lg-3 col-md-5">
 	    <%= render 'menu_form', menu: @menu %>
 	  </div>
-	  <div class ="col-md-9 col-sm-9 col-xs-9">
+	  <div class ="col-lg-8 col-md-6 offset-md-1">
 	    <%= render 'mylists' %>
 	  </div>
-	</div>
-	<div class ="text-center">
-	  <%= link_to '一ヶ月の予定', user_menus_path(current_user.id), class: 'btn btn-success' %>
 	</div>
 </div>

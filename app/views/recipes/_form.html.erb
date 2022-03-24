@@ -1,5 +1,5 @@
 <div class = "row">
-    <div class = "col-lg-7 col-md-12">
+    <div class = "col-lg-6 col-md-12">
         <table>
             <tr>
                 <th><p><%= f.label :recipe_name, "レシピ名" %></p></th>
@@ -49,9 +49,9 @@
             </tr>
         </table>
     </div>
-    <div class = "col-lg-5 col-md-12">
+    <div class = "col-lg-6 col-md-12">
+      <div class ="text-center p-1"><%= link_to "材料名一覧(材料名を追加)", foods_path, class: "btn list_btn" %></div>
         <div class ="row">
-            <%= link_to "材料名一覧(材料名を追加)", foods_path, class: "btn btn-info btn-sm" %>
             <div class="table-responsive">
             <table class ="table text-center table-sm">
                 <thead class = "thead-light",style ="fo">
@@ -70,7 +70,7 @@
             <div class="text-center">
               <div class='links'>
                             <%= link_to_add_association "追加ボタン", f, :recipe_foods, #cocoonのカラム追加機能
-                                class: 'btn btn-success',
+                                class: 'btn list_btn',
                                 data: {
                                   association_insertion_node: 'tbody#table-body', #挿入先を指定
                                   association_insertion_method: 'after'    #挿入を前にする
@@ -104,7 +104,7 @@
 <div class="text-center">
     <div id='links'>
         <%= link_to_add_association "追加ボタン", f, :steps, #cocoonのカラム追加機能
-            class: 'btn btn-success',
+            class: 'btn list_btn',
             data: {
               association_insertion_node: '#step_form', #挿入先を指定
               association_insertion_method: 'before'    #挿入を前にする

@@ -1,4 +1,4 @@
-<h5 class = "font-weight-bold">mylists</h5>
+<h5 class = "font-weight-bold">マイリスト</h5>
 <div class="table-responsive">
   <table class="table">
     <tr>
@@ -6,7 +6,9 @@
         <td>
           <%= link_to recipe_path(list.recipe) do %>
             <%= list.recipe.recipe_name %></br>
-            <%= image_tag list.recipe.get_image(150, 150) ,class: "shadow mb-5 bg-body round" %>
+            <div class = "recipe-box">
+              <%= image_tag list.recipe.get_image(150, 150) ,class: "shadow mb-5 bg-body round" %>
+            </div>
           <% end %>
         </td>
       <% end %>

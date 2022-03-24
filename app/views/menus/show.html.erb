@@ -1,28 +1,28 @@
 <div class = "one-container p-5">
-  <h3 class = "font-weight-bold text-warning"><%= l @menu.start_time %>の献立</h3>
+  <h1 class ="text"><%= l @menu.start_time %>の献立</h1>
+  <div class ="text-center">
+	  <%= link_to '献立予定に戻る', user_menus_path(current_user), class: 'btn list_btn' %>
+	</div>
   <div class= "row">
-      <div class = "col">
-        <% @menus.each do |menu| %>
-            <div>
-              <h4 class = "font-weight-bold"><%= menu.recipe.recipe_name %>(<%= menu.recipe.man_count %>人分)</h4></br>
-              <%= link_to recipe_path(menu.recipe.id) do %>
-                <%= image_tag menu.recipe.get_image(300, 300) ,class: "shadow p-3 mb-5 bg-body round" %>
-              <% end %>
-            </div>
+    <% @menus.each do |menu| %>
+    <div class= "col-lg-4 col-md-12 mx-auto">
+      <div class = "recipe-box">
+        <%= link_to recipe_path(menu.recipe) do %>
+          <%= image_tag menu.recipe.get_image(400, 400) ,class: "img-link shadow p-1 mb-5 bg-body round" %>
         <% end %>
+        <h4 class ="recipe-title"><i class="fas fa-egg"></i>   <%= menu.recipe.recipe_name %></h4>
       </div>
-      <div class ="col">
-        <h5 class ="font-weight-bold">買い物リスト</h5>
-        <table class = "table table-sm">
-          <thead class="thead-light">
-            <th>材料名</th>
-            <th>分量</th>
-            <th></th>
-            <th></th>
-          </thead>
-          <tbody>
-            <% @foods.each do |food| %>
-            <%# {1=>{"quantity"=>2, "food_name"=>"玉ねぎ", "unit"=>"個"},2=>{"quantity"=>1, "food_name"=>"じゃがいも", "unit"=>"個}}:hash型 %>
+    </div>
+    <% end %>
+  </div>
+  <div class ="row p-5">
+    <div class ="col-6 mx-auto">
+      <h4 class ="recipe-title">買い物リスト</h4>
+      <table class = "table">
+        <tbody>
+          <% @foods.each do |food| %>
+          <%# {1=>{"quantity"=>2, "food_name"=>"玉ねぎ", "unit"=>"個"},2=>{"quantity"=>1, "food_name"=>"じゃがいも", "unit"=>"個}}:hash型 %>
+            <% if food[1]["unit"].present? %>
               <tr>
                 <td><%= food[1]["food_name"] %></td>
                 <td><%= food[1]["quantity"] %></td>
@@ -30,8 +30,28 @@
                 <td><input type="checkbox"></td>
               </tr>
             <% end %>
-          </tbody>
-        </table>
-      </div>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class ="col-4 offset-2 mx-auto">
+      <h4 class ="recipe-title">必須調味料</h4>
+      <table class = "table">
+        <tbody>
+          <% @foods.each do |food| %>
+            <% if food[1]["unit"].present? %>
+            <% else %>
+              <tr>
+                <td><%= food[1]["food_name"] %></td>
+                <td><input type="checkbox"></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class ="row">
+
   </div>
 </div>

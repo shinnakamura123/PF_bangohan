@@ -14,6 +14,7 @@
           <p class="p-top">bangohanは献立サイトになります</br>
               全ての機能を使うには新規登録が必要です
           </p>
+          <div class="scrolldown1"><span>Scroll</span></div>
         <% end %>
       </div>
     </div>
@@ -23,7 +24,7 @@
   <div class ="row p-5">
     <div class = "col-4 mx-auto", id='image-link'>
       <%= link_to new_recipe_path do %>
-        <%= image_tag "kevin-mccutcheon-APDMfLHZiRA-unsplash.jpg", id: 'img-top' %>
+        <%= image_tag "cody-chan-FyerbLWRr2M-unsplash.jpg", id: 'img-top' %>
         <div class="mask">
       		<div class="caption">
               レシピを作成する<i class="fas fa-signature"></i>
@@ -41,32 +42,48 @@
     </div>
     <div class = "col-4 mx-auto", id='image-link'>
       <%= link_to recipes_path do %>
-        <%= image_tag "annie-spratt-f4gQ-dJ0yo8-unsplash.jpg", id: 'img-top' %>
+        <%= image_tag "paulo-doi-6uTQmtqcAzs-unsplash.jpg", id: 'img-top' %>
         <div class="mask">
       		<div class="caption">みんなのレシピを見てみる<i class="fas fa-utensils"></i></div>
       	</div>
       <% end %>
     </div>
   </div>
-  <div class ="row">
-    <div class ="col-md-11 col-lg-11 mx-auto", id= "rank-flame">
-      <div class="card">
-        <%= image_tag "nicholas-green-nPz8akkUmDI-unsplash.jpg", id: 'img-top-rank' %>
-        <div class="card-img-overlay mx-auto d-flex flex-column">
-          <h1 class="card-title-rank font-weight-bold">Ranking</h1>
-          <div class =col-md-12>
-            <%= render 'rank', favorite_ranks: @favorite_ranks, follower_ranks: @follower_ranks, user_recipe: @user_recipe %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class ="row p-5"></div>
-<% else %>
   <div class ="row p-5"></div>
   <div class ="row">
     <div class ="col-8 mx-auto">
-      <%= image_tag "about.png", id: "img-top" %>
+      <h1 class = "p-top text-center">使い方</h1>
+      <%= image_tag "STEP1.png", id: "img-top" %>
+    </div>
+  </div>
+  <div class ="row p-5"></div>
+  <div class ="row">
+    <div class ="col-8 mx-auto">
+      <%= image_tag "STEP2.png", id: "img-top" %>
+    </div>
+  </div>
+  <div class ="row p-5"></div>
+  <div class ="row">
+    <div class ="col-8 mx-auto">
+      <%= image_tag "STEP3.png", id: "img-top" %>
+    </div>
+  </div>
+<% else %>
+  <div class ="row p-5"></div>
+  <div class ="row p-5">
+    <div class = "col-4 mx-auto">
+      <h1 class ="about-title">
+        献立作りが</br>楽しくなる
+      </h1>
+      <p>「毎日違った献立を立てるのは面倒臭い」</br>
+          「何を作ったのか覚えてなくて、気づいたら同じような献立のローテーションになっている」</br>
+          そんな悩みを抱える主婦や一人暮らしの方の役に立ちたいと思いこのサイトを制作しました。</br>
+          このサイトを使えば思わずレシピを書いて共有したくなるはずです。
+      </p>
+      <h4 class ="text-center p-5"><%= link_to "始めてみる", new_user_registration_path, class: "btn list_btn" %></h4>
+    </div>
+    <div class ="col-8 offset-1 p-3 mx-auto">
+      <%= image_tag "jason-briscoe-GliaHAJ3_5A-unsplash.jpg", id: "img-top" %>
     </div>
   </div>
 <% end %>
