@@ -25,9 +25,6 @@
             <%= user.followers.count %>
           <% end %>
         </td>
-        <td>
-          <%= render 'relationships/btn', user: user %>
-        </td>
       </tr>
     <% end %>
     <td><%= paginate users %></td>

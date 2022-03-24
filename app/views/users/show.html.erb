@@ -1,9 +1,9 @@
-<div class='one-container'>
+<div class='one-container p-5'>
+  <h1 class ="text"><%= @user.name %>さん の会員詳細</h1>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h3 class="font-weight-bold"><%= @user.name %> さんの会員詳細</h3>
+    <div class="col-5 offset-2 mx-auto">
       <% if @user == current_user %>
-        <%= link_to "編集する", edit_user_path(@user), class: "btn btn-sm btn-success" %>
+        <%= link_to "編集する", edit_user_path(@user), class: "btn list_btn" %>
       <% end %>
       <table class= "table">
         <tr><td class ="font-weight-bold">アカウント名</td><td><%= @user.name %></td></tr>
@@ -18,14 +18,22 @@
         </tr>
         <tr>
           <td class ="font-weight-bold">フォロワー数</td>
-          <td>
-            <%= link_to followers_user_relationships_path(@user) do %>
-              <%= @user.followers.count %>
-            <% end %>
-          </td>
+          <td id ="relationship_btn"><%= render 'relationships/btn', user: @user %></td>
         </tr>
       </table>
-      <%= link_to "レシピ一覧", recipes_users_path(@user), class: "btn btn-sm btn-success" %> | <%= link_to "いいねしたレシピ一覧", favorites_users_path(@user), class: "btn btn-sm btn-primary" %>
+      <%= link_to favorites_users_path(@user), class: "btn list_btn text-center" do %>
+        <%= @user.name %>さん が</br>いいねしたレシピを見てみる
+      <% end %>
+    </div>
+    <div class= "col-5">
+      <div>
+          <% @user.recipes.where(status: false).first(1).each do |recipe| %>
+              <%= image_tag recipe.get_image(300, 300), class: "shadow p-3 mb-5 bg-body round"%>
+          <% end %>
+          <%= link_to recipes_users_path(@user), class: "btn list_btn" do %>
+            <%= @user.name %>さん のレシピを見てみる
+          <% end %>
+      </div>
     </div>
   </div>
 </div>

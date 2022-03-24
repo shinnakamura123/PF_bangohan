@@ -4,7 +4,7 @@
       <%= link_to recipe_path(list.recipe) do %>
         <%= image_tag list.recipe.get_image(400, 400) ,class: "shadow p-1 mb-5 bg-body round", id: "link" %>
       <% end %>
-      <h4 class ="recipe-title"><%= list.recipe.recipe_name %></h4>
+      <h4 class ="recipe-title"><i class="fas fa-egg"></i>   <%= list.recipe.recipe_name %></h4>
     </div>
     <% end %>
   </div>

@@ -1,14 +1,14 @@
 <div class = "one-container p-5">
     <div class ="row">
-        <div class = "col-2 mx-auto", id = "list_btn">
+        <div class = "col-lg-2 col-md-8 mx-auto", id = "list_btn">
             <%= render 'lists/list_btn', recipe: @recipe %>
         </div>
     </div>
     <div class ="row">
         <div class = "col-6 mx-auto", id='image-link'>
-            <% if user_signed_in? %>
+            <% if @recipe.user == current_user %>
               <%= link_to edit_recipe_path(@recipe) do %>
-                <%= image_tag @recipe.image, id: 'img-top', class: "shadow p-3 mb-5 bg-body round" %>
+                <%= image_tag @recipe.get_image(500, 500), id: 'img-top', class: "shadow p-3 mb-5 bg-body round" %>
                 <div class="mask">
               		<div class="caption">
                       レシピを編集する<i class="fas fa-signature"></i>
@@ -65,7 +65,7 @@
                 <div class="card mb-3" style="max-width: 540px;">
                   <div class="row no-gutters">
                     <div class="col-md-4">
-                        <%= image_tag step.image, id: 'img-top', class: "shadow p-3 mb-5 bg-body round" %>
+                        <%= image_tag step.get_image(300, 300), id: 'img-top', class: "shadow p-3 mb-5 bg-body round" %>
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
@@ -95,7 +95,7 @@
         </div>
     </div>
     <div class ="row", id= "recipe-box">
-        <div class = "col-6 mx-auto">
+        <div class = "col-lg-6 col-md-10 mx-auto">
             <h2 class ="recipe-title">コメント</h2>
             <div id = 'comments'>
                 <table class = "table">

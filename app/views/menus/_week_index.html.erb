@@ -2,8 +2,8 @@
   <%= date.day %>
 
   <% menus.each do |menu| %>
-    <div>
-      <p>
+    <ul>
+      <li>
         <%= link_to user_menu_path(current_user.id, menu.id) do %>
           <%= menu.recipe.recipe_name %></br>
           <div class = "recipe-box">
@@ -11,7 +11,7 @@
           </div>
         <% end %>
         <%= link_to '削除', user_menu_path(current_user.id, menu.id), method: :delete, remote: true, class: 'btn btn-danger btn-sm' %>
-      </p>
-    </div>
+      </li>
+    </ul>
   <% end %>
 <% end %>
