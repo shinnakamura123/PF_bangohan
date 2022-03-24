@@ -1,10 +1,11 @@
-<div class = "three-container p-5">
-    <h1 class="card-title-top font-weight-bold">Recipe editing</h1>
+<div class = "one-container p-5">
+    <h1 class="card-title-top font-weight-bold">レシピ編集</h1>
     <%= render 'layouts/errors', obj:  @recipe %>
     <%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch, local: true do |f| %>
         <%= render 'form', f: f, recipe: @recipe %>
         <div class="text-center">
             <%= f.submit "レシピを更新する", class: "btn btn-success" %>
+            <%= link_to "削除する", recipe_path(@recipe), method: :delete, local: true, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
         </div>
     <% end %>
     <div class ="row p-5"></div>

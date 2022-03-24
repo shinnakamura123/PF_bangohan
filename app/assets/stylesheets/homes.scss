@@ -25,7 +25,7 @@
 	font-size:		130%;
 	text-align: 		center;
 	color:			#fff;
-	font-family: "ヒラギノ角ゴシック";
+	font-family: ヒラギノ明朝 ProN, Hiragino Mincho ProN, sans-serif;
 }
 
 #image-link .mask {
@@ -71,6 +71,8 @@
 }
 /* ↓タブのデザイン↓ */
 .tab {
+  color: #6c6c6c;
+  font-family: ヒラギノ明朝 ProN, Hiragino Mincho ProN, sans-serif;
   width: 100%;
   padding: 10px;
   cursor: pointer;
@@ -101,7 +103,6 @@
 .rank_name{
   font-size: 20px;
   font-family: "ヒラギノ角ゴシック";
-
 }
 
 .card-title-top{
@@ -127,7 +128,7 @@
 
 .p-top{
   animation: SlideIn 4.8s;
-  font-family: "ヒラギノ角ゴシック";
+  font-family: ヒラギノ明朝 ProN, Hiragino Mincho ProN, sans-serif;
 }
 
 @keyframes SlideIn {
@@ -139,10 +140,6 @@
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-.favorite{
-  font-family: "ヒラギノ角ゴシック";
 }
 
 .scrolldown1{
@@ -188,4 +185,13 @@
 		top:50px;
 		opacity: 0;
 	}
+}
+
+.about-title{
+  color: #000;
+  line-height: 1.5;
+  font-feature-settings: "palt";
+  letter-spacing: 0.12em;
+  margin-top: 50px;
+  animation: SlideIn 6.4s;
 }

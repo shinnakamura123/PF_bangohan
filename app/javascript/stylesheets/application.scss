@@ -6,7 +6,7 @@
 }
 
 .nav-item .text-white{
-  font-family: ヒラギノ角ゴシック;
+  font-family: ヒラギノ角ゴシック, sans-serif;
 }
 
 
@@ -19,35 +19,40 @@ body{
 }
 
 .one-container{
-  background-image: url("../images/brooke-lark-wMzx2nBdeng-unsplash.jpg");
+  background-image: url("../../assets/images/23442175_m.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color:rgba(255,255,255,0.7);
-  background-blend-mode:lighten;
-}
-
-.two-container{
-  background-image: url("../images/jessica-lewis-fJXv46LT7Xk-unsplash.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color:rgba(255,255,255,0.7);
-  background-blend-mode:lighten;
-}
-
-.three-container{
-  background-image: url("../images/nrd-D6Tu_L3chLE-unsplash.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color:rgba(255,255,255,0.7);
-  background-blend-mode:lighten;
+  background-color: rgba(255,255,255,0);
+  background-blend-mode: lighten;
 }
 
 #week_index, #month_index{
   background-color: #fff;
+}
+
+body{
+  font-family: ヒラギノ明朝 ProN, Hiragino Mincho ProN, sans-serif;
+  color: #6c6c6c;
+}
+
+#side-bar{
+  position: sticky;
+  text-decoration: none;
+}
+
+.side-text{
+  font-size: 1.0rem;
+  position: fixed;
+  right: 24px;
+  top: 20px;
+  writing-mode: vertical-rl;
+  color: #000;
+  list-style-type: none;
+}
+
+.side-text:hover{
+  text-decoration: none;
+  font-size: 1.1rem;
 }

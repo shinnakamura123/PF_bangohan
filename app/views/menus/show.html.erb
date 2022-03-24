@@ -3,7 +3,7 @@
   <div class= "row">
       <div class = "col">
         <% @menus.each do |menu| %>
-            <div>
+            <div class = "recipe-box">
               <h4 class = "font-weight-bold"><%= menu.recipe.recipe_name %>(<%= menu.recipe.man_count %>人分)</h4></br>
               <%= link_to recipe_path(menu.recipe.id) do %>
                 <%= image_tag menu.recipe.get_image(300, 300) ,class: "shadow p-3 mb-5 bg-body round" %>
