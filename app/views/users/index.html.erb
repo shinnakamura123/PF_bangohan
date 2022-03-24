@@ -1,10 +1,7 @@
-<div class='three-container p-5'>
+<div class='one-container p-5'>
+  <h1 class ="text">会員一覧</h1>
   <div class='row'>
     <div class = "mx-auto", style="width: 75%;">
-      <div class ="row">
-        <h3 class="font-weight-bold">会員一覧</h3>
-        <p class="p-2">(全<%= @users.count %>名）<p>
-      </div>
       <%= render 'index', users: @users %>
     </div>
   </div>

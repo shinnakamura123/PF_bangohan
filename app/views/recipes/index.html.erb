@@ -1,41 +1,64 @@
+<script>
+$(function() {
+    $('.tab').click(function(){
+        $('.tab-active').removeClass('tab-active');
+        $(this).addClass('tab-active');
+        $('.box-show').removeClass('box-show');
+        const index = $(this).index();
+        $('.tabbox').eq(index).addClass('box-show');
+    });
+});
+</script>
 <div class ="one-container p-5">
   <div class ="row">
-    <div class ="col-md-11 col-sm-11 col-xs-11 offset-md-1">
-      <div class="row ml-3">
-        <h3 class="font-weight-bold">レシピ一覧</h3>
-        <p class="p-2">(全<%= @recipes.total_count %>件）<p>
-        <% if user_signed_in? %>
-          <div><%= link_to 'マイリスト一覧', user_lists_path(current_user), class: 'btn btn-success' %></div>
-        <% end %>
-      </div>
-      <%= form_tag recipes_path, method: :get do %>
-      <%= text_field_tag :search, params[:search],:placeholder => "レシピ名で検索" %>
-          <%= button_tag type: 'submit', class: 'btn btn-warning btn-sm' do %>
-            <i class="fas fa-search"></i>
+    <div class ="col-md-12 col-sm-12 col-xs-12">
+      <ul class="tab-list">
+        <p class="tab box-active">レシピ一覧</p>
+        <p class="tab">ランキング</p>
+      </ul>
+      <div class="tabbox-contents">
+        <div class="tabbox box-show">
+          <div class="row ml-3">
+            <h1 class ="text">レシピ一覧</h1>
+          </div>
+          <% if user_signed_in? %>
+            <div class ="row p-2"><%= link_to 'マイリスト一覧', user_lists_path(current_user), class: 'btn list_btn' %></div>
           <% end %>
-      <% end %>
-      <%= form_tag recipes_path, method: :get, class: 'boards__searchForm' do %>
-        <%= select_tag :tag_id,
-           options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
-           {
-             prompt: 'タグで絞り込み検索',
-             onchange: 'submit(this.form);'
-           }
-        %>
-      <% end %>
-      <%= form_tag recipes_path, method: :get, class: 'boards__searchForm' do %>
-        <%= select_tag :food_id,
-           options_from_collection_for_select(Food.all, :id, :food_name, params[:food_id]),
-           {
-             prompt: '材料名で絞り込み検索',
-             onchange: 'submit(this.form);'
-           }
-        %>
-      <% end %>
-      <%= render 'index', recipes: @recipes %>
-    <div class="offset-md-5 mt-5">
-      <%= paginate @recipes, theme: 'twitter-bootstrap-4' %>
+          <%= form_tag recipes_path, method: :get do %>
+          <%= text_field_tag :search, params[:search],:placeholder => "レシピ名で検索" %>
+              <%= button_tag type: 'submit', class: 'btn btn-warning btn-sm' do %>
+                <i class="fas fa-search"></i>
+              <% end %>
+          <% end %>
+          <%= form_tag recipes_path, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :tag_id,
+               options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
+               {
+                 prompt: 'タグで絞り込み検索',
+                 onchange: 'submit(this.form);'
+               }
+            %>
+          <% end %>
+          <%= form_tag recipes_path, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :food_id,
+               options_from_collection_for_select(Food.all, :id, :food_name, params[:food_id]),
+               {
+                 prompt: '材料名で絞り込み検索',
+                 onchange: 'submit(this.form);'
+               }
+            %>
+          <% end %>
+          <%= render 'index', recipes: @recipes %>
+        <div class="offset-md-5 mt-5">
+          <%= paginate @recipes, theme: 'twitter-bootstrap-4' %>
+        </div>
+      </div>
+    <div class="tabbox">
+    <div class="row ml-3">
+      <h1 class="text">ランキング</h1>
     </div>
-  </div>
+    <div class =col-md-12>
+      <%= render 'rank', favorite_ranks: @favorite_ranks, follower_ranks: @follower_ranks, user_recipe: @user_recipe %>
+    </div>
   <div class = "row p-5"></div>
 </div>

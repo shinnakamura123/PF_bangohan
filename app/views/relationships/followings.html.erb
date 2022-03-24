@@ -1,9 +1,9 @@
 <% if @users.exists? %>
-  <div class='three-container p-5'>
+  <div class='one-container p-5'>
     <div class='row'>
       <div class = "mx-auto", style="width: 75%;">
         <div class ="row">
-          <h3 class="font-weight-bold">フォロー一覧</h3>
+          <h3 class="font-weight-bold"><%= @user.name %>さん のフォロー一覧</h3>
           <p class="p-2">(全<%= @user.followings.count %>名）<p>
         </div>
         <%= render 'users/index', users: @users %>

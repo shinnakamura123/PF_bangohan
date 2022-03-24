@@ -1,0 +1,45 @@
+<div class ="rank">
+  <h4 class ="rank-title"><i class="fas fa-crown"></i>いいね数</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <tr>
+      <% favorite_ranks.each.with_index(1) do |recipe, i| %>
+        <td>
+          <div class = "recipe-box">
+            <%= link_to recipe_path(recipe) do %>
+              <%= image_tag recipe.get_image(400, 400) ,class: "shadow p-3 mb-5 bg-body round", id: "link" %>
+            <% end %>
+            <h4 class ="recipe-title">第<%= i %>位:      <%= recipe.recipe_name %></h4>
+            <h4 class ="recipe-title"><i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= recipe.favorites.count %> いいね</h4>
+          </div>
+        </td>
+      <% end %>
+    </table>
+  </div>
+  <h4 class ="rank-title"><i class="fas fa-crown"></i>フォロワー数</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <tr>
+      <% follower_ranks.each.with_index(1) do |user, i| %>
+        <td>
+          <div class = "recipe-box">
+            <%= link_to recipes_users_path(user) do %>
+              <% user.recipes.where(status: false).first(1).each do |recipe| %>
+                  <%= image_tag recipe.get_image(400, 400), class: "shadow p-3 mb-5 bg-body round", id: "link"%>
+              <% end %>
+            <% end %>
+            <h4 class ="recipe-title">
+              第<%= i %>位:
+              <%= link_to user_path(user) do %>
+                      <%= user.name %>
+              <% end %>さん</br>
+            </h4>
+            <h4 class ="recipe-title">フォロワー数:<%= user.followers.count %>人</h4>
+          </div>
+        </td>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
