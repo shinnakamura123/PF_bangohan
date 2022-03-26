@@ -1,0 +1,8 @@
+<% foods.each do |food| %>
+  <tr>
+    <td><%= food.food_name %></td>
+    <td><%= food.unit %></td>
+    <td><%= link_to '削除', food_path(food), method: :delete, remote: true, class: 'btn btn-danger' %></td>
+  </tr>
+<% end %>
+<td><%= paginate foods %></td>

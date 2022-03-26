@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
-  get '/search' => 'searches#search'
-
   resources :users, only:[:index,:show, :edit, :update]do
     collection do
       get '/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
@@ -31,10 +29,8 @@ Rails.application.routes.draw do
   resources :recipes do
     resource :favorites, only:[:create, :destroy]
     resources :comments, only:[:index, :create, :destroy]
-    resources :steps, only:[:create, :destroy]
   end
 
-  resources :recipe_foods, only:[:create, :destroy]
   resources :foods, only:[:index, :create, :destroy]
 
 

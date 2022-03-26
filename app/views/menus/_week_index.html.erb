@@ -2,16 +2,12 @@
   <%= date.day %>
 
   <% menus.each do |menu| %>
-    <ul>
-      <li>
-        <%= link_to user_menu_path(current_user.id, menu.id) do %>
-          <%= menu.recipe.recipe_name %></br>
-          <div class = "recipe-box">
-            <%= image_tag menu.recipe.get_image(100, 100) %>
-          </div>
-        <% end %>
-        <%= link_to '削除', user_menu_path(current_user.id, menu.id), method: :delete, remote: true, class: 'btn btn-danger btn-sm' %>
-      </li>
-    </ul>
+    <div>
+      <%= link_to user_menu_path(current_user.id, menu.id) do %>
+        <%= menu.recipe.recipe_name %></br>
+        <%= image_tag menu.recipe.get_image(100, 100) %>
+      <% end %>
+      <%= link_to '削除', user_menu_path(current_user.id, menu.id), method: :delete, remote: true, class: 'btn btn-danger btn-sm' %>
+    </div>
   <% end %>
 <% end %>

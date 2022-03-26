@@ -1,6 +1,6 @@
 <tr class = "nested-fields">
   <td>
-    <%= f.collection_select :food_id, Food.all, :id, :food_name, {prompt: "材料名を選んでください"} %>
+    <%= f.collection_select :food_id, Food.all.order(:unit), :id, :food_name, {prompt: "材料名を選んでください"} %>
   </td>
   <td>
     <%= f.text_field :quantity, size: '10'%>

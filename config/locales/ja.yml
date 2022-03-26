@@ -191,8 +191,8 @@ ja:
       already_signed_out: 既にログアウト済みです。
       new:
         sign_in: ログイン
-      signed_in: welcome!
-      signed_out: bye!
+      signed_in: ログインしました。
+      signed_out: またのご利用お待ちしております。
     shared:
       links:
         back: 戻る

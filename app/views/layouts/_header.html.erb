@@ -2,6 +2,11 @@
     <nav class="navbar navbar-light">
       <div class = "container">
         <a class="navbar-brand p-3 "href="/"><%= image_tag asset_path('bangohan.png'),size: "200x80" %></a>
+        <div>
+          <% if user_signed_in? %>
+            ようこそ、<%= current_user.name %>さん。
+          <% end %>
+        </div>
         <div style= "color: green;"><%= flash[:notice] %></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
