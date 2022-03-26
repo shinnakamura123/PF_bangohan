@@ -9,7 +9,7 @@
       <% end %>
       <%= form_tag recipes_users_path(@user), method: :get do %>
       <%= text_field_tag :search, params[:search],:placeholder => "レシピ名で検索" %>
-          <%= button_tag type: 'submit', class: 'btn btn-warning' do %>
+          <%= button_tag type: 'submit', class: 'btn btn-light btn-sm' do %>
             <i class="fas fa-search"></i>
           <% end %>
       <% end %>

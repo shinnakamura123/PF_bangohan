@@ -1,30 +1,47 @@
 <div class= "row h-500">
-  <div class ="col-md-11 col-lg-11 mx-auto">
+  <div class ="col-md-10 col-lg-10 mx-auto">
     <div class="card text-light">
-      <%= video_tag("Pot-267.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
-      <div class="card-img-overlay mx-auto d-flex align-items-center justify-content-center flex-column">
+      <%#= video_tag("Pot-267.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
+
         <% if user_signed_in? %>
-          <h1><%= link_to "Welcome to bangohan!", home_about_path, class: "link" %></h1>
-          <p class="p-top">レシピを共有してみませんか？</br>
-              きっと楽しい体験が待っているはずです</br>
-          </p>
-          <div class="scrolldown1"><span>Scroll</span></div>
+          <%= image_tag "jinomono-media-5DsTEP06774-unsplash.jpg", id: 'top-main'%>
+          <div class="card-img-overlay mx-auto d-flex align-items-center justify-content-center flex-column">
+            <h1><%= link_to "ようこそ、彩の食卓へ。", home_about_path, class: "link" %></h1>
+            <p class="p-top">レシピを共有してみませんか？</br>
+                きっと楽しい体験が待っているはずです</br>
+            </p>
+            <div class="scrolldown1"><span>Scroll</span></div>
+          </div>
         <% else %>
-          <h1><%= link_to "Let's get started", new_user_registration_path, class: "link" %></h1>
-          <p class="p-top">bangohanは献立サイトになります</br>
-              全ての機能を使うには新規登録が必要です
-          </p>
+          <%= image_tag "dominik-martin-JYFmYif4n70-unsplash.jpg", id: 'top-main'%>
+          <div class="card-img-overlay mx-auto d-flex align-items-center justify-content-center flex-column">
+            <h1><%= link_to "ようこそ、彩の食卓へ。", new_user_registration_path, class: "link" %></h1>
+            <p class="p-top">彩の食卓は献立サイトになります</br>
+                全ての機能を使うには新規登録が必要です
+            </p>
+          </div>
           <div class="scrolldown1"><span>Scroll</span></div>
         <% end %>
-      </div>
     </div>
   </div>
 </div>
 <% if user_signed_in? %>
   <div class ="row p-5">
-    <div class = "col-4 mx-auto", id='image-link'>
+    <div class = "col-lg-6 col-md-12 mx-auto">
+      <h1 class ="about-title", id ="top-content">
+        食事の支度がスムーズに。
+      </h1>
+      <p>献立が立ててあると、毎日の「今日のご飯、何にしよう」がなくなります。</br>
+          帰りが遅くなったときや疲れが溜まっているときは、</br>
+          食事内容を考えることさえ大きなストレスになりますよね。</br>
+          1週間分の献立が立ててあれば、料理初心者の方でも心に余裕ができます。</br>
+          さらに、あらかじめ材料をまとめ買いしておけばよりスムーズですね。</br>
+          自然と外食することが減り、家計の節約にも繋がります。
+      </p>
+    </div>
+    <div class ="col-lg-5 col-md-12 offset-1 p-3 mx-auto", id= 'image-link'>
       <%= link_to new_recipe_path do %>
-        <%= image_tag "cody-chan-FyerbLWRr2M-unsplash.jpg", id: 'img-top' %>
+        <%= image_tag "todd-quackenbush-x5SRhkFajrA-unsplash.jpg", id: 'img-top'%>
         <div class="mask">
       		<div class="caption">
               レシピを作成する<i class="fas fa-signature"></i>
@@ -32,46 +49,64 @@
       	</div>
       <% end %>
     </div>
-    <div class = "col-4 mx-auto", id='image-link'>
+  </div>
+  <div class ="row p-2">
+    <div class = "col-lg-5 col-md-12 mx-auto", id= 'image-link'>
       <%= link_to user_menus_path(current_user.id) do %>
-        <%= image_tag "behnam-norouzi-hDuNk0ubnAw-unsplash.jpg", id: 'img-top' %>
+        <%= image_tag "luba-ertel-TdPGSnFBFtM-unsplash.jpg", id: 'img-top'%>
         <div class="mask">
-      		<div class="caption">献立の予定を立てる<i class="fas fa-calendar"></i></div>
+      		<div class="caption">
+              献立の予定を立てる<i class="fas fa-calendar"></i>
+      		</div>
       	</div>
       <% end %>
     </div>
-    <div class = "col-4 mx-auto", id='image-link'>
+    <div class ="col-lg-5 col-md-12 offset-1 p-3 mx-auto">
+      <h1 class ="about-title", id ="top-content">
+        食品ロスが減る
+      </h1>
+      <p>食品ロスが減ることも、献立を立てるメリットのひとつ。</br>
+          例えば、</br>
+          月曜日はロールキャベツ、火曜日はとんかつに添える千切りキャベツと、</br>
+          一つの食材を簡単に無駄なく使い切ることができるのです。</br>
+          買い物をしながら献立を考えると、ムダ買いをしてしまいがち。</br>
+          買いすぎた食品は使い切れず、腐らせてしまう原因にもなります。</br>
+          食費を節約したい方はもちろん、冷蔵庫が小さい一人暮らしさんは、</br>
+          献立を立てて食品を丁寧に使うよう心がけてみてください。
+      </p>
+    </div>
+  </div>
+  <div class ="row p-5">
+    <div class = "col-lg-5 col-md-12 mx-auto">
+      <h1 class ="about-title", id ="top-content">
+        栄養バランスを</br>　　考えるきっかけに。
+      </h1>
+      <p>「気付いたら1週間に4日も麺類を食べていた」</br>
+          なんてことはありませんか。</br>
+          直感で決める食事は、好みに偏りやすく栄養バランスが崩れがち。</br>
+          この状態を続けていては、健康にも良くありません。</br>
+          一方、1週間分の献立を立てると、</br>
+          7日間の食事バランスを簡単に見渡すことができます。</br>
+          「この日に麺類を食べるから、次の日は野菜を多めにしよう」など、</br>
+          自然と栄養バランスへの配慮がしやすくなりますね。</br>
+          好きなものばかり食べてしまう一人暮らしさんにもおすすめです。</br>
+      </p>
+    </div>
+    <div class ="col-lg-5 col-md-12 offset-1 p-3 mx-auto", id= 'image-link'>
       <%= link_to recipes_path do %>
-        <%= image_tag "paulo-doi-6uTQmtqcAzs-unsplash.jpg", id: 'img-top' %>
+        <%= image_tag "tomoyo-s-AAptGeIAPMU-unsplash", id: 'img-top'%>
         <div class="mask">
-      		<div class="caption">みんなのレシピを見てみる<i class="fas fa-utensils"></i></div>
+      		<div class="caption">
+              みんなのレシピを見てみる<i class="fas fa-utensils"></i>
+      		</div>
       	</div>
       <% end %>
-    </div>
-  </div>
-  <div class ="row p-5"></div>
-  <div class ="row">
-    <div class ="col-8 mx-auto">
-      <h1 class = "p-top text-center">使い方</h1>
-      <%= image_tag "STEP1.png", id: "img-top" %>
-    </div>
-  </div>
-  <div class ="row p-5"></div>
-  <div class ="row">
-    <div class ="col-8 mx-auto">
-      <%= image_tag "STEP2.png", id: "img-top" %>
-    </div>
-  </div>
-  <div class ="row p-5"></div>
-  <div class ="row">
-    <div class ="col-8 mx-auto">
-      <%= image_tag "STEP3.png", id: "img-top" %>
     </div>
   </div>
 <% else %>
   <div class ="row p-5"></div>
   <div class ="row p-5">
-    <div class = "col-4 mx-auto">
+    <div class = "col-lg-4 col-md-12 mx-auto">
       <h1 class ="about-title">
         献立作りが</br>楽しくなる
       </h1>
@@ -82,8 +117,8 @@
       </p>
       <h4 class ="text-center p-5"><%= link_to "始めてみる", new_user_registration_path, class: "btn list_btn" %></h4>
     </div>
-    <div class ="col-8 offset-1 p-3 mx-auto">
-      <%= image_tag "jason-briscoe-GliaHAJ3_5A-unsplash.jpg", id: "img-top" %>
+    <div class ="col-lg-8 col-md-12 offset-1 p-3 mx-auto">
+      <%= image_tag "henry-co-7buCxcpXHsg-unsplash.jpg", id: "img-top" %>
     </div>
   </div>
 <% end %>

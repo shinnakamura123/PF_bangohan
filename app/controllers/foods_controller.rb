@@ -1,14 +1,14 @@
 class FoodsController < ApplicationController
 
   def index
-    @foods = Food.page(params[:page]).per(10)
+    @foods = Food.page(params[:page]).per(10).order(:unit)
     @food = Food.new
   end
 
   def create
     @food = Food.new(food_params)
     if @food.save
-      redirect_to request.referer, notice: 'Successful food registration!'
+      @foods = Food.page(params[:page]).per(10)
     else
       @foods = Food.page(params[:page]).per(10)
       render 'index'
@@ -17,8 +17,8 @@ class FoodsController < ApplicationController
 
   def destroy
     @food = Food.find(params[:id])
+    @foods = Food.page(params[:page]).per(10)
     @food.destroy
-    redirect_to request.referer, notice: 'Successfully deleted food!'
   end
 
   private

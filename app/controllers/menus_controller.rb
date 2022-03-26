@@ -15,7 +15,6 @@ class MenusController < ApplicationController
     @menu.user_id = current_user.id
     @menus = Menu.where(user_id: current_user.id)
     if @menu.save
-      flash[:notice] = "Successful menu registration!"
     else
       render path = Rails.application.routes.recognize_path(request.referer)
     end
@@ -24,7 +23,6 @@ class MenusController < ApplicationController
   def destroy
     @menu = Menu.find(params[:id])
     @menu.destroy
-    flash[:notice] = "Successful removal from menu"
     @menus = Menu.where(user_id: current_user.id)
   end
 
