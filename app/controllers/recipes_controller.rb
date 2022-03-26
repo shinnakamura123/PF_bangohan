@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes = Recipe.page(params[:page]).per(6).where(status: false).search(params[:search], params[:tag_id], params[:food_id])
+    @recipes = Recipe.page(params[:page]).per(6).where(status: false).search(params[:search], params[:tag_id], params[:food_id]).order(created_at: :desc)
     @tags = Tag.all
     @favorite_ranks = Recipe.find(Favorite.group(:recipe_id).order('count(recipe_id) desc').limit(10).pluck(:recipe_id))
     @follower_ranks = User.find(Relationship.group(:followed_id).order('count(followed_id) desc').limit(10).pluck(:followed_id))
@@ -19,9 +19,8 @@ class RecipesController < ApplicationController
     if @recipe.save
       @list= @user.lists.new(recipe_id: @recipe.id)
       @list.save
-      redirect_to recipe_path(@recipe), notice: 'Recipe registration was successfull!'
+      redirect_to recipe_path(@recipe), notice: 'レシピを登録しました。'
     else
-      flash.now[:alert] = 'Recipe registration failed'
       render 'new'
     end
   end
@@ -50,7 +49,7 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe), notice: 'The recipe has been updated successfully!'
+      redirect_to recipe_path(@recipe), notice: 'レシピが更新されました。'
     else
       render 'edit'
     end

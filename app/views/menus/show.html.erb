@@ -10,7 +10,7 @@
         <%= link_to recipe_path(menu.recipe) do %>
           <%= image_tag menu.recipe.get_image(400, 400) ,class: "img-link shadow p-1 mb-5 bg-body round" %>
         <% end %>
-        <h4 class ="recipe-title"><i class="fas fa-egg"></i>   <%= menu.recipe.recipe_name %></h4>
+        <h4 class ="recipe-title"><i class="fas fa-egg"></i>   <%= menu.recipe.recipe_name %>(<%= menu.recipe.man_count %>人分)</h4>
       </div>
     </div>
     <% end %>
