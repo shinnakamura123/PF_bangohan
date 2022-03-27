@@ -1,3 +1,11 @@
 $('#foods').html("<%= j(render "foods/foods", foods: @foods) %>");
+$('#food_errors').html("<%= j(render "layouts/errors", obj: @food) %>");
+
+<% if @food.food_name.blank? %>
+  $('#list_flash').html("<%= j(render "layouts/not") %>");
+<% else %>
+  $('#list_flash').html("<%= j(render "layouts/notice_flash") %>");
+<% end %>
+
 $('.food_name').val("");
 $('.food_unit').val("");
