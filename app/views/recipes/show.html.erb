@@ -1,22 +1,22 @@
-<div class = "one-container p-5">
+<div class = "main-container p-5">
     <div class ="row">
-        <div class = "col-lg-2 col-md-8 mx-auto", id = "list_btn">
+        <div class = "col-lg-2 col-md-8 mx-auto", id = "application__generic--btn">
             <%= render 'lists/list_btn', recipe: @recipe %>
         </div>
     </div>
     <div class ="row">
-        <div class = "col-6 mx-auto", id='image-link'>
+        <div class = "col-6 mx-auto", id='recipe__top--link'>
             <% if @recipe.user == current_user %>
               <%= link_to edit_recipe_path(@recipe) do %>
-                <%= image_tag @recipe.get_image(500, 500), id: 'img-top', class: "shadow p-3 mb-5 bg-body round" %>
-                <div class="mask">
-              		<div class="caption">
+                <%= image_tag @recipe.get_image(500, 500), id: 'recipe__top--img', class: "shadow p-3 mb-5 bg-body round" %>
+                <div class="recipe__top--mask">
+              		<div class="recipe__top--caption">
                       レシピを編集する<i class="fas fa-signature"></i>
               		</div>
               	</div>
               <% end %>
             <% else %>
-                <%= image_tag @recipe.image, id: 'img-top', class: "shadow p-3 mb-5 bg-body round" %>
+                <%= image_tag @recipe.image, id: 'recipe__top--img', class: "shadow p-3 mb-5 bg-body round" %>
             <% end %>
         </div>
     </div>
@@ -29,12 +29,12 @@
     </div>
     <div class ="row">
         <div class = "col-6 mx-auto">
-            <h1 class ="font-recipe"><%= @recipe.recipe_name %></h1>
+            <h1 class ="recipe__show--title"><%= @recipe.recipe_name %></h1>
         </div>
     </div>
     <div class ="row">
         <div class = "col-8 mx-auto">
-            <p class ="point-text">
+            <p class ="recipe__body--text">
                 <%= @recipe.point %>
                 by:
                 <%= link_to user_path(@recipe.user) do %>
@@ -43,12 +43,12 @@
             </p>
         </div>
     </div>
-    <div class ="row", id= "recipe-box">
+    <div class ="row", id= "recipe__body--box">
         <div class = "col-6 mx-auto">
-            <h2 class ="recipe-title">材料・調味料(<%= @recipe.man_count %>人分)</h2>
+            <h2 class ="recipe__body--title">材料・調味料(<%= @recipe.man_count %>人分)</h2>
             <table>
                 <% @recipe.recipe_foods.each do |recipe_food| %>
-                    <tr class ="recipe-title">
+                    <tr class ="recipe__body--title">
                         <td><%= recipe_food.food.food_name %></td>
                         <td>　　　</td>
                         <td><%= recipe_food.quantity %></td>
@@ -58,18 +58,18 @@
             </table>
         </div>
     </div>
-    <div class ="row", id= "recipe-box">
+    <div class ="row", id= "recipe__body--box">
         <div class = "col-6 mx-auto">
-            <h2 class ="recipe-title">つくりかた</h2>
+            <h2 class ="recipe__body--title">つくりかた</h2>
             <% @recipe.steps.each do |step| %>
                 <div class="card mb-3" style="max-width: 540px;">
                   <div class="row no-gutters">
                     <div class="col-md-4">
-                        <%= image_tag step.get_image(300, 300), id: 'img-top', class: "shadow p-3 mb-5 bg-body round" %>
+                        <%= image_tag step.get_image(300, 300), id: 'recipe__top--img', class: "shadow p-3 mb-5 bg-body round" %>
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
-                        <p class ="recipe-title"><%= step.method %></p>
+                        <p class ="recipe__body--title"><%= step.method %></p>
                       </div>
                     </div>
                   </div>
@@ -77,15 +77,15 @@
             <% end %>
         </div>
     </div>
-    <div class ="row", id= "recipe-box">
+    <div class ="row", id= "recipe__body--box">
         <div class = "col-6 mx-auto">
-            <h2 class ="recipe-title">レシピの生い立ち</h2>
-            <p class ="point-text"><%= @recipe.background %></p>
+            <h2 class ="recipe__body--title">レシピの生い立ち</h2>
+            <p class ="recipe__body--text"><%= @recipe.background %></p>
         </div>
     </div>
-    <div class ="row", id= "recipe-box">
+    <div class ="row", id= "recipe__body--box">
         <div class = "col-6 mx-auto">
-            <p class ="recipe-title">Hashtag
+            <p class ="recipe__body--title">Hashtag
                 <% @recipe.tags.each do |tag| %>
                     <%= link_to recipes_path(tag_id: tag.id) do %>
                         <%= tag.tag_name %>
@@ -94,9 +94,9 @@
             </p>
         </div>
     </div>
-    <div class ="row", id= "recipe-box">
+    <div class ="row", id= "recipe__body--box">
         <div class = "col-lg-6 col-md-10 mx-auto">
-            <h2 class ="recipe-title">コメント</h2>
+            <h2 class ="recipe__body--title">コメント</h2>
             <div id = 'comments'>
                 <table class = "table">
                     <%= render 'comments/comments', recipe: @recipe, comments: @comments %>

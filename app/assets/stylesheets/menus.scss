@@ -1,3 +1,34 @@
 // Place all the styles related to the menus controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+#week_index, #month_index{
+  background-color: #fff;
+}
+
+.menu__top--title{ //text
+  border-bottom: 1px solid #dcdcdc;
+  margin-bottom: 50px;
+  animation: SlideIn 4.8s;
+}
+
+.menu__body--box{ //recipe-box
+  margin: 20px;
+  transition-duration: 0.5s;
+}
+
+.menu__body--box img{
+  cursor: pointer;
+}
+
+.menu__body--box:hover img{
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  transform: translateY(-10px);
+  transition-duration: 0.5s;
+}
+
+.menu__body--title{ //recipe-title
+  border-bottom: 1px solid #dcdcdc;
+  margin-bottom: 50px;
+  color: #6c6c6c;
+}

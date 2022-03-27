@@ -2,159 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
-
-.info{
-  font-family: "ヒラギノ角ゴシック";
-  opacity: 0.7;
-  background-color:rgba(255,215,0,0.5);
-}
-
-#image-link {
-	width:			500px;
-	overflow:		hidden;
-	margin:			10px 8px 10px 16px;
-	position:		relative;
-}
-
-#image-link-rank {
-	overflow:		hidden;
-}
-
-#image-link .caption {
-	font-size:		130%;
-	text-align: 		center;
-	color:			#fff;
-	font-family: ヒラギノ明朝 ProN, Hiragino Mincho ProN, sans-serif;
-}
-
-#image-link .mask {
-	width:			100%;
-	height:			100%;
-	position:		absolute;
-	top:			0;
-	left:			0;
-	opacity:		0;
-	background-color:	rgba(0,0,0,0.3);
-	-webkit-transition:	all 0.6s ease;
-	transition:		all 0.6s ease;
-}
-
-#image-link:hover .mask {
-	opacity:		1;
-	padding-top:		80px;
-}
-
-#img-top{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#img-top-rank{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.2;
-}
-
-.video-content{
-  width: 100%;
-  height: 80%;
-  object-fit: cover;
-}
-#top-main{
+#home__top--img{ //top-main
   width: 100%;
   height: 80%;
   object-fit: cover;
 }
 
-.tab-list {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-}
-/* ↓タブのデザイン↓ */
-.tab {
-  color: #6c6c6c;
-  font-family: ヒラギノ明朝 ProN, Hiragino Mincho ProN, sans-serif;
-  width: 100%;
-  padding: 10px;
-  cursor: pointer;
-  border-left: solid 1px #CCC;
-  border-bottom: solid 1px #CCC;
-}
-.tab:first-child {
-  border-left: none;
-}
-/* ↓タブがアクティブになっている時のデザイン↓ */
-.tab-active {
-  color: #fff;
-  background: #343a40;
-  transition: all 0.2s ease-in-out;
-}
-/* ↓タブの中身↓ */
-.tabbox {
-  /* ↓タブの中身を最初は非表示↓ */
-  display: none;
-  /* ↓タブの中身の余白↓ */
-  padding: 15px;
-}
-/* ↓このクラスがついている時だけタブの中身を表示↓ */
-.box-show {
-  display: block;
-}
-
-.rank_name{
-  font-size: 20px;
-  font-family: "ヒラギノ角ゴシック";
-}
-
-.card-title-top{
-  animation: SlideIn 4.8s;
-}
-
-.card-title-rank{
-  color: #000;
-}
-
-
-.link{
+.home__top--link{ //link
   animation: SlideIn 4.8s;
   color: #fff;
   font-size: 40px;
 }
 
-.link:hover{
+.home__top--link:hover{ //link:hover
   text-decoration: none;
   color: #fff;
   font-size: 45px;
 }
 
-.p-top{
+.home__top--center{ //p-top
   animation: SlideIn 4.8s;
   font-family: ヒラギノ明朝 ProN, Hiragino Mincho ProN, sans-serif;
 }
 
-@keyframes SlideIn {
-  0% {
-    opacity: 0;/*初期状態では透明に*/
-    transform: translateX(64px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.scrolldown1{
+.home__top--scrolldown{ //scrolldown1
 	position: absolute;
 	left: 50%;
 	bottom: 10px;
 	height: 100px;
 }
 
-.scrolldown1 span{
+.home__top--scrolldown span{
 	position: absolute;
 	left: -15px;
 	top: -15px;
@@ -164,7 +42,7 @@
 }
 
 //動く線をafterで追加する
-.scrolldown1::after{
+.home__top--scrolldown::after{
 	content: "";
 	position: absolute;
 	top: 0;
@@ -192,16 +70,91 @@
 	}
 }
 
-.about-title{
+.home__body--title{ //about-title
   color: #000;
   line-height: 1.5;
   font-feature-settings: "palt";
   letter-spacing: 0.12em;
   margin-top: 50px;
   animation: SlideIn 6.4s;
-}
-
-#top-content{
   background-color: #f5f5f5;
   border-bottom: 1px solid #dcdcdc;
 }
+
+//top-content{
+//   bacground-color: #f5f5f5;
+//   border-bottom: 1px solid #dcdcdc;
+// }
+
+#home__body--link{ //image-link
+	width:			500px;
+	overflow:		hidden;
+	margin:			10px 8px 10px 16px;
+	position:		relative;
+}
+
+#home__body--link .home__body--caption {
+	font-size:		130%;
+	text-align: 		center;
+	color:			#fff;
+	font-family: ヒラギノ明朝 ProN, Hiragino Mincho ProN, sans-serif;
+}
+
+#home__body--link .home__body--mask {
+	width:			100%;
+	height:			100%;
+	position:		absolute;
+	top:			0;
+	left:			0;
+	opacity:		0;
+	background-color:	rgba(0,0,0,0.3);
+	-webkit-transition:	all 0.6s ease;
+	transition:		all 0.6s ease;
+}
+
+#home__body--link:hover .home__body--mask {
+	opacity:		1;
+	padding-top:		80px;
+}
+
+#home__body--img{ //img-top
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#about__top--img{ //img-top
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about__top--title{ //text
+  border-bottom: 1px solid #dcdcdc;
+  margin-bottom: 50px;
+  animation: SlideIn 4.8s;
+}
+
+.about__body--title{ //recipe-title
+  border-bottom: 1px solid #dcdcdc;
+  margin-bottom: 50px;
+  color: #6c6c6c;
+}
+
+#about__body--img{ //img-top
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+

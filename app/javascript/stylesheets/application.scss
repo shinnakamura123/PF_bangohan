@@ -12,13 +12,15 @@
 
 body{
   padding-bottom: 100px;
+  font-family: ヒラギノ明朝 ProN, Hiragino Mincho ProN, sans-serif;
+  color: #6c6c6c;
 }
 
 #footer{
   margin-top: auto;
 }
 
-.one-container{
+.main-container{
   background-image: url("../../assets/images/23442175_m.jpg");
   background-position: center center;
   background-repeat: no-repeat;
@@ -28,14 +30,41 @@ body{
   background-blend-mode: lighten;
 }
 
-#week_index, #month_index{
-  background-color: #fff;
+.application__generic--btn{ //list_btn
+  border-radius: 0;
+  text-decoration: none;
+  position: relative;
 }
 
-body{
-  font-family: ヒラギノ明朝 ProN, Hiragino Mincho ProN, sans-serif;
-  color: #6c6c6c;
+.application__generic--btn:before,
+.application__generic--btn:after{
+  position: absolute;
+
+  width: 100%;
+  height: 0.5px;
+
+  content: '';
+  -webkit-transition: all .3s;
+  transition: all .3s;
+
+  background: #000;
 }
+
+.application__generic--btn:before {
+  top: 0;
+  left: 0;
+}
+
+.application__generic--btn:after {
+  right: 0;
+  bottom: 0;
+}
+
+.application__generic--btn:hover:before,
+.application__generic--btn:hover:after {
+  width: 0;
+}
+
 
 #side-bar{
   position: sticky;

@@ -9,7 +9,7 @@ $(function() {
     });
 });
 </script>
-<div class ="one-container p-5">
+<div class ="main-container p-5">
   <div class ="row">
     <div class ="col-md-12 col-sm-12 col-xs-12">
       <ul class="tab-list">
@@ -19,10 +19,10 @@ $(function() {
       <div class="tabbox-contents">
         <div class="tabbox box-show">
           <div class="row ml-3">
-            <h1 class ="text">レシピ一覧</h1>
+            <h1 class ="recipe__top--title">レシピ一覧</h1>
           </div>
           <% if user_signed_in? %>
-            <div class ="row p-2"><%= link_to 'マイリスト一覧', user_lists_path(current_user), class: 'btn list_btn' %></div>
+            <div class ="row p-2"><%= link_to 'マイリスト一覧', user_lists_path(current_user), class: 'btn application__generic--btn' %></div>
           <% end %>
           <%= form_tag recipes_path, method: :get do %>
           <%= text_field_tag :search, params[:search],:placeholder => "レシピ名で検索" %>
@@ -55,7 +55,7 @@ $(function() {
       </div>
     <div class="tabbox">
     <div class="row ml-3">
-      <h1 class="text">ランキング</h1>
+      <h1 class="recipe__top--title">ランキング</h1>
     </div>
     <div class =col-md-12>
       <%= render 'rank', favorite_ranks: @favorite_ranks, follower_ranks: @follower_ranks, user_recipe: @user_recipe %>

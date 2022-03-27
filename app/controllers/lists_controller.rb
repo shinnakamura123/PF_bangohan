@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @lists = List.page(params[:page]).per(6).where(user_id: current_user.id).search(params[:search], params[:tag_id], params[:food_id]).order(created_at: :desc)
