@@ -12,7 +12,7 @@
           </td>
           <td style="width: 70%"><%= comment.content %></td>
           <% if comment.user == current_user %>
-            <td class ="point-text">
+            <td>
               <%= link_to '削除', recipe_comment_path(comment.recipe.id, comment.id), method: :delete, remote: true, class: 'btn btn-sm btn-danger' %>
             </td>
           <% end %>

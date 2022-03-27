@@ -1,9 +1,9 @@
-<div class='one-container p-5'>
-  <h1 class ="text"><%= @user.name %>さん の会員詳細</h1>
+<div class='main-container p-5'>
+  <h1 class ="user__top--title"><%= @user.name %>さん の会員詳細</h1>
   <div class='row'>
     <div class="col-5 offset-2 mx-auto">
       <% if @user == current_user %>
-        <%= link_to "編集する", edit_user_path(@user), class: "btn list_btn" %>
+        <%= link_to "編集する", edit_user_path(@user), class: "btn application__generic--btn" %>
       <% end %>
       <table class= "table">
         <tr><td class ="font-weight-bold">アカウント名</td><td><%= @user.name %></td></tr>
@@ -21,7 +21,7 @@
           <td id ="relationship_btn"><%= render 'relationships/btn', user: @user %></td>
         </tr>
       </table>
-      <%= link_to favorites_users_path(@user), class: "btn list_btn text-center" do %>
+      <%= link_to favorites_users_path(@user), class: "btn application__generic--btn" do %>
         <%= @user.name %>さん が</br>いいねしたレシピを見てみる
       <% end %>
     </div>
@@ -30,7 +30,7 @@
           <% @user.recipes.where(status: false).first(1).each do |recipe| %>
               <%= image_tag recipe.get_image(300, 300), class: "shadow p-3 mb-5 bg-body round"%>
           <% end %>
-          <%= link_to recipes_users_path(@user), class: "btn list_btn" do %>
+          <%= link_to recipes_users_path(@user), class: "btn application__generic--btn" do %>
             <%= @user.name %>さん のレシピを見てみる
           <% end %>
       </div>

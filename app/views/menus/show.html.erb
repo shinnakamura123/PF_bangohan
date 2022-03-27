@@ -1,23 +1,23 @@
-<div class = "one-container p-5">
-  <h1 class ="text"><%= l @menu.start_time %>の献立</h1>
+<div class = "main-container p-5">
+  <h1 class ="menu__top--title"><%= l @menu.start_time %>の献立</h1>
   <div class ="text-center">
-	  <%= link_to '献立予定に戻る', user_menus_path(current_user), class: 'btn list_btn' %>
+	  <%= link_to '献立予定に戻る', user_menus_path(current_user), class: 'btn application__generic--btn' %>
 	</div>
   <div class= "row">
     <% @menus.each do |menu| %>
     <div class= "col-lg-4 col-md-12 mx-auto">
-      <div class = "recipe-box">
+      <div class = "menu__body--box">
         <%= link_to recipe_path(menu.recipe) do %>
-          <%= image_tag menu.recipe.get_image(400, 400) ,class: "img-link shadow p-1 mb-5 bg-body round" %>
+          <%= image_tag menu.recipe.get_image(400, 400) ,class: "shadow p-1 mb-5 bg-body round" %>
         <% end %>
-        <h4 class ="recipe-title"><i class="fas fa-egg"></i>   <%= menu.recipe.recipe_name %>(<%= menu.recipe.man_count %>人分)</h4>
+        <h4 class ="menu__body--title"><i class="fas fa-egg"></i>   <%= menu.recipe.recipe_name %>(<%= menu.recipe.man_count %>人分)</h4>
       </div>
     </div>
     <% end %>
   </div>
   <div class ="row p-5">
     <div class ="col-6 mx-auto">
-      <h4 class ="recipe-title">買い物リスト</h4>
+      <h4 class ="menu__body--title">買い物リスト</h4>
       <table class = "table">
         <tbody>
           <% @foods.each do |food| %>
@@ -35,7 +35,7 @@
       </table>
     </div>
     <div class ="col-4 offset-2 mx-auto">
-      <h4 class ="recipe-title">必須調味料</h4>
+      <h4 class ="menu__body--title">必須調味料</h4>
       <table class = "table">
         <tbody>
           <% @foods.each do |food| %>
@@ -50,8 +50,5 @@
         </tbody>
       </table>
     </div>
-  </div>
-  <div class ="row">
-
   </div>
 </div>
