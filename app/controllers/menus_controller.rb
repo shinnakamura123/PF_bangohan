@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @menus = Menu.where(user_id: current_user.id)

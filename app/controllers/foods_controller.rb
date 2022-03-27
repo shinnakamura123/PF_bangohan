@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @foods = Food.page(params[:page]).per(10).order(:unit)
