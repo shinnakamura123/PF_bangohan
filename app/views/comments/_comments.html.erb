@@ -10,7 +10,7 @@
                 <%= comment.user.name %>
             <% end %>
           </td>
-          <td style="width: 70%"><%= comment.content %></td>
+          <td style="width: 60%"><%= comment.content %></td>
           <% if comment.user == current_user %>
             <td>
               <%= link_to '削除', recipe_comment_path(comment.recipe.id, comment.id), method: :delete, remote: true, class: 'btn btn-sm btn-danger' %>

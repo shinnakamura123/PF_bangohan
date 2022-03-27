@@ -72,6 +72,9 @@ ja:
         food: 材料名
         quantity: 分量
 
+      food:
+        food_name: 材料名
+
       menu:
         start_time: 日にち
         recipe: レシピ名

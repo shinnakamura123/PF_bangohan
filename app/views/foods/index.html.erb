@@ -2,15 +2,18 @@
   <div class='row'>
     <div class = "mx-auto", style="width: 75%;">
     <h1 class="food__top--title">材料名一覧</h3>
-      <%= render 'layouts/errors', obj:  @food %>
+    <div id ="food_errors">
+      <%= render 'layouts/errors', obj: @food %>
+    </div>
       <table class = "table table-sm">
         <thead class="thead-light">
+          <th></th>
           <th>材料名</th>
           <th>単位</th>
           <th></th>
         </thead>
         <tbody id="foods">
-            <%= render "foods", foods: @foods %>
+            <%= render "foods", foods: @foods, obj: @food %>
         </tbody>
       </table>
       <%= render 'food_form', food: @food %>

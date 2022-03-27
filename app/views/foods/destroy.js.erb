@@ -1,1 +1,3 @@
 $('#foods').html("<%= j(render "foods/foods", foods: @foods) %>");
+$('#food_errors').html("<%= j(render "layouts/not") %>");
+$('#list_flash').html("<%= j(render "layouts/notice_flash") %>");
