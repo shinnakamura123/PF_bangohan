@@ -3,7 +3,7 @@
 <% end %>
 <table class = "table">
     <tbody>
-      <% @comments.each do |comment| %>
+      <% comments.each do |comment| %>
         <tr>
           <td>
             <%= link_to user_path(comment.user.id) do %>
@@ -20,3 +20,12 @@
       <% end %>
     </tbody>
   </table>
+  <% if comment.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

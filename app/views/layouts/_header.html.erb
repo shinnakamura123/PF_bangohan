@@ -7,7 +7,7 @@
             ようこそ、<%= current_user.name %>さん。
           <% end %>
         </div>
-        <div style= "color: green;"><%= flash[:notice] %></div>
+        <div id ="list_flash", style= "color: green;"><%= render 'layouts/notice_flash' %></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

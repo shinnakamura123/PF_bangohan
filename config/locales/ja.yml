@@ -58,25 +58,26 @@ ja:
 
   activerecord:
     attributes:
-      recipe_food:
-        quantity: 分量
 
-      step:
-        method: 工程内容
-
-      food:
-        food_name: 材料名
-        unit: 単位
+      steps:
+        method: 作り方
 
       recipe:
         recipe_name: レシピ名
         background: レシピの生い立ち
         point: ポイント
-        recipe foods recipe: 分量
+        recipe_foods_recipe: 分量
+
+      recipe_foods:
+        food: 材料名
+        quantity: 分量
 
       menu:
         start_time: 日にち
         recipe: レシピ名
+
+      comment:
+        content: コメント
 
       user:
         name: アカウント名

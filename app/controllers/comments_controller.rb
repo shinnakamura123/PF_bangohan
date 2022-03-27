@@ -12,13 +12,17 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.recipe_id = @recipe.id
     @comment.save
+    flash.now[:notice] = 'コメントを送信しました。'
   end
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
-    @comments = @recipe.comments.order(created_at: :desc)
+    #recipeのshowで削除した時はlimit(3)で表示
+    @comments = @recipe.comments.order(created_at: :desc).limit(3)
+    #indexで削除した時はper(10)で表示させる
     @comments_page = @recipe.comments.page(params[:page]).per(10)
     @comment = Comment.find_by(id: params[:id], recipe_id: params[:recipe_id]).destroy
+    flash.now[:alert] = 'コメントを削除しました。'
   end
 
   private
