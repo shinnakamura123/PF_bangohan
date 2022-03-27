@@ -15,16 +15,15 @@ class MenusController < ApplicationController
     @menu = Menu.new(menu_params)
     @menu.user_id = current_user.id
     @menus = Menu.where(user_id: current_user.id)
-    if @menu.save
-    else
-      render path = Rails.application.routes.recognize_path(request.referer)
-    end
+    @menu.save
+    flash.now[:notice] = '献立予定に登録しました。'
   end
 
   def destroy
     @menu = Menu.find(params[:id])
     @menu.destroy
     @menus = Menu.where(user_id: current_user.id)
+    flash.now[:alert] = '献立予定から削除しました。'
   end
 
   def show

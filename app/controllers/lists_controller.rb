@@ -10,12 +10,14 @@ class ListsController < ApplicationController
     @list = List.new(user_id: current_user.id)
     @list.recipe_id = @recipe.id
     @list.save
+    flash.now[:notice] = 'マイリストに追加しました。'
   end
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     list = @recipe.lists.find_by(user_id: current_user.id)
     list.destroy
+    flash.now[:alert] = 'マイリストから削除しました。'
   end
 
 end
