@@ -1,6 +1,6 @@
 <% foods.each do |food| %>
   <tr>
-    <td><%= food.food_name %></td>
+    <td style ="width: 200px;"><%= food.food_name %></td>
     <td><%= food.unit %></td>
     <td><%= link_to '削除', food_path(food), method: :delete, remote: true, class: 'btn btn-danger btn-sm' %></td>
   </tr>
