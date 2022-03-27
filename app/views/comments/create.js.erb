@@ -1,2 +1,7 @@
-$('#comments').html("<%= j(render "comments/comments", comments: @comments, recipe: @recipe) %>");
+$('#comments').html("<%= j(render "comments/comments", comments: @comments, recipe: @recipe, comment: @comment) %>");
+<% if @comment.content.blank? %>
+  $('#list_flash').html("<%= j(render "layouts/not") %>");
+<% else %>
+  $('#list_flash').html("<%= j(render "layouts/notice_flash") %>");
+<% end %>
 $("textarea").val('');

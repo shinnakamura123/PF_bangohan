@@ -1,4 +1,12 @@
-$('#week_index').html("<%= j(render "week_index", menus: @menus) %>");
-$('#month_index').html("<%= j(render "month_index", menus: @menus) %>");
+$('#week_index').html("<%= j(render "week_index", menus: @menus, obj: @menu) %>");
+$('#month_index').html("<%= j(render "month_index", menus: @menus, obj: @menu) %>");
+
+<!--エラーの場合はフラッシュメッセージを出さない -->
+<% if @menu.recipe_id.blank? || @menu.start_time.blank? %>
+  $('#list_flash').html("<%= j(render "layouts/not") %>");
+<% else %>
+  $('#list_flash').html("<%= j(render "layouts/notice_flash") %>");
+<% end %>
+
 $('.select').val("");
 $('.time').val("");

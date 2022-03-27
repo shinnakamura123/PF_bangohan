@@ -1,3 +1,4 @@
-$('#comments').html("<%= j(render "comments/comments", comments: @comments, recipe: @recipe) %>");
+$('#comments').html("<%= j(render "comments/comments", comments: @comments, recipe: @recipe, comment: @comment) %>");
 $('#comments_index').html("<%= j(render "comments/comments_index", comments: @comments_page) %>");
+$('#list_flash').html("<%= j(render "layouts/notice_flash") %>");
 $('#page').html("<%= j(render 'comments/page', comments_page: @comments_page) %>");

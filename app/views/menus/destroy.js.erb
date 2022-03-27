@@ -1,2 +1,3 @@
-$('#week_index').html("<%= j(render "week_index", menus: @menus) %>");
-$('#month_index').html("<%= j(render "month_index", menus: @menus) %>");
+$('#week_index').html("<%= j(render "week_index", menus: @menus, obj: @menu) %>");
+$('#month_index').html("<%= j(render "month_index", menus: @menus, obj: @menu) %>");
+$('#list_flash').html("<%= j(render "layouts/notice_flash") %>");
