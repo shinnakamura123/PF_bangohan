@@ -8,14 +8,14 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
-    @foods = Food.page(params[:page]).per(10)
+    @foods = Food.page(params[:page]).per(10).order(:unit)
     @food.save
     flash.now[:notice] = '材料を登録しました。'
   end
 
   def destroy
     @food = Food.find(params[:id])
-    @foods = Food.page(params[:page]).per(10)
+    @foods = Food.page(params[:page]).per(10).order(:unit)
     @food.destroy
     flash.now[:alert] = '材料を削除しました。'
   end
