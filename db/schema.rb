@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2022_03_16_020732) do
 
   create_table "foods", force: :cascade do |t|
     t.string "food_name", null: false
-    t.string "unit", null: false
+    t.string "unit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
