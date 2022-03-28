@@ -19,8 +19,8 @@ class Recipe < ApplicationRecord
 
   validates :recipe_name, presence: true
   validates :man_count, presence: true
-  validates :background, presence: true
-  validates :point, presence: true
+  validates :background, presence: true, length: {maximum: 140}
+  validates :point, presence: true, length: {maximum: 140}
 
   enum status: { false: 0, true: 1 }
 
