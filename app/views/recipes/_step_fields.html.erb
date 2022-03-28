@@ -7,7 +7,7 @@
       <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;", class='preview'>
     </div>
     <p class="card-text"><%= f.file_field :image, accept: "image/*", id: 'image', class: 'img_file' %></p>
-    <p class="card-text"><%= f.text_area :method, size: "30x5" , placeholder: "手順の番号を頭につけてください。例) 1.〜"%></p>
+    <p class="card-text"><%= f.text_area :method, size: "30x5" , placeholder: "140文字以内で記述してください。   手順の番号を頭につけてください。例) 1.〜"%></p>
     <p class="card-text"><%= link_to_remove_association '削除', f, class: 'btn btn-danger' %></p>
   </div>
 </div>
