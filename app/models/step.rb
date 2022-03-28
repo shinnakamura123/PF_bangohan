@@ -1,7 +1,7 @@
 class Step < ApplicationRecord
   belongs_to :recipe
 
-  validates :method, presence: true
+  validates :method, presence: true, length: {maximum: 140}
 
   has_one_attached :image
 
