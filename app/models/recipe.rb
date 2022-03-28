@@ -36,19 +36,23 @@ class Recipe < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
+  #いいねをしているか確認
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
 
   def self.search(search, tag_id, food_id)
+    #レシピ名で検索した場合
     if search
       where(['recipe_name LIKE ?', "%#{search}%"])
+    #タグ名で検索した場合
     elsif tag_id.present?
       joins(:tags).where(tags: { id: tag_id })
+    #材料名で検索した場合
     elsif food_id.present?
       joins(:foods).where(foods: { id: food_id })
     else
-      all  #検索結果が当てはまらない場合は全て表示
+      all
     end
   end
 
