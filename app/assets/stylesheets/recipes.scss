@@ -95,9 +95,10 @@
 }
 
 
-
-
-
+.recipe__body--name{
+  border-bottom: 1px solid #dcdcdc;
+  color: #6c6c6c;
+}
 
 
 
@@ -188,7 +189,9 @@
   background-color:rgba(255,215,0,0.5);
 }
 
-
+.recipe__body--count{
+  margin: 0 0 0 10px;
+}
 
 
 
