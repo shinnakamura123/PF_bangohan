@@ -62,10 +62,10 @@
         <div class = "col-6 mx-auto">
             <h2 class ="recipe__body--title">つくりかた</h2>
             <% @recipe.steps.each do |step| %>
-                <div class="card mb-3" style="max-width: 540px;">
+                <div class="card mb-3" style="max-width: 700px;">
                   <div class="row no-gutters">
                     <div class="col-md-4">
-                        <%= image_tag step.get_image(300, 300), id: 'recipe__top--img', class: "shadow p-3 mb-5 bg-body round" %>
+                        <%= image_tag step.get_image(300, 300), id: 'recipe__top--img', class: "shadow mb-5 bg-body round" %>
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
