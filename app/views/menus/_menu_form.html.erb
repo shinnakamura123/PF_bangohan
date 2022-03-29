@@ -2,7 +2,10 @@
   <table class="table", id="menu_form">
     <tbody>
       <tr>
-          <td><%= f.collection_select :recipe_id, current_user.list_recipes, :id, :recipe_name, {prompt: "レシピ名を選んでください"} , class: "select" %></td>
+        <td>※マイリストに登録しているレシピを選択できます。</td>
+      </tr>
+      <tr>
+          <td><%= f.collection_select :recipe_id, current_user.list_recipes, :id, :recipe_name, {prompt: "レシピ名を選んでください"} , class: "select" %></td></br>
       </tr>
       <tr>
           <td><%= f.date_field :start_time, class: "time" %></td>
