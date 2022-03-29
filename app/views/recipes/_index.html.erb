@@ -4,7 +4,10 @@
       <%= link_to recipe_path(recipe) do %>
         <%= image_tag recipe.get_image(400, 400) ,class: "shadow p-1 mb-5 bg-body round" %>
       <% end %>
-      <h4 class ="recipe__body--title"><i class="fas fa-egg"></i>   <%= recipe.recipe_name %></h4>
+      <h4 class ="recipe__body--name"><i class="fas fa-egg"></i>   <%= recipe.recipe_name %></h4>
+      <p>
+        ♡ <%= recipe.favorites.count %>  <i class="far fa-comment"></i> <%= recipe.comments.count %>
+      </p>
     </div>
   <% end %>
 </div>

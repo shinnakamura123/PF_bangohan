@@ -5,6 +5,9 @@
         <%= image_tag list.recipe.get_image(400, 400) ,class: "shadow p-1 mb-5 bg-body round" %>
       <% end %>
       <h4 class ="list__body--title"><i class="fas fa-egg"></i>   <%= list.recipe.recipe_name %></h4>
+      <p>
+        ♡ <%= list.recipe.favorites.count %>  <i class="far fa-comment"></i> <%= list.recipe.comments.count %>
+      </p>
     </div>
     <% end %>
   </div>
