@@ -2,7 +2,7 @@
   <% recipes.each do |recipe| %>
     <div class = "recipe__body--box">
       <%= link_to recipe_path(recipe) do %>
-        <%= image_tag recipe.get_image(400, 400) ,class: "shadow p-1 mb-5 bg-body round" %>
+        <%= image_tag recipe.get_image(400, 300) ,class: "shadow p-1 mb-5 bg-body round" %>
       <% end %>
       <h4 class ="recipe__body--name"><i class="fas fa-egg"></i>   <%= recipe.recipe_name %></h4>
       <p>
