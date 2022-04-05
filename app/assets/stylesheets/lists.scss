@@ -2,13 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.list__top--title{ //text
+.list__top--title{
   border-bottom: 1px solid #dcdcdc;
   margin-bottom: 50px;
   animation: SlideIn 4.8s;
 }
 
-.list__body--box{ //recipe-box
+.list__body--box{
   margin: 20px;
   transition-duration: 0.5s;
 }
@@ -23,11 +23,11 @@
   transition-duration: 0.5s;
 }
 
-#list__body--img:hover{ //link
+#list__body--img:hover{
   font-size: 30px;
 }
 
-.list__body--title{ //recipe-title
+.list__body--title{
   border-bottom: 1px solid #dcdcdc;
   color: #6c6c6c;
   width: 400px;
