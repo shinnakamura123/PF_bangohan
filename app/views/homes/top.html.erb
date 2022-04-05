@@ -24,8 +24,9 @@
   </div>
 </div>
 <% if user_signed_in? %>
+<div class ="home__body--box">
   <div class ="row p-5">
-    <div class = "col-lg-6 col-md-12 mx-auto">
+    <div class = "col-lg-6 col-md-12 mx-auto home__body--box1">
       <h1 class ="home__body--title">
         食事の支度がスムーズに。
       </h1>
@@ -37,7 +38,7 @@
           自然と外食することが減り、家計の節約にも繋がります。
       </p>
     </div>
-    <div class ="col-lg-5 col-md-12 offset-1 p-3 mx-auto", id= 'home__body--link'>
+    <div class ="col-lg-5 col-md-12 offset-1 p-3 mx-auto home__body--box2", id= 'home__body--link'>
       <%= link_to new_recipe_path do %>
         <%= image_tag "todd-quackenbush-x5SRhkFajrA-unsplash.jpg", id: 'home__body--img' %>
         <div class="home__body--mask">
@@ -49,7 +50,7 @@
     </div>
   </div>
   <div class ="row p-2">
-    <div class = "col-lg-5 col-md-12 mx-auto", id= 'home__body--link'>
+    <div class = "col-lg-5 col-md-12 mx-auto home__body--box3", id= 'home__body--link'>
       <%= link_to user_menus_path(current_user.id) do %>
         <%= image_tag "luba-ertel-TdPGSnFBFtM-unsplash.jpg", id: 'home__body--img'%>
         <div class="home__body--mask">
@@ -59,7 +60,7 @@
       	</div>
       <% end %>
     </div>
-    <div class ="col-lg-5 col-md-12 offset-1 p-3 mx-auto">
+    <div class ="col-lg-5 col-md-12 offset-1 p-3 mx-auto home__body--box4">
       <h1 class ="home__body--title">
         食品ロスが減る
       </h1>
@@ -75,7 +76,7 @@
     </div>
   </div>
   <div class ="row p-5">
-    <div class = "col-lg-5 col-md-12 mx-auto">
+    <div class = "col-lg-5 col-md-12 mx-auto home__body--box5">
       <h1 class ="home__body--title">
         栄養バランスを</br>　　考えるきっかけに。
       </h1>
@@ -90,7 +91,7 @@
           好きなものばかり食べてしまう一人暮らしさんにもおすすめです。</br>
       </p>
     </div>
-    <div class ="col-lg-5 col-md-12 offset-1 p-3 mx-auto", id= 'home__body--link'>
+    <div class ="col-lg-5 col-md-12 offset-1 p-3 mx-auto home__body--box6", id= 'home__body--link'>
       <%= link_to recipes_path do %>
         <%= image_tag "tomoyo-s-AAptGeIAPMU-unsplash.jpg", id: 'home__body--img'%>
         <div class="home__body--mask">
@@ -101,6 +102,7 @@
       <% end %>
     </div>
   </div>
+</div>
 <% else %>
   <div class ="row p-5"></div>
   <div class ="row p-5">
