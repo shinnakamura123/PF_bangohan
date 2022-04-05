@@ -153,6 +153,70 @@
   }
 }
 
+.about__top--content{
+	font-size: 1vw;
+}
+
+
+
+//以下レスポンシブ対応
+.home__body--box{
+	display: flex;
+	flex-direction: column;
+}
+
+.home__body--box1{
+	order: 1;
+}
+
+.home__body--box2{
+	order: 2;
+}
+
+.home__body--box3{
+	order: 3;
+}
+
+.home__body--box4{
+	order: 4;
+}
+
+.home__body--box5{
+	order: 5;
+}
+
+.home__body--box6{
+	order: 6;
+}
+
+@media screen and (max-width:768px) {
+	.home__body--box1{
+		order: 1;
+	}
+
+	.home__body--box2{
+		order: 2;
+	}
+
+	.home__body--box3{
+		order: 4;
+	}
+
+	.home__body--box4{
+		order: 3;
+	}
+
+	.home__body--box5{
+		order: 5;
+	}
+
+	.home__body--box6{
+		order: 6;
+	}
+}
+
+
+
 
 
 
