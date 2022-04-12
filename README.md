@@ -34,7 +34,7 @@
 - 買い物をする時
 
 ## 設計書
-<テーマ決定後、実装前にリンク先貼ります。>
+<https://docs.google.com/spreadsheets/d/1G1uZ-HyhV-FHqWJ8__bJCKM3vq2e-SdIVktTSZy8reg/edit?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1c6EjawC_hd_khBhs12Z9WkUaKOE1vr9EE400wPnc2H8/edit?usp=sharing>
