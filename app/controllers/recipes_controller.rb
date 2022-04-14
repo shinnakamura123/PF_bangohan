@@ -40,7 +40,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
-    if @recipe.user_id = current_user.id
+    if @recipe.user_id == current_user.id || current_user.admin?
       render 'edit'
     else
       redirect_to recipe_path(@recipe)
