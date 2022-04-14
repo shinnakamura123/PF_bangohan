@@ -6,7 +6,7 @@
     </div>
     <div class ="row">
         <div class = "col-6 mx-auto", id='recipe__top--link'>
-            <% if @recipe.user == current_user %>
+            <% if @recipe.user == current_user || current_user.admin? %>
               <%= link_to edit_recipe_path(@recipe) do %>
                 <%= image_tag @recipe.get_image(500, 500), id: 'recipe__top--img', class: "shadow p-3 mb-5 bg-body round" %>
                 <div class="recipe__top--mask">
