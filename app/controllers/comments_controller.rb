@@ -21,8 +21,11 @@ class CommentsController < ApplicationController
     @comments = @recipe.comments.order(created_at: :desc).limit(3)
     #indexで削除した時はper(10)で表示させる
     @comments_page = @recipe.comments.page(params[:page]).per(10)
-    @comment = Comment.find_by(id: params[:id], recipe_id: params[:recipe_id]).destroy
-    flash.now[:alert] = 'コメントを削除しました。'
+    @comment = Comment.find_by(id: params[:id], recipe_id: params[:recipe_id])
+    if @comment.user_id == current_user.id
+      @comment.destroy
+      flash.now[:alert] = 'コメントを削除しました。'
+    end
   end
 
   private

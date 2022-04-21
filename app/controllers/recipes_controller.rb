@@ -28,8 +28,10 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    @recipe.destroy
-    redirect_to recipes_path, alert: 'レシピを削除しました。'
+    if @recipe.user_id == current_user.id
+      @recipe.destroy
+      redirect_to recipes_path, alert: 'レシピを削除しました。'
+    end
   end
 
   def show
@@ -40,7 +42,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
-    if @recipe.user_id == current_user.id || current_user.admin?
+    if @recipe.user_id == current_user.id
       render 'edit'
     else
       redirect_to recipe_path(@recipe)
